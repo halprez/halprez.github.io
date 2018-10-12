@@ -448,8 +448,25 @@ h1, h2, h3, h4, h5, h6, figure {
   -ms-border-radius: 4px;
   border-radius: 4px;
 }
+
+.timeline .timeline-foot > div h3 {
+  display: inline-flex;
+  vertical-align: bottom;
+  padding: 7px 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: bold;
+  background: #666666;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+
+
 @media screen and (max-width: 768px) {
-  .timeline .timeline-heading > div h3 {
+  .timeline .timeline-heading .timeline-foot> div h3 {
     float: left;
     margin-bottom: 0;
   }
