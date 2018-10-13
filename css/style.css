@@ -70,18 +70,18 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 ::-webkit-selection {
-  color: #fff;
-  background: #02ce02;
+  color: #ffffff;
+  background: #000000;
 }
 
 ::-moz-selection {
-  color: #fff;
-  background: #02ce02;
+  color: #ffffff;
+  background: #000000;
 }
 
 ::selection {
-  color: #fff;
-  background: #02ce02;
+  color: #ffffff;
+  background: #000000;
 }
 
 #fh5co-header,
@@ -188,7 +188,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 #fh5co-header .display-tc .fh5co-social-icons li a,
 .fh5co-cover .display-tc .fh5co-social-icons li a {
-  color: #fff;
+  color: #0s5ff09;
 }
 #fh5co-header .display-tc .fh5co-social-icons li a i,
 .fh5co-cover .display-tc .fh5co-social-icons li a i {
@@ -199,7 +199,7 @@ h1, h2, h3, h4, h5, h6, figure {
   background: #666666;
 }
 #fh5co-features h2 {
-  color: #fff;
+  color: #ffffff;
 }
 #fh5co-features .services-padding {
   padding: 7em 0;
@@ -339,7 +339,7 @@ h1, h2, h3, h4, h5, h6, figure {
   display: inline-block;
   zoom: 1;
   *display: inline;
-  color: #dcdcdc;
+  color: #ffffff;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -378,6 +378,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 #fh5co-about .fh5co-social-icons li a:hover {
   background: #000000;
+  color: #ffffff;
 }
 
 .fh5co-heading {
