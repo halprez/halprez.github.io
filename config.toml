@@ -1,11 +1,77 @@
-baseURL = "https://halprez.github.io"
-languageCode = "en-us"
-title = "Alejandro Perez"
-theme = "hugo-theme-nix"
+baseurl      = "halprez.github.io"
+title        = "Alejandro Perez"
+languageCode = "es-ES"
+theme        = "hugo-theme-hello-friend-ng"
+paginate     = 100
+# Default theme "light" or "dark"
+defaultTheme = "dark"
 
 [params]
-  Name = "Alejandro Perez"
-  HeaderUsername = "Alejandro Perez"
-  HeaderHostname = "Alejandro Perez"
-  About = "info_about_you"
-  ProfilePicture = "/images/me.png"
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04"
+
+  # Subtitle for home
+  homeSubtitle = "Homo Inquisitivus"
+
+  # Set disableReadOtherPosts to true in order to hide the links to other posts.
+  disableReadOtherPosts = false
+
+  # Enable sharing buttons, if you like
+  enableSharingButtons = true
+  [Logo]
+  logoCursorColor = "Green"
+
+  # Metadata mostly used in document's head
+  description = "Alejandro Perez Site"
+  keywords = "homepage, blog"
+  images = [""]
+  copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+
+[taxonomies]
+    category = "blog"
+    tag      = "tags"
+    series   = "series"
+
+  # Social icons
+  [[params.social]]
+    name = "twitter"
+    url  = "https://twitter.com/"
+
+  [[params.social]]
+    name = "email"
+    url  = "mailto:nobody@example.com"
+
+  [[params.social]]
+    name = "github"
+    url  = "https://github.com/"
+
+  [[params.social]]
+    name = "linkedin"
+    url  = "https://www.linkedin.com/"   
+
+[languages]
+  [languages.en]
+    title = "Alejandro Pérez"
+    subtitle = "Homo Inquisitivus"
+    keywords = ""
+
+    [languages.en.params.logo]
+      logoText = "Alex@github.io/$"
+      logoHomeLink = "/"
+
+[languages.es]
+    title = "Alejandro Pérez"
+    subtitle = "Homo Inquisitivus"
+    keywords = ""
+
+    [languages.es.params.logo]
+      logoText = "Alex@github.io/$"
+      logoHomeLink = "/"
+
+  # And you can even create generic menu
+  [[menu.main]]
+    identifier = "blog"
+    name       = "Blog"
+    url        = "/posts"
