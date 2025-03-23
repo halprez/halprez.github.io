@@ -273,12 +273,12 @@ h1, h2, h3, h4, h5, h6, figure {
 			background-position: center center;
 			background-repeat: no-repeat;
 			position: relative;
-			height: 200px;
+			height: 300px;
 			width: 200px;
 			margin: 0 auto;
 			margin-bottom: 30px;
 			// border: 1px solid rgba($brand-white,1);
-			@include border-radius(50%);
+			@include border-radius(10%);
 		}
 		.fh5co-social-icons {
 			li {
