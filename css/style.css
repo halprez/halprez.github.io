@@ -1103,9 +1103,9 @@ input[type="text"] {
 }
 
 .btn-primary {
-  background: #b9eba2;
+  background: #359906;
   color: #fff;
-  border: 2px solid #FF9000;
+  border: 2px solid #00aeff;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   background: #ff9b1a !important;
