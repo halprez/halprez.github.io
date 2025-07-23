@@ -81,7 +81,6 @@ header {
 }
 
 .profile-image-container {
-    margin-top: 3rem;
     margin-bottom: 2rem;
     display: flex;
     justify-content: center;
@@ -130,7 +129,7 @@ main {
 .bio {
     font-size: 1.2rem;
     line-height: 1.8;
-    text-align: justify;
+    text-align: center;
     margin-bottom: 3rem;
     color: #333;
     max-width: 600px;
@@ -256,7 +255,6 @@ main {
     color: #555;
     line-height: 1.6;
     font-size: 1rem;
-    text-align: justify;
 }
 
 .skills {
@@ -300,7 +298,6 @@ main {
     margin-bottom: 0.5rem;
     color: #555;
     line-height: 1.5;
-    text-align: justify;
 }
 
 .achievements-list li::before {
@@ -395,43 +392,220 @@ main {
 
 @media (max-width: 768px) {
     .container {
-        padding: 0 1.5rem;
+        padding: 0 1rem;
+        justify-content: flex-start;
+        padding-top: 2rem;
     }
     
-    .contact-links {
-        gap: 1rem;
+    .profile-image-container {
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
     }
     
-    .contact-link {
-        padding: 0.7rem 1.2rem;
-        font-size: 0.9rem;
+    .profile-image {
+        width: 120px;
+        height: 120px;
+        border-width: 3px;
+    }
+    
+    .name {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+        margin-bottom: 0.8rem;
+    }
+    
+    .title {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    header {
+        margin-bottom: 2rem;
     }
     
     .bio {
-        font-size: 1.1rem;
-        margin-bottom: 2.5rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        text-align: left;
+        padding: 0 0.5rem;
     }
     
     .interests {
-        gap: 0.8rem;
+        gap: 0.6rem;
+        margin-bottom: 2rem;
+        justify-content: flex-start;
+        padding: 0 0.5rem;
     }
     
     .interest-tag {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        font-weight: 400;
     }
-
+    
+    .resume {
+        margin: 2rem 0;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .experience-item, .education-item {
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+        border-radius: 0.8rem;
+    }
+    
     .experience-header, .education-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.5rem;
+        gap: 0.3rem;
+        margin-bottom: 0.8rem;
     }
+    
+    .job-title, .degree {
+        font-size: 1.1rem;
+        line-height: 1.3;
+    }
+    
+    .company, .university {
+        font-size: 0.9rem;
+        margin-top: 0.2rem;
+    }
+    
+    .location {
+        font-size: 0.8rem;
+        margin-top: 0.1rem;
+    }
+    
+    .duration, .year {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+        margin-top: 0.5rem;
+        align-self: flex-start;
+    }
+    
+    .gpa {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.5rem;
+        margin-left: 0;
+        margin-top: 0.3rem;
+    }
+    
+    .job-description, .education-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        text-align: left;
+        margin-top: 0.5rem;
+    }
+    
+    .achievements {
+        margin-top: 0.8rem;
+        padding-top: 0.8rem;
+    }
+    
+    .achievements-title {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .achievements-list li {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin-bottom: 0.4rem;
+        padding-left: 1.2rem;
+        text-align: left;
+    }
+    
+    .skills {
+        gap: 0.4rem;
+        margin-top: 0.8rem;
+    }
+    
+    .skill-tag {
+        padding: 0.25rem 0.6rem;
+        font-size: 0.75rem;
+        border-radius: 0.8rem;
+    }
+    
+    .contact {
+        margin-top: 2rem;
+    }
+    
+    .contact-links {
+        gap: 0.8rem;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 1rem;
+    }
+    
+    .contact-link {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        border-radius: 1.5rem;
+    }
+    
+    /* Hide floating shapes on mobile for better performance */
+    .floating-shape {
+        display: none;
+    }
+    
+    /* Reduce animations on mobile */
+    .cursor-dot {
+        display: none;
+    }
+    
+    /* Better scroll indicator positioning */
+    .scroll-indicator {
+        bottom: 1rem;
+        height: 25px;
+    }
+    
+    /* Improve touch targets */
+    .interest-tag, .skill-tag {
+        min-height: 32px;
+        display: inline-flex;
+        align-items: center;
+    }
+}
 
+/* Additional breakpoint for very small screens */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.8rem;
+        padding-top: 1.5rem;
+    }
+    
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .name {
+        font-size: clamp(1.8rem, 10vw, 2.2rem);
+    }
+    
+    .bio {
+        font-size: 0.95rem;
+        padding: 0 0.2rem;
+    }
+    
     .experience-item, .education-item {
-        padding: 1.5rem;
+        padding: 1rem;
     }
-
-    .section-title {
-        font-size: 1.5rem;
+    
+    .contact-links {
+        padding: 0 0.5rem;
+    }
+    
+    .contact-link {
+        max-width: 240px;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
     }
 }
