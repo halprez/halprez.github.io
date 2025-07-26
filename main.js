@@ -31,7 +31,7 @@ class PersonalSite {
     }
 
     showLoading() {
-        this.container.innerHTML = '<div class="loading"><img src="/images/loading.gif" alt="Loading...">Loading...</div>';
+        this.container.innerHTML = '<div class="loading">Loading...</div>';
     }
 
     showError() {
@@ -138,19 +138,21 @@ class PersonalSite {
 
     renderTimelineSection(section) {
         const items = section.items.map(item => `
-            <div class="item">
-                <div class="item-header">
-                    <div>
-                        <h3 class="item-title">${item.title}</h3>
-                        <span class="item-subtitle">${item.subtitle}</span>
-                        ${item.location ? `<span class="item-location"> • ${item.location}</span>` : ''}
+            <a href="${item.url}" class="item-link">
+                <div class="item">
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-title">${item.title}</h3>
+                            <span class="item-subtitle">${item.subtitle}</span>
+                            ${item.location ? `<span class="item-location"> • ${item.location}</span>` : ''}
+                        </div>
+                        ${item.duration ? `<span class="item-duration">${item.duration}</span>` : ''}
                     </div>
-                    ${item.duration ? `<span class="item-duration">${item.duration}</span>` : ''}
+                    ${item.description ? `<p class="item-description">${item.description}</p>` : ''}
+                    ${item.details ? this.renderDetails(item.details) : ''}
+                    ${item.tags ? this.renderTags(item.tags) : ''}
                 </div>
-                ${item.description ? `<p class="item-description">${item.description}</p>` : ''}
-                ${item.details ? this.renderDetails(item.details) : ''}
-                ${item.tags ? this.renderTags(item.tags) : ''}
-            </div>
+            </a>
         `).join('');
 
         const titleContent = section.link 

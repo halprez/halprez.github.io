@@ -4,7 +4,7 @@
     "title": "Software Engineer",
     "bio": "I am a Senior Software Engineer with 20+ years of filed work experience, currently interested in distributed systems and AI technologies. I bring a unique blend of technical expertise and curious angle, while maintaining strong engineering principles. When not building software, I find clarity through yoga, chess, and outdoor adventures—practices that help me enhance my problem-solving approach and leadership style.",
     "email": "jalpre@gmail.com",
-    "image": "/images/me.png",
+    "image": "/images/me.jpg",
     "interests": [
       "Distributed Systems",
       "Artificial Intelligence",
@@ -95,7 +95,8 @@
           "location": "Santa Cruz de Tenerife, Spain",
           "duration": "2014 - 2015",
           "description": "MSc in Computation specialized in Artificial Intelligence.",
-          "tags": ["Artificial Intelligence"]
+          "tags": ["Artificial Intelligence"],
+          "url": "https://www.ull.es"
         },
         {
           "title": "Computer Science Engineering",
@@ -103,7 +104,8 @@
           "location": "Santa Cruz de Tenerife, Spain",
           "duration": "1996 - 2003",
           "description": "Comprehensive foundation in computer science fundamentals and software engineering principles.",
-          "tags": ["Computer Science Engineering"]
+          "tags": ["Computer Science Engineering"],
+          "url": "https://www.ull.es"
         }
       ],
   "skills": [
