@@ -61,12 +61,13 @@ body {
 /* Personal Section */
 header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
     opacity: 0;
     animation: fadeInUp 0.8s ease-out 0.2s forwards;
 }
 
 .profile-image {
+    margin-top: 3rem;
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -349,24 +350,136 @@ main {
     box-shadow: 0 5px 15px rgba(74, 144, 226, 0.1);
 }
 
+.contact-list {
+    list-style: none;
+    padding: 0.8rem;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.contact-list li {
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.contact-list li:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.contact-list li:hover ~ li {
+    transform: translateX(10px);
+}
+
+.contact-list img,
+.contact-list i {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 480px) {
+    .contact-list {
+        padding: 0.6rem;
+        gap: 0.8rem;
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+    }
+    
+    .contact-list::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .contact-list img,
+    .contact-list i {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+}
+
+/* Floating Menu */
+.floating-menu {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 2rem;
+    padding: 1rem 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.menu-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.menu-link {
+    display: block;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 1.5rem;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.menu-link:hover {
+    color: #4a90e2;
+    background: rgba(74, 144, 226, 0.1);
+    transform: translateX(-5px);
+}
+
+.menu-link.active {
+    color: #4a90e2;
+    background: rgba(74, 144, 226, 0.15);
+    font-weight: 600;
+}
+
+.menu-link.active::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 20px;
+    background: linear-gradient(135deg, #4a90e2, #50af95);
+    border-radius: 2px;
+}
+
 /* Utilities */
 .loading {
     text-align: center;
     color: #666;
     font-style: italic;
     padding: 2rem;
-}
-
-.cursor-dot {
-    width: 8px;
-    height: 8px;
-    background: #4a90e2;
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
 .scroll-indicator {
@@ -425,6 +538,24 @@ main {
     .floating-shape { display: none; }
     .cursor-dot { display: none; }
     .scroll-indicator { bottom: 1rem; height: 25px; }
+    
+    /* Mobile floating menu */
+    .floating-menu {
+        right: 1rem;
+        padding: 0.8rem 0;
+        border-radius: 1.5rem;
+    }
+    
+    .menu-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .menu-link.active::before {
+        width: 3px;
+        height: 15px;
+        left: 0.3rem;
+    }
 }
 
 @media (max-width: 480px) {

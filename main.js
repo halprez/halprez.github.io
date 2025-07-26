@@ -31,7 +31,7 @@ class PersonalSite {
     }
 
     showLoading() {
-        this.container.innerHTML = '<div class="loading">Loading...</div>';
+        this.container.innerHTML = '<div class="loading"><img src="/images/loading.gif" alt="Loading...">Loading...</div>';
     }
 
     showError() {
@@ -39,17 +39,14 @@ class PersonalSite {
     }
 
     render(data) {
-        // Limpiar el contenedor
+  
         this.container.innerHTML = '';
         
-        // Establecer el título de la página
         if (data.personal && data.personal.name) {
             document.title = data.personal.name;
-            // Renderizar la sección personal
             this.container.insertAdjacentHTML('beforeend', this.renderPersonal(data.personal));
         }
 
-        // Renderizar la sección de experiencia
         if (data.experience && data.experience.length > 0) {
             const experienceSection = {
                 id: 'experience',
@@ -59,8 +56,6 @@ class PersonalSite {
             };
             this.container.insertAdjacentHTML('beforeend', this.renderSection(experienceSection));
         }
-
-        // Renderizar la sección de educación
         if (data.education && data.education.length > 0) {
             const educationSection = {
                 id: 'education',
@@ -71,47 +66,57 @@ class PersonalSite {
             this.container.insertAdjacentHTML('beforeend', this.renderSection(educationSection));
         }
 
-        // Renderizar la sección de intereses (extraída de 'personal')
-        if (data.personal && data.personal.interests && data.personal.interests.length > 0) {
-            const interestsSection = {
-                id: 'interests',
-                title: 'Interests',
-                type: 'tags',
-                items: data.personal.interests
+        if (data.thoughts && data.thoughts.length > 0) {
+            const thoughtsSection = {
+                id: 'thoughts',
+                title: 'Thoughts',
+                type: 'timeline',
+                items: data.thoughts
             };
-            this.container.insertAdjacentHTML('beforeend', this.renderSection(interestsSection));
+            this.container.insertAdjacentHTML('beforeend', this.renderSection(thoughtsSection));
         }
 
-        // Renderizar la sección de contacto (ahora desde personal.contact)
-        if (data.personal && data.personal.contact && data.personal.contact.length > 0) {
-            const contactSection = {
-                id: 'contact',
-                title: 'Contact',
-                type: 'links',
-                items: data.personal.contact
+        if (data.projects && data.projects.length > 0) {
+            const projectsSection = {
+                id: 'projects',
+                title: 'Projects',
+                type: 'timeline',
+                items: data.projects
             };
-            this.container.insertAdjacentHTML('beforeend', this.renderSection(contactSection));
+            this.container.insertAdjacentHTML('beforeend', this.renderSection(projectsSection));
         }
     }
 
     renderPersonal(personal) {
         return `
-            <header>
-                <img src="${personal.image}" alt="${personal.name}" class="profile-image">
+            <section id="personal">
+                <header>
+                <img class="profile-image" src="${personal.image}" alt="${personal.name}" />
                 <h1 class="name">${personal.name}</h1>
                 <p class="title">${personal.title}</p>
-            </header>
-            <main>
+                </header>
+                <main>
                 <p class="bio">${personal.bio}</p>
-            </main>
+                ${personal.contact ? `
+                <div class="contact-links">
+                    ${personal.contact.map(item => `
+                    <a href="${item.url}" class="contact-link" ${item.url ? 'target="_blank"' : ''}>
+                    <div class="contact-item">
+                        <img src="${item.icon}" alt="${item.label}" class="contact-icon" />
+                    </div>
+                    </a>
+                    `).join('')}
+                </div>
+                ` : ''}
+                </main>
+            </section>
         `;
     }
+
 
     renderSection(section) {
         if (section.type === 'tags') {
             return this.renderTagsSection(section);
-        } else if (section.type === 'links') {
-            return this.renderContactSection(section);
         } else {
             return this.renderTimelineSection(section);
         }
@@ -127,29 +132,6 @@ class PersonalSite {
             <section class="section tags" id="${section.id}">
                 <h2 class="section-title">${titleContent}</h2>
                 <div class="section-content">${tags}</div>
-            </section>
-        `;
-    }
-
-    renderContactSection(section) {
-        const links = section.items.map(item => {
-            const target = item.url.startsWith('http') || item.url.endsWith('.pdf') ? 'target="_blank"' : '';
-            return `
-                <a href="${item.url}" class="contact-link" ${target}>
-                    <span>${item.icon}</span>
-                    ${item.label}
-                </a>
-            `;
-        }).join('');
-
-        const titleContent = section.link 
-            ? `<a href="#${section.link}" class="section-title-link">${section.title}</a>`
-            : section.title;
-
-        return `
-            <section class="contact" id="${section.id}">
-                <h2 class="section-title">${titleContent}</h2>
-                <div class="contact-links">${links}</div>
             </section>
         `;
     }
@@ -195,10 +177,11 @@ class PersonalSite {
 
     initEffects() {
         this.initTyping();
-        this.initCursor();
+        // this.initCursor();
         this.initParallax();
         this.initScroll();
         this.initHover();
+        this.initFloatingMenu();
     }
 
     initTyping() {
@@ -218,28 +201,6 @@ class PersonalSite {
             };
             type();
         }, 1000);
-    }
-
-    initCursor() {
-        const dot = document.querySelector('.cursor-dot');
-        if (!dot) return;
-
-        let mouseX = 0, mouseY = 0, dotX = 0, dotY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            dot.style.opacity = '0.6';
-        });
-
-        const animate = () => {
-            dotX += (mouseX - dotX) * 0.1;
-            dotY += (mouseY - dotY) * 0.1;
-            dot.style.left = dotX + 'px';
-            dot.style.top = dotY + 'px';
-            requestAnimationFrame(animate);
-        };
-        animate();
     }
 
     initParallax() {
@@ -278,6 +239,65 @@ class PersonalSite {
                 });
             });
         }, 200);
+    }
+
+    initFloatingMenu() {
+        const menuLinks = document.querySelectorAll('.menu-link');
+        const sections = document.querySelectorAll('section[id]');
+        
+        // Smooth scroll for menu links
+        menuLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for active section highlighting
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Remove active class from all menu links
+                    menuLinks.forEach(link => link.classList.remove('active'));
+                    
+                    // Add active class to current section's menu link
+                    const targetLink = document.querySelector(`[data-section="${entry.target.id}"]`);
+                    if (targetLink) {
+                        targetLink.classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Set initial active state
+        setTimeout(() => {
+            const firstVisibleSection = document.querySelector('section[id]');
+            if (firstVisibleSection) {
+                const firstLink = document.querySelector(`[data-section="${firstVisibleSection.id}"]`);
+                if (firstLink) {
+                    firstLink.classList.add('active');
+                }
+            }
+        }, 1000);
     }
 }
 
