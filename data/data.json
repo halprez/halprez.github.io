@@ -90,21 +90,21 @@
       ],
   "education": [
         {
-          "title": "MSc in Computer Science",
+          "title": "Master in Computer Science Engineering",
           "subtitle": "University of La Laguna (ULL)",
           "location": "Santa Cruz de Tenerife, Spain",
           "duration": "2014 - 2015",
-          "description": "MSc in Computation specialized in Artificial Intelligence.",
-          "tags": ["Artificial Intelligence"],
-          "url": "https://www.ull.es"
+          "description": "MSc in Computer Science Engineering with a specialization in Artificial Intelligence.",
+          "tags": ["MSc Artificial Intelligence"],
+          "url": "https://www.ull.es/masteres/ingenieria-informatica/"
         },
         {
-          "title": "Computer Science Engineering",
+          "title": "Computer Science - Systems Engineering",
           "subtitle": "University of La Laguna (ULL)",
           "location": "Santa Cruz de Tenerife, Spain",
           "duration": "1996 - 2003",
           "description": "Comprehensive foundation in computer science fundamentals and software engineering principles.",
-          "tags": ["Computer Science Engineering"],
+          "tags": ["BSc Computer Science - Systems Engineering"],
           "url": "https://www.ull.es"
         }
       ],
@@ -124,7 +124,7 @@
         "Continuous Learning"  ],
   "projects": [
     {
-      "title": "Fisheries Data Exploration and Analysis",
+      "title": "Tuna Fisheries Data Exploration and Analysis",
       "description": "A comprehensive data exploration and analysis project focused on fisheries data, utilizing Python for data compilation a frontend based on vanilla JS, css and html",
       "url": "https://alexperez.me/IATTC-sample/"
     }
