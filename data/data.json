@@ -2,7 +2,7 @@
   "personal": {
     "name": "Alejandro Pérez",
     "title": "Software Engineer",
-    "bio": "I am a Senior Software Engineer with 20+ years of filed work experience, currently interested in distributed systems and AI technologies. I bring a unique blend of technical expertise and curious angle, while maintaining strong engineering principles. When not building software, I find clarity through yoga, chess, and outdoor adventures—practices that help me enhance my problem-solving approach and leadership style.",
+    "bio": "I am a Senior Software Engineer with 20+ years of field experience, currently specializing in distributed systems and AI technologies. I combine technical expertise with analytical curiosity, grounded in strong software engineering principles. I've been building software since I was 8 years old, so I feel incredibly fortunate to have turned a childhood passion into a fulfilling career. For me, coding isn't just work; it's a craft I continuously pursue. When not building software, I find clarity through yoga, meditation, chess, and outdoor adventures—practices I leverage to empower my day-to-day working activities.",
     "email": "jalpre@gmail.com",
     "image": "/images/me.jpg",
     "interests": [
@@ -58,7 +58,7 @@
           "tags": ["AWS", "Team Management", "P2P Streaming", "Microservices architecture", "Real-time Systems"],
           "details": [
             "Led technical standards implementation across development teams.",
-            "Designed evolution of microservices architecture. Extended platform capabilities to support real time video analytics"
+            "Designed evolution of microservices architecture. Extended platform capabilities to support real time video analytics."
           ]
         },
         {
@@ -67,7 +67,7 @@
           "url": "https://system73.com",
           "location": "Santa Cruz de Tenerife, Spain",
           "duration": "11/2015 - 09/2017",
-          "description": "Served as an early team member and lead backend developer for an innovative P2P live video streaming platform.",
+          "description": "Served as an early team member and lead backend developer for an innovative P2P live video streaming platform start-up.",
           "tags": ["Python", "AWS", "WebRTC", "Microservices", "Real-time Systems", "Kafka", "Redis"],
           "details": [
             "Built distributed backend microservices architecture capable of handling thousands of concurrent video streams.",

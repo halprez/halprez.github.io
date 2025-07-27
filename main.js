@@ -184,6 +184,7 @@ class PersonalSite {
         this.initScroll();
         this.initHover();
         this.initFloatingMenu();
+        this.initDockAutoHide();
     }
 
     initTyping() {
@@ -255,34 +256,52 @@ class PersonalSite {
                 const targetSection = document.getElementById(targetId);
                 
                 if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    // Calculate offset for mobile navigation
+                    const isMobile = window.innerWidth <= 1024;
+                    const offset = isMobile ? 100 : 50;
+                    
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
         // Intersection Observer for active section highlighting
+        const isMobile = window.innerWidth <= 1024;
         const observerOptions = {
             root: null,
-            rootMargin: '-20% 0px -60% 0px',
-            threshold: 0
+            rootMargin: isMobile ? '-100px 0px -200px 0px' : '-50px 0px -50% 0px',
+            threshold: [0, 0.1, 0.5, 0.9]
         };
 
         const observer = new IntersectionObserver((entries) => {
+            // Find the section with highest intersection ratio
+            let mostVisibleSection = null;
+            let highestRatio = 0;
+            
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Remove active class from all menu links
-                    menuLinks.forEach(link => link.classList.remove('active'));
-                    
-                    // Add active class to current section's menu link
-                    const targetLink = document.querySelector(`[data-section="${entry.target.id}"]`);
-                    if (targetLink) {
-                        targetLink.classList.add('active');
-                    }
+                if (entry.isIntersecting && entry.intersectionRatio > highestRatio) {
+                    mostVisibleSection = entry.target;
+                    highestRatio = entry.intersectionRatio;
                 }
             });
+            
+            // Update active navigation only if we found a visible section
+            if (mostVisibleSection) {
+                // Remove active class from all menu links
+                menuLinks.forEach(link => link.classList.remove('active'));
+                
+                // Add active class to most visible section's menu link
+                const targetLink = document.querySelector(`[data-section="${mostVisibleSection.id}"]`);
+                if (targetLink) {
+                    targetLink.classList.add('active');
+                }
+            }
         }, observerOptions);
 
         // Observe all sections
@@ -300,6 +319,62 @@ class PersonalSite {
                 }
             }
         }, 1000);
+    }
+
+    initDockAutoHide() {
+        // Only apply auto-hide on desktop
+        if (window.innerWidth <= 1024) return;
+
+        const menu = document.querySelector('.floating-menu');
+        if (!menu) return;
+
+        let hideTimeout;
+        let isMenuVisible = false;
+
+        const showMenu = () => {
+            clearTimeout(hideTimeout);
+            if (!isMenuVisible) {
+                menu.classList.add('show');
+                isMenuVisible = true;
+            }
+        };
+
+        const hideMenu = () => {
+            hideTimeout = setTimeout(() => {
+                menu.classList.remove('show');
+                isMenuVisible = false;
+            }, 1000); // Hide after 1 second
+        };
+
+        // Show menu when cursor is near the bottom
+        document.addEventListener('mousemove', (e) => {
+            const bottomThreshold = window.innerHeight - 150; // Show when cursor is within 150px of bottom
+            
+            if (e.clientY > bottomThreshold) {
+                showMenu();
+            } else {
+                hideMenu();
+            }
+        });
+
+        // Keep menu visible when hovering over it
+        menu.addEventListener('mouseenter', () => {
+            clearTimeout(hideTimeout);
+            showMenu();
+        });
+
+        // Hide menu when leaving it (with delay)
+        menu.addEventListener('mouseleave', () => {
+            hideMenu();
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 1024) {
+                menu.classList.remove('show');
+                isMenuVisible = false;
+            }
+        });
     }
 }
 
