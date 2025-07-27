@@ -94,9 +94,9 @@
           "location": "Santa Cruz de Tenerife, Spain",
           "duration": "2023 - 2007",
           "description": "Managed IT infrastructure and provided technical support for the IEO's research operations.",
-          "tags": ["Linux", "Windows Server", "Active Directory", "Network Administration", "Technical Support"],
+          "tags": ["Windows Server", "Active Directory", "Network Administration", "Technical Support"],
           "details": [
-            "Administered Linux and Windows servers, ensuring high availability and security for research applications.",
+            "Administered Windows servers, ensuring high availability and security for research applications.",
             "Updated IEO - COC Server infrastructure to Windows Server 2000, enhancing performance and security."
           ]
         }
