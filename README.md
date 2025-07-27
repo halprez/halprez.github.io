@@ -2,7 +2,7 @@
 
 A modern, responsive personal portfolio website built with vanilla JavaScript, CSS3, and HTML5. Features a sleek design with smooth animations, accessibility-first approach, and comprehensive testing suite.
 
-Visit onL [alexperez.me](https://alexperez.me)
+Visit on: [alexperez.me](https://alexperez.me)
 
 ## ✨ Features
 
