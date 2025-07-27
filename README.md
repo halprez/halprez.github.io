@@ -93,7 +93,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Alejandro Perez**
 - **Website**: [alexperez.me](https://alexperez.me)
-- **Email**: [your.email@example.com](mailto:jalpre@gmail.com)
+- **Email**: [jalpre at gmail dot com](mailto:jalpre@gmail.com)
 - **GitHub**: [@halprez](https://github.com/halprez)
 ---
 
