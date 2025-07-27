@@ -2,7 +2,7 @@
 
 A modern, responsive personal portfolio website built with vanilla JavaScript, CSS3, and HTML5. Features a sleek design with smooth animations, accessibility-first approach, and comprehensive testing suite.
 
-![Live version.](https://alexperez.me)
+Visit onL [alexperez.me](https://alexperez.me)
 
 ## ✨ Features
 
@@ -42,17 +42,17 @@ A modern, responsive personal portfolio website built with vanilla JavaScript, C
 ### **Code Architecture**
 
 #### **HTML Structure (`index.html`)**
-- **Semantic HTML5**: Proper document structure with semantic elements
-- **Navigation**: Fixed floating menu with SVG icons
-- **Background**: Animated floating shapes for visual appeal
-- **Container**: Centered content area with flexible layout
+- **Semantic HTML5**: Proper document structure with semantic elements.
+- **Navigation**: Fixed floating menu with SVG icons.
+- **Background**: Animated floating shapes for visual appeal.
+- **Container**: Centered content area with flexible layout.
 
 #### **CSS Architecture (`style.css`)**
-- **Mobile-First**: Base styles for mobile, enhanced for larger screens
-- **CSS Custom Properties**: Consistent color scheme and spacing
-- **Flexbox Layout**: Modern flexible layouts
-- **CSS Animations**: Smooth transitions and hover effects
-- **Media Queries**: Responsive breakpoints at 480px, 768px, 1024px
+- **Mobile-First**: Base styles for mobile, enhanced for larger screens.
+- **CSS Custom Properties**: Consistent color scheme and spacing.
+- **Flexbox Layout**: Modern flexible layouts.
+- **CSS Animations**: Smooth transitions and hover effects.
+- **Media Queries**: Responsive breakpoints at 480px, 768px, 1024px.
 
 #### **JavaScript Functionality (`main.js`)**
 ```javascript
@@ -72,13 +72,13 @@ class PersonalSite {
 
 ### **Key Technologies**
 
-- **Vanilla JavaScript**: No frameworks, pure ES6+ JavaScript
-- **CSS3**: Modern CSS with Grid, Flexbox, and Custom Properties
-- **HTML5**: Semantic markup with proper accessibility
-- **JSON**: Dynamic content loading
-- **SVG Icons**: Scalable vector icons for navigation
-- **Intersection Observer**: Efficient scroll detection
-- **CSS Transforms**: Hardware-accelerated animations
+- **Vanilla JavaScript**: No frameworks, pure ES6+ JavaScript.
+- **CSS3**: Modern CSS with Grid, Flexbox, and Custom Properties.
+- **HTML5**: Semantic markup with proper accessibility.
+- **JSON**: Dynamic content loading.
+- **SVG Icons**: Scalable vector icons for navigation.
+- **Intersection Observer**: Efficient scroll detection.
+- **CSS Transforms**: Hardware-accelerated animations.
 
 ## 📊 Data Structure
 
@@ -93,8 +93,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Alejandro Perez**
 - **Website**: [alexperez.me](https://alexperez.me)
-- **Email**: [your.email@example.com](mailto:your.email@example.com)
-- **GitHub**: [@halprez](https://github.com/yourusername)
+- **Email**: [your.email@example.com](mailto:jalpre@gmail.com)
+- **GitHub**: [@halprez](https://github.com/halprez)
 ---
 
 ⭐ **Star this repository if you found it helpful!**
