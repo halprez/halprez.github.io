@@ -144,9 +144,9 @@
       "url": "https://alexperez.me/IATTC-sample/"
     },
        {
-      "title": "MCP Server Proxy API to EUMETSAT's Weather Data Catalog",
+      "title": "MCP Server Proxy API to a Weather Data Catalog",
       "subtitle":"MCP Weather Data Service",
-      "description": "A proxy API that allows LLM's to seamlessly access EUMETSAT's weather data catalog, enabling integration of weather data for MCP compatible applications.",
+      "description": "A proxy API that allows LLM's to seamlessly access weather data catalog, enabling integration of weather data for MCP compatible applications.",
       "url": "https://github.com/halprez/weather-mcp-server"
     }
   ]
