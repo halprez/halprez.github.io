@@ -1,0 +1,39 @@
+{
+  "name": "alexperez.me",
+  "version": "1.0.0",
+  "description": "Personal portfolio website for Alejandro Perez",
+  "main": "index.html",
+  "scripts": {
+    "test": "npm run test:html && npm run test:css && npm run test:a11y && npm run test:functionality",
+    "test:html": "html-validate index.html",
+    "test:css": "stylelint style.css",
+    "test:a11y": "playwright test tests/accessibility.spec.js",
+    "test:functionality": "playwright test tests/functionality.spec.js",
+    "test:lighthouse": "lhci autorun",
+    "serve": "python3 -m http.server 8080",
+    "serve:node": "npx http-server -p 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/alexperez.me.git"
+  },
+  "keywords": [
+    "portfolio",
+    "website",
+    "personal",
+    "frontend"
+  ],
+  "author": "Alejandro Perez",
+  "license": "MIT",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.8.2",
+    "@lhci/cli": "^0.12.0",
+    "@playwright/test": "^1.40.0",
+    "html-validate": "^8.7.4",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

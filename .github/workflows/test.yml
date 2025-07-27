@@ -1,0 +1,322 @@
+name: Website Testing
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  schedule:
+    # Run tests weekly on Sundays at 2 AM UTC
+    - cron: '0 2 * * 0'
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    name: HTML & CSS Validation
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Install dependencies
+      run: |
+        npm init -y
+        npm install --save-dev html-validate stylelint stylelint-config-standard
+    
+    - name: Create HTML validation config
+      run: |
+        cat > .htmlvalidate.json << 'EOF'
+        {
+          "extends": ["html-validate:recommended"],
+          "rules": {
+            "no-inline-style": "off",
+            "require-sri": "off",
+            "no-trailing-whitespace": "off"
+          }
+        }
+        EOF
+    
+    - name: Create CSS validation config
+      run: |
+        cat > .stylelintrc.json << 'EOF'
+        {
+          "extends": ["stylelint-config-standard"],
+          "rules": {
+            "no-descending-specificity": null,
+            "selector-class-pattern": null,
+            "custom-property-pattern": null
+          }
+        }
+        EOF
+    
+    - name: Validate HTML
+      run: npx html-validate index.html
+    
+    - name: Validate CSS
+      run: npx stylelint style.css
+
+  accessibility:
+    runs-on: ubuntu-latest
+    name: Accessibility Testing
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Install Playwright and axe
+      run: |
+        npm init -y
+        npm install --save-dev @playwright/test @axe-core/playwright
+        npx playwright install chromium
+    
+    - name: Create accessibility test
+      run: |
+        mkdir -p tests
+        cat > tests/accessibility.spec.js << 'EOF'
+        const { test, expect } = require('@playwright/test');
+        const AxeBuilder = require('@axe-core/playwright').default;
+
+        test.describe('Accessibility Tests', () => {
+          test('should not have any automatically detectable accessibility issues', async ({ page }) => {
+            await page.goto('file://' + process.cwd() + '/index.html');
+            
+            // Wait for content to load
+            await page.waitForSelector('.name', { timeout: 10000 });
+            
+            const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+            
+            expect(accessibilityScanResults.violations).toEqual([]);
+          });
+
+          test('should have proper navigation structure', async ({ page }) => {
+            await page.goto('file://' + process.cwd() + '/index.html');
+            
+            // Check for navigation landmarks
+            const nav = await page.locator('nav').count();
+            expect(nav).toBeGreaterThan(0);
+            
+            // Check for proper heading hierarchy
+            const h1 = await page.locator('h1').count();
+            expect(h1).toBeGreaterThanOrEqual(1);
+          });
+        });
+        EOF
+    
+    - name: Create Playwright config
+      run: |
+        cat > playwright.config.js << 'EOF'
+        module.exports = {
+          testDir: './tests',
+          timeout: 30 * 1000,
+          expect: {
+            timeout: 5000
+          },
+          fullyParallel: true,
+          forbidOnly: !!process.env.CI,
+          retries: process.env.CI ? 2 : 0,
+          workers: process.env.CI ? 1 : undefined,
+          reporter: 'html',
+          use: {
+            actionTimeout: 0,
+            trace: 'on-first-retry',
+          },
+          projects: [
+            {
+              name: 'chromium',
+              use: { ...devices['Desktop Chrome'] },
+            },
+          ],
+        };
+        const { devices } = require('@playwright/test');
+        EOF
+    
+    - name: Run accessibility tests
+      run: npx playwright test
+
+  functionality:
+    runs-on: ubuntu-latest
+    name: Functionality Testing
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Install Playwright
+      run: |
+        npm init -y
+        npm install --save-dev @playwright/test
+        npx playwright install chromium
+    
+    - name: Create functionality tests
+      run: |
+        mkdir -p tests
+        cat > tests/functionality.spec.js << 'EOF'
+        const { test, expect } = require('@playwright/test');
+
+        test.describe('Website Functionality', () => {
+          test('should load the main page correctly', async ({ page }) => {
+            await page.goto('file://' + process.cwd() + '/index.html');
+            
+            // Check if main elements are present
+            await expect(page.locator('.name')).toBeVisible();
+            await expect(page.locator('.title')).toBeVisible();
+            await expect(page.locator('.bio')).toBeVisible();
+            
+            // Check navigation menu
+            await expect(page.locator('.floating-menu')).toBeVisible();
+            await expect(page.locator('.menu-link')).toHaveCount(5);
+          });
+
+          test('should have working navigation links', async ({ page }) => {
+            await page.goto('file://' + process.cwd() + '/index.html');
+            
+            // Wait for content to load
+            await page.waitForSelector('.floating-menu', { timeout: 10000 });
+            
+            // Test navigation clicks
+            const menuLinks = await page.locator('.menu-link').all();
+            expect(menuLinks.length).toBeGreaterThan(0);
+            
+            for (const link of menuLinks) {
+              const href = await link.getAttribute('href');
+              if (href && href.startsWith('#')) {
+                await link.click();
+                // Wait a bit for scroll animation
+                await page.waitForTimeout(500);
+              }
+            }
+          });
+
+          test('should load contact icons', async ({ page }) => {
+            await page.goto('file://' + process.cwd() + '/index.html');
+            
+            // Wait for content to load
+            await page.waitForSelector('.contact-links', { timeout: 10000 });
+            
+            // Check if contact links are present
+            const contactLinks = await page.locator('.contact-link').count();
+            expect(contactLinks).toBeGreaterThan(0);
+          });
+
+          test('should be responsive', async ({ page }) => {
+            await page.goto('file://' + process.cwd() + '/index.html');
+            
+            // Test mobile viewport
+            await page.setViewportSize({ width: 375, height: 667 });
+            await expect(page.locator('.floating-menu')).toBeVisible();
+            
+            // Test tablet viewport
+            await page.setViewportSize({ width: 768, height: 1024 });
+            await expect(page.locator('.floating-menu')).toBeVisible();
+            
+            // Test desktop viewport
+            await page.setViewportSize({ width: 1200, height: 800 });
+            await expect(page.locator('.floating-menu')).toBeVisible();
+          });
+        });
+        EOF
+    
+    - name: Run functionality tests
+      run: npx playwright test tests/functionality.spec.js
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    name: Performance Testing
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Install Lighthouse CI
+      run: |
+        npm install -g @lhci/cli@0.12.x
+    
+    - name: Create Lighthouse config
+      run: |
+        cat > lighthouserc.js << 'EOF'
+        module.exports = {
+          ci: {
+            collect: {
+              staticDistDir: '.',
+              url: ['http://localhost/index.html'],
+              settings: {
+                chromeFlags: '--no-sandbox'
+              }
+            },
+            assert: {
+              assertions: {
+                'categories:performance': ['warn', {minScore: 0.8}],
+                'categories:accessibility': ['error', {minScore: 0.9}],
+                'categories:best-practices': ['warn', {minScore: 0.8}],
+                'categories:seo': ['warn', {minScore: 0.8}]
+              }
+            },
+            upload: {
+              target: 'temporary-public-storage',
+            },
+          },
+        };
+        EOF
+    
+    - name: Run Lighthouse CI
+      run: lhci autorun
+
+  link-checker:
+    runs-on: ubuntu-latest
+    name: Link Checking
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Install link checker
+      run: npm install -g broken-link-checker
+    
+    - name: Start local server
+      run: |
+        python3 -m http.server 8080 &
+        sleep 5
+    
+    - name: Check links
+      run: blc http://localhost:8080 --recursive --ordered --exclude-external
+
+  security:
+    runs-on: ubuntu-latest
+    name: Security Scanning
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+    
+    - name: Upload Trivy scan results to GitHub Security tab
+      uses: github/codeql-action/upload-sarif@v2
+      if: always()
+      with:
+        sarif_file: 'trivy-results.sarif'
