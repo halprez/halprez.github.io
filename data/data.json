@@ -44,7 +44,7 @@
           "description": "Leading technical strategy and development for AI/ML and IoT projects serving enterprise clients across multiple industries.",
           "tags": ["AI/ML", "Automatization", "IoT", "LLMs", "Team Leadership"],
           "details": [
-            "Designed a computer vision application for quality control for an international tobacco company.",
+            "Designed a computer vision application for quality control for an international manufacturing company.",
             "Designed and collaborated on building a real-time video analysis application for a major video streaming company."
           ]
         },
@@ -58,7 +58,7 @@
           "tags": ["AWS", "Team Management", "P2P Streaming", "Microservices architecture", "Real-time Systems"],
           "details": [
             "Led technical standards implementation across development teams.",
-            "Designed evolution of microservices architecture."
+            "Designed evolution of microservices architecture. Extended platform capabilities to support real time video analytics"
           ]
         },
         {
@@ -125,6 +125,7 @@
   "projects": [
     {
       "title": "Tuna Fisheries Data Exploration and Analysis",
+      "subtitle":"IATTC Sample",
       "description": "A comprehensive data exploration and analysis project focused on fisheries data, utilizing Python for data compilation a frontend based on vanilla JS, css and html",
       "url": "https://alexperez.me/IATTC-sample/"
     }
