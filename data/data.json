@@ -94,7 +94,7 @@
           "location": "Santa Cruz de Tenerife, Spain",
           "duration": "2023 - 2007",
           "description": "Managed IT infrastructure and provided technical support for the IEO's research operations.",
-          "tags": ["Windows Server", "Active Directory", "Network Administration", "Technical Support"],
+          "tags": ["Windows Server", "Active Directory", "Network Administration", "Technical Support", "Firewall setup and management"],
           "details": [
             "Administered Windows servers, ensuring high availability and security for research applications.",
             "Updated IEO - COC Server infrastructure to Windows Server 2000, enhancing performance and security."
@@ -123,11 +123,12 @@
       ],
   "skills": [
         "Python",
+        "Distributed Systems",
+        "AI/ML",
+        "IoT",
         "AWS",
         "Docker",
         "Microservices",
-        "Distributed Systems",
-        "AI/ML",
         "SOLID Principles",
         "Agile Methodologies",
         "Team Leadership",
@@ -138,16 +139,22 @@
       ],
   "projects": [
     {
-      "title": "Tuna Fisheries Data Exploration and Analysis Tools",
+      "title": "Tuna Fisheries Data Exploration Tools",
       "subtitle":"Catch and Effort Data and Purse seine Geospatial Data",
       "description": "A comprehensive data exploration and analysis project focused on fisheries data, utilizing Python for data compilation a frontend based on vanilla JS, css and html",
       "url": "https://alexperez.me/IATTC-sample/"
     },
-       {
-      "title": "MCP Service for Integrated Historical Weather Data from EUMETSAT and Google's GraphCast AI weather model.",
-      "subtitle":"MCP Weather Service",
-      "description": "A proxy API that allows LLM's to seamlessly access weather data catalog, enabling integration of weather data for MCP compatible applications.",
+      {
+      "title": "MCP - Weather Service for LLMs",
+      "subtitle":"Historical EUMETSAT Datasets + Google's GraphCast AI vs ECMWF's AIFS Weather Forecasts",
+      "description": "Weather data service that integrates EUMETSAT historical satellite data with Google GraphCast and AIFS forecasts through the Model Context Protocol (MCP) for next weather prediction for LLM models",
       "url": "https://github.com/halprez/weather-mcp-server"
+    },
+      {
+      "title": "PyADMB - Python Wrapper for ADMB",
+      "subtitle":"ADMB (Automatic Differentiation Model Builder) Python Wrapper",
+      "description": "A modern Python interface for AD Model Builder (ADMB), bringing automatic differentiation and advanced optimization to fisheries stock assessment and ecological modeling.",
+      "url": "https://github.com/halprez/pyadmb"
     }
   ]
 }
