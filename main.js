@@ -64,6 +64,17 @@ class PersonalSite {
                 items: data.education
             };
             this.container.insertAdjacentHTML('beforeend', this.renderSection(educationSection));
+            
+            // Add skills section under education
+            if (data.skills && data.skills.length > 0) {
+                const skillsSection = {
+                    id: 'skills',
+                    title: 'Skills',
+                    type: 'tags',
+                    items: data.skills
+                };
+                this.container.insertAdjacentHTML('beforeend', this.renderSection(skillsSection));
+            }
         }
 
         if (data.thoughts && data.thoughts.length > 0) {
