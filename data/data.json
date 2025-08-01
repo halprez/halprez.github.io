@@ -139,16 +139,16 @@
       ],
   "projects": [
     {
-      "title": "Tuna Fisheries Data Exploration Tools",
-      "subtitle":"Catch and Effort Data and Purse seine Geospatial Data",
-      "description": "A comprehensive data exploration and analysis project focused on fisheries data, utilizing Python for data compilation a frontend based on vanilla JS, css and html",
-      "url": "https://alexperez.me/IATTC-sample/"
-    },
-      {
       "title": "MCP - Weather Service for LLMs",
       "subtitle":"Historical EUMETSAT Datasets + Google's GraphCast AI vs ECMWF's AIFS Weather Forecasts",
       "description": "Weather data service that integrates EUMETSAT historical satellite data with Google GraphCast and AIFS forecasts through the Model Context Protocol (MCP) for next weather prediction for LLM models",
       "url": "https://github.com/halprez/weather-mcp-server"
+    },
+    {
+      "title": "Tuna Fisheries Data Exploration Tools",
+      "subtitle":"Catch and Effort Data and Purse seine Geospatial Data",
+      "description": "A comprehensive data exploration and analysis project focused on fisheries data, utilizing Python for data compilation a frontend based on vanilla JS, css and html",
+      "url": "https://alexperez.me/IATTC-sample/"
     },
       {
       "title": "PyADMB - Python Wrapper for ADMB",
