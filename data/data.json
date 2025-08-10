@@ -141,14 +141,14 @@
   "projects": [
     {
       "title": "MCP - Weather Service for LLMs",
-      "subtitle":"Historical EUMETSAT Datasets + Google's GraphCast AI vs ECMWF's AIFS Weather Forecasts",
+      "subtitle":"Includes historical EUMETSAT Datasets + Google's GraphCast AI vs ECMWF's AIFS Weather Forecasts (Still WIP)",
       "description": "Weather data service that integrates EUMETSAT historical satellite data with Google GraphCast and AIFS forecasts through the Model Context Protocol (MCP) for next weather prediction for LLM models",
       "url": "https://github.com/halprez/weather-mcp-server"
     },
     {
       "title": "Trade Promotion Management MCP Server",
       "subtitle":"AI-Powered Trade Promotion Manager for Claude Desktop",
-      "description": " an MCP (Model Context Protocol) server that connects FastAPI-powered trade promotion management directly to Claude Desktop, showcasing cutting-edge AI integration, Python code, and modern architecture.",
+      "description": " An MCP (Model Context Protocol) server that connects FastAPI-powered trade promotion management service to Claude Desktop, showcasing AI integration through MCP, Python code, and Docker architecture.",
       "url": "https://github.com/halprez/mcp-trade-position-mgmnt"
     },
     {
