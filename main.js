@@ -90,7 +90,7 @@ class PersonalSite {
         if (data.projects && data.projects.length > 0) {
             const projectsSection = {
                 id: 'projects',
-                title: 'Projects',
+                title: 'Side projects',
                 type: 'timeline',
                 items: data.projects
             };
