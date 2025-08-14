@@ -1183,11 +1183,11 @@ body[data-theme="c64"] .menu-link {
 }
 
 body[data-theme="c64"] .menu-link::before {
-    content: '[';
+    content: '';
 }
 
 body[data-theme="c64"] .menu-link::after {
-    content: ']';
+    content: '';
 }
 
 body[data-theme="c64"] .menu-link:hover {
@@ -1203,11 +1203,11 @@ body[data-theme="c64"] .menu-link.active {
 }
 
 body[data-theme="c64"] .menu-link.active::before {
-    content: '>';
+    content: '';
 }
 
 body[data-theme="c64"] .menu-link.active::after {
-    content: '<';
+    content: '';
 }
 
 /* Hide menu icons in C64 theme */
