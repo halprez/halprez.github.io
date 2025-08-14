@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alejandro Perez Profile</title>
     <link rel="stylesheet" href="style.css">
+    <script type="module">
+        // Pre-load Transformers.js to avoid module loading issues
+        window.transformersLoaded = false;
+        try {
+            import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1/dist/transformers.min.js')
+                .then(() => {
+                    window.transformersLoaded = true;
+                    console.log('Transformers.js loaded successfully');
+                })
+                .catch(err => {
+                    console.warn('Transformers.js failed to load:', err);
+                    window.transformersLoaded = false;
+                });
+        } catch (error) {
+            console.warn('Transformers.js import failed:', error);
+            window.transformersLoaded = false;
+        }
+    </script>
 </head>
 <body>
     <div class="background-elements">
@@ -48,6 +66,12 @@
                 </svg>
                 <span class="menu-text">Side projects</span>
             </a></li>
+            <li><a href="#" id="chatbot-toggle" class="menu-link">
+                <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span class="menu-text">AI Chat</span>
+            </a></li>
 			 <!-- <li><a href="#thoughts" class="menu-link" data-section="thoughts">
                 <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -58,6 +82,30 @@
     </nav>
     <div class="container"></div>
     <div class="scroll-indicator"></div>
+    
+    <!-- AI Chatbot -->
+    <div id="chatbot-overlay" class="chatbot-overlay">
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <h3>Ask Alex AI bot</h3>
+                <button id="chatbot-close" class="chatbot-close">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot-message">
+                    <div class="message-content">Hi! I'm Alex's AI assistant. Ask me anything about him...</div>
+                </div>
+            </div>
+            <div class="chatbot-loading" id="chatbot-loading" style="display: none;">
+                <div class="loading-indicator">Thinking...</div>
+            </div>
+            <div class="chatbot-input">
+                <textarea id="chatbot-input" placeholder="Ask about my experience, projects, or approach..." rows="2"></textarea>
+                <button id="chatbot-send" class="chatbot-send">Send</button>
+            </div>
+        </div>
+    </div>
+    
     <script src="main.js"></script>
+    <script src="chatbot.js"></script>
 </body>
 </html>

@@ -1,0 +1,117 @@
+{
+  "knowledge_base": {
+    "description": "Comprehensive knowledge base for AI chatbot integration using Transformers.js + LaMini-Flan-T5-248M + RAG",
+    "version": "1.0.0",
+    "last_updated": "2025-08-14",
+    "total_files": 4,
+    "structure": {
+      "personal_data": {
+        "file": "data.json",
+        "description": "Core personal information, contact details, and summary data",
+        "use_cases": ["Basic biographical questions", "Contact information queries", "Overview of skills and interests"],
+        "key_sections": ["personal", "experience", "education", "skills", "projects"]
+      },
+      "detailed_projects": {
+        "file": "knowledge/projects.json",
+        "description": "Comprehensive technical details about key projects with architectures, challenges, and solutions",
+        "use_cases": ["Technical implementation questions", "Architecture decisions", "Project-specific challenges and solutions"],
+        "key_topics": ["MCP servers", "AI/ML integration", "Weather data systems", "Trade promotion management", "Scientific computing"]
+      },
+      "professional_experience": {
+        "file": "knowledge/experience.json", 
+        "description": "Detailed professional experience with technical achievements, leadership impact, and business outcomes",
+        "use_cases": ["Career progression questions", "Leadership experience", "Technical achievements", "Business impact"],
+        "key_topics": ["AI/ML leadership", "Distributed systems architecture", "Team scaling", "Enterprise solutions"]
+      },
+      "philosophy_approach": {
+        "file": "knowledge/philosophy.json",
+        "description": "Personal coding philosophy, technical approach, and leadership principles based on CLAUDE.md",
+        "use_cases": ["Technical philosophy questions", "Approach to problem-solving", "Leadership style", "Career journey"],
+        "key_topics": ["Receptive architecture", "Experimental iteration", "Essential simplicity", "Collaborative decoupling"]
+      },
+      "technology_insights": {
+        "file": "knowledge/tech_insights.json",
+        "description": "Technology opinions, industry insights, and future perspectives across various domains",
+        "use_cases": ["Technology recommendations", "Architecture decisions", "Industry trends", "Best practices"],
+        "key_topics": ["AI/ML in production", "Distributed systems", "Programming languages", "Architecture patterns"]
+      }
+    },
+    "search_strategies": {
+      "biographical_queries": {
+        "files": ["data.json", "knowledge/experience.json"],
+        "examples": ["Where did Alejandro work?", "What is his education background?", "How long has he been programming?"]
+      },
+      "technical_questions": {
+        "files": ["knowledge/projects.json", "knowledge/tech_insights.json"],
+        "examples": ["How does he approach microservices?", "What AI/ML projects has he built?", "What are his opinions on Python?"]
+      },
+      "philosophy_leadership": {
+        "files": ["knowledge/philosophy.json", "knowledge/experience.json"],
+        "examples": ["What is his leadership style?", "How does he approach code quality?", "What are his core principles?"]
+      },
+      "personal_lifestyle": {
+        "files": ["knowledge/philosophy.json"],
+        "examples": ["What are his wellness practices?", "How does he stay fit?", "What podcasts does he listen to?", "What's his approach to nutrition and sleep?"]
+      },
+      "project_specifics": {
+        "files": ["knowledge/projects.json", "data.json"],
+        "examples": ["Tell me about the weather MCP server", "How did he build the P2P streaming platform?", "What challenges did he face?"]
+      }
+    },
+    "chatbot_integration": {
+      "model": "LaMini-Flan-T5-248M",
+      "framework": "Transformers.js",
+      "approach": "RAG (Retrieval-Augmented Generation)",
+      "implementation_notes": [
+        "Use semantic search to find relevant knowledge chunks based on user queries",
+        "Combine multiple knowledge sources when answering complex questions",
+        "Prioritize specific technical details from projects.json and tech_insights.json for technical queries",
+        "Use philosophy.json for questions about approach, methodology, and principles",
+        "Fallback to data.json for basic biographical information"
+      ],
+      "performance_considerations": [
+        "Total knowledge base size: ~50KB across 5 files",
+        "Optimized for fast retrieval and relevant context selection",
+        "Structured JSON format for efficient parsing and search",
+        "Hierarchical organization allows targeted knowledge retrieval"
+      ]
+    },
+    "content_statistics": {
+      "total_projects": 4,
+      "experience_entries": 5,
+      "technology_areas": 8,
+      "philosophy_principles": 4,
+      "technical_achievements": 25,
+      "business_impacts": "Quantified outcomes across multiple industries"
+    },
+    "query_examples": {
+      "technical_depth": [
+        "How would Alejandro approach building a distributed system?",
+        "What are his thoughts on AI/ML in production environments?",
+        "Can you explain his experience with microservices architecture?"
+      ],
+      "specific_projects": [
+        "Tell me about the computer vision quality control system",
+        "How does the weather MCP server work?",
+        "What was challenging about the P2P streaming platform?"
+      ],
+      "career_insights": [
+        "How did Alejandro transition from fisheries to tech leadership?",
+        "What impact has he had on the teams he's led?",
+        "What drives his approach to continuous learning?"
+      ],
+      "philosophy_approach": [
+        "What does 'receptive architecture' mean to him?",
+        "How does he balance technical excellence with delivery pressure?",
+        "What role does his yoga and chess practice play in his work?"
+      ],
+      "personal_lifestyle": [
+        "How does Alejandro stay physically fit?",
+        "What's his approach to nutrition and wellness?",
+        "What podcasts does he listen to while hiking?",
+        "How does he balance work with outdoor activities?",
+        "What role does sleep play in his productivity?"
+      ]
+    }
+  }
+}

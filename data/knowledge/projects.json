@@ -1,0 +1,127 @@
+{
+  "projects": [
+    {
+      "id": "weather-mcp-server",
+      "title": "MCP - Weather Service for LLMs",
+      "category": "AI/ML Integration",
+      "status": "Work in Progress",
+      "technologies": ["Python", "FastAPI", "MCP", "EUMETSAT", "GraphCast", "AIFS", "Docker"],
+      "detailed_description": "This project represents a sophisticated integration of multiple weather data sources and AI forecasting models through the Model Context Protocol (MCP). The service acts as a bridge between historical satellite data from EUMETSAT and cutting-edge AI weather prediction models like Google's GraphCast and ECMWF's AIFS.",
+      "technical_challenges": [
+        "Integrating heterogeneous weather data sources with different formats and APIs",
+        "Implementing efficient data pipelines for large satellite datasets",
+        "Creating a unified interface that abstracts complex weather model differences",
+        "Ensuring real-time performance for LLM context integration",
+        "Handling temporal data alignment between historical and forecast data"
+      ],
+      "architecture_decisions": [
+        "Chose FastAPI for high-performance async request handling",
+        "Implemented MCP protocol for seamless LLM integration",
+        "Used Docker for consistent deployment across environments",
+        "Designed modular architecture to easily add new weather data sources"
+      ],
+      "key_features": [
+        "Historical EUMETSAT satellite data integration",
+        "Google GraphCast AI weather prediction integration",
+        "ECMWF AIFS forecasting system integration",
+        "MCP protocol implementation for LLM context",
+        "Unified API for multiple weather data sources",
+        "Real-time weather data processing and serving"
+      ],
+      "business_impact": "Enables LLMs to access comprehensive weather data for climate analysis, agricultural planning, and environmental research applications",
+      "github_url": "https://github.com/halprez/weather-mcp-server"
+    },
+    {
+      "id": "trade-promotion-mcp",
+      "title": "Trade Promotion Management MCP Server",
+      "category": "AI Integration",
+      "status": "Complete",
+      "technologies": ["Python", "FastAPI", "MCP", "Claude Desktop", "Docker", "AI Agents"],
+      "detailed_description": "An innovative MCP server that demonstrates AI-powered trade promotion management by connecting a FastAPI backend service directly to Claude Desktop. This project showcases the practical implementation of the Model Context Protocol for real-world business applications.",
+      "technical_challenges": [
+        "Implementing MCP protocol specification correctly for Claude Desktop integration",
+        "Designing efficient trade promotion data models and business logic",
+        "Creating seamless AI agent workflows for trade management tasks",
+        "Ensuring secure and reliable API connectivity between services",
+        "Building intuitive interfaces that leverage AI capabilities effectively"
+      ],
+      "architecture_decisions": [
+        "FastAPI chosen for robust async API performance and automatic OpenAPI documentation",
+        "MCP protocol implementation for direct Claude Desktop integration",
+        "Docker containerization for consistent deployment and scaling",
+        "Modular service design for easy extension and maintenance"
+      ],
+      "key_features": [
+        "Direct Claude Desktop integration via MCP protocol",
+        "AI-powered trade promotion analysis and recommendations",
+        "Automated trade position management workflows",
+        "Real-time data processing and decision support",
+        "Comprehensive API documentation and testing suite"
+      ],
+      "business_impact": "Demonstrates how AI agents can be integrated into business workflows to automate complex decision-making processes in trade management",
+      "github_url": "https://github.com/halprez/mcp-trade-position-mgmnt"
+    },
+    {
+      "id": "tuna-fisheries-tools",
+      "title": "Tuna Fisheries Data Exploration Tools",
+      "category": "Data Science",
+      "status": "Complete",
+      "technologies": ["Python", "JavaScript", "HTML", "CSS", "Data Visualization", "Geospatial Analysis"],
+      "detailed_description": "A comprehensive data exploration and analysis platform specifically designed for tuna fisheries research. The project combines advanced data processing capabilities with intuitive visualization tools to support fisheries scientists and policy makers in understanding catch patterns, effort distribution, and geospatial trends.",
+      "technical_challenges": [
+        "Processing large-scale fisheries datasets with complex temporal and spatial dimensions",
+        "Creating efficient data aggregation algorithms for catch and effort analysis",
+        "Implementing interactive geospatial visualizations for purse seine data",
+        "Designing responsive web interfaces that work across different devices",
+        "Ensuring data accuracy and consistency across multiple fisheries databases"
+      ],
+      "architecture_decisions": [
+        "Python backend for robust data processing and statistical analysis",
+        "Vanilla JavaScript frontend for maximum performance and minimal dependencies",
+        "Client-side rendering for fast, interactive user experience",
+        "Modular component design for easy maintenance and extension"
+      ],
+      "key_features": [
+        "Interactive catch and effort data visualization",
+        "Geospatial analysis of purse seine fishing activities",
+        "Temporal trend analysis with customizable time ranges",
+        "Export capabilities for further analysis in research tools",
+        "Responsive design optimized for both desktop and mobile use"
+      ],
+      "domain_expertise": "Leverages deep understanding of fisheries science, data management practices, and regulatory requirements from IATTC experience",
+      "business_impact": "Supports evidence-based fisheries management decisions and contributes to sustainable tuna fishing practices",
+      "demo_url": "https://alexperez.me/IATTC-sample/"
+    },
+    {
+      "id": "pyadmb",
+      "title": "PyADMB - Python Wrapper for ADMB",
+      "category": "Scientific Computing",
+      "status": "Complete",
+      "technologies": ["Python", "C++", "ADMB", "Scientific Computing", "Optimization", "Automatic Differentiation"],
+      "detailed_description": "A modern Python interface for AD Model Builder (ADMB), designed to bring advanced automatic differentiation and optimization capabilities to fisheries stock assessment and ecological modeling. This project bridges the gap between ADMB's powerful computational engine and Python's data science ecosystem.",
+      "technical_challenges": [
+        "Creating seamless integration between Python and ADMB's C++ core",
+        "Implementing robust error handling and debugging capabilities",
+        "Designing intuitive Python APIs that preserve ADMB's mathematical rigor",
+        "Ensuring cross-platform compatibility across different operating systems",
+        "Optimizing performance for large-scale ecological models"
+      ],
+      "architecture_decisions": [
+        "Python wrapper design to maintain ADMB's computational performance",
+        "Object-oriented interface for intuitive model building and execution",
+        "Comprehensive error handling and logging for debugging complex models",
+        "Modular design allowing easy extension for new ADMB features"
+      ],
+      "key_features": [
+        "Pythonic interface to ADMB's automatic differentiation capabilities",
+        "Integrated optimization algorithms for parameter estimation",
+        "Support for complex ecological and fisheries stock assessment models",
+        "Comprehensive documentation and examples for researchers",
+        "Cross-platform compatibility for diverse research environments"
+      ],
+      "domain_expertise": "Built on extensive experience with fisheries modeling, stock assessment methodologies, and scientific computing requirements",
+      "business_impact": "Enables researchers to leverage Python's data science tools while accessing ADMB's specialized optimization capabilities for ecological modeling",
+      "github_url": "https://github.com/halprez/pyadmb"
+    }
+  ]
+}

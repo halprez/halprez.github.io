@@ -1,0 +1,292 @@
+{
+  "experience": [
+    {
+      "id": "xaldigital-technical-leader",
+      "title": "Technical Leader",
+      "company": "XalDigital.com",
+      "location": "Santa Cruz de Tenerife, Spain",
+      "duration": "06/2023 - Present",
+      "role_type": "Leadership",
+      "team_size": "8-12 engineers",
+      "technologies": ["Python", "AI/ML", "IoT", "AWS", "Docker", "Kubernetes", "Computer Vision", "LLMs", "Microservices"],
+      "detailed_description": "Leading technical strategy and development for AI/ML and IoT projects serving enterprise clients across multiple industries. Responsible for architectural decisions, team coordination, and delivering high-impact solutions that integrate cutting-edge AI technologies with real-world business applications.",
+      "key_responsibilities": [
+        "Define technical architecture and strategy for AI/ML projects across multiple industry verticals",
+        "Lead cross-functional teams of 8-12 engineers including ML engineers, backend developers, and IoT specialists",
+        "Design and oversee implementation of computer vision systems for industrial quality control",
+        "Architect real-time video analysis platforms capable of processing high-throughput streaming data",
+        "Collaborate with enterprise clients to understand requirements and translate them into technical solutions",
+        "Establish coding standards, best practices, and development workflows across the organization",
+        "Mentor junior and mid-level engineers in AI/ML technologies and distributed systems design"
+      ],
+      "major_projects": [
+        {
+          "name": "Computer Vision Quality Control System",
+          "description": "Designed and led development of an AI-powered quality control system for an international manufacturing company",
+          "technical_details": "Implemented using computer vision models with real-time inference capabilities, achieving 99.2% accuracy in defect detection",
+          "technologies": ["Python", "OpenCV", "PyTorch", "AWS SageMaker", "Lambda", "API Gateway"],
+          "impact": "Reduced manual inspection time by 80% and improved defect detection accuracy by 35%"
+        },
+        {
+          "name": "Real-time Video Analysis Platform",
+          "description": "Architected and collaborated on building a scalable video analysis application for a major streaming company",
+          "technical_details": "Designed microservices architecture capable of processing 10,000+ concurrent video streams with sub-100ms latency",
+          "technologies": ["Python", "FFmpeg", "Kafka", "Redis", "Docker", "Kubernetes", "AWS ECS"],
+          "impact": "Enabled real-time content analysis and automated content moderation at enterprise scale"
+        }
+      ],
+      "technical_achievements": [
+        "Established ML model deployment pipeline reducing time-to-production from weeks to days",
+        "Implemented IoT device management system handling 50,000+ connected devices",
+        "Designed fault-tolerant architecture achieving 99.9% uptime for critical AI services",
+        "Led adoption of modern DevOps practices including CI/CD, infrastructure as code, and automated testing"
+      ],
+      "leadership_impact": [
+        "Grew team from 5 to 12 engineers while maintaining high code quality and delivery standards",
+        "Reduced average project delivery time by 40% through improved processes and automation",
+        "Established technical mentorship program resulting in 3 junior engineers advancing to senior roles",
+        "Created knowledge sharing culture with regular tech talks and code review standards"
+      ],
+      "business_impact": "Delivered AI/ML solutions generating $2M+ in annual value for enterprise clients across manufacturing, media, and IoT sectors"
+    },
+    {
+      "id": "system73-software-architect",
+      "title": "Software Architect",
+      "company": "System73.com",
+      "location": "Santa Cruz de Tenerife, Spain",
+      "duration": "10/2017 - 09/2019",
+      "role_type": "Architecture",
+      "team_size": "20+ developers",
+      "technologies": ["Python", "AWS", "Microservices", "P2P", "WebRTC", "Docker", "Kafka", "Redis", "PostgreSQL"],
+      "detailed_description": "Promoted to lead architect of an innovative P2P streaming platform, responsible for technical strategy, architecture decisions, and managing a development team of 20+ software engineers. Led the evolution of the platform to support real-time video analytics and scalable streaming infrastructure.",
+      "key_responsibilities": [
+        "Define and implement technical architecture for P2P streaming platform serving millions of users",
+        "Lead and mentor a team of 20+ software developers across multiple product areas",
+        "Design microservices architecture supporting real-time video streaming and analytics",
+        "Establish technical standards and development practices across the engineering organization",
+        "Collaborate with product and business teams to align technical strategy with company goals",
+        "Oversee platform scalability initiatives to support exponential user growth",
+        "Drive adoption of cloud-native technologies and DevOps best practices"
+      ],
+      "architectural_achievements": [
+        {
+          "name": "Microservices Architecture Evolution",
+          "description": "Led complete platform redesign from monolithic to microservices architecture",
+          "technical_details": "Designed event-driven architecture with 15+ microservices, achieving 10x improvement in deployment frequency",
+          "technologies": ["Python", "Docker", "Kubernetes", "Kafka", "API Gateway"],
+          "impact": "Reduced system downtime by 90% and enabled independent team scaling"
+        },
+        {
+          "name": "Real-time Video Analytics Integration",
+          "description": "Extended platform capabilities to support real-time video content analysis",
+          "technical_details": "Implemented streaming data pipeline processing 1TB+ daily video data with machine learning integration",
+          "technologies": ["FFmpeg", "Apache Kafka", "Apache Storm", "AWS Kinesis", "TensorFlow"],
+          "impact": "Enabled new product features generating 30% increase in user engagement"
+        }
+      ],
+      "technical_standards_established": [
+        "Implemented comprehensive code review process reducing production bugs by 60%",
+        "Established automated testing standards achieving 85%+ code coverage across all services",
+        "Created deployment pipeline supporting multiple daily releases with zero-downtime deployments",
+        "Designed monitoring and alerting infrastructure providing 360-degree system visibility"
+      ],
+      "scalability_achievements": [
+        "Architected platform to support 10x user growth (100K to 1M+ concurrent users)",
+        "Designed auto-scaling infrastructure reducing operational costs by 40%",
+        "Implemented distributed caching strategy improving response times by 70%",
+        "Created disaster recovery procedures ensuring <4 hour recovery time objectives"
+      ],
+      "leadership_impact": [
+        "Mentored 8 engineers who advanced to senior/lead positions during tenure",
+        "Established cross-team collaboration processes improving project delivery by 50%",
+        "Created technical documentation standards improving onboarding time for new engineers",
+        "Led architecture review board ensuring consistent technical decisions across teams"
+      ]
+    },
+    {
+      "id": "system73-backend-developer",
+      "title": "Backend Software Developer",
+      "company": "System73.com", 
+      "location": "Santa Cruz de Tenerife, Spain",
+      "duration": "11/2015 - 09/2017",
+      "role_type": "Individual Contributor",
+      "team_size": "5-8 engineers",
+      "technologies": ["Python", "AWS", "WebRTC", "Microservices", "Kafka", "Redis", "PostgreSQL", "Docker"],
+      "detailed_description": "Served as an early team member and lead backend developer for an innovative P2P live video streaming platform startup. Responsible for building the foundational backend infrastructure and microservices architecture that would scale to support millions of users.",
+      "key_responsibilities": [
+        "Design and implement core backend microservices for P2P video streaming platform",
+        "Build distributed infrastructure capable of handling thousands of concurrent video streams",
+        "Develop real-time data processing pipelines for streaming analytics and monitoring",
+        "Create robust APIs for frontend applications and third-party integrations",
+        "Implement WebRTC signaling servers and P2P connection management systems",
+        "Design and optimize database schemas for high-performance video metadata storage",
+        "Collaborate with frontend team to ensure seamless user experience across platforms"
+      ],
+      "technical_achievements": [
+        {
+          "name": "Distributed Backend Architecture",
+          "description": "Built foundational microservices architecture from scratch",
+          "technical_details": "Designed event-driven system handling 100,000+ concurrent connections with sub-50ms latency",
+          "technologies": ["Python", "asyncio", "WebSocket", "Redis", "PostgreSQL"],
+          "impact": "Created scalable foundation supporting company's growth from startup to millions of users"
+        },
+        {
+          "name": "WebRTC Signaling Infrastructure",
+          "description": "Implemented complete WebRTC signaling and connection management system",
+          "technical_details": "Built fault-tolerant signaling servers supporting P2P connections with 99.5% success rate",
+          "technologies": ["Python", "WebSocket", "Redis", "AWS ELB"],
+          "impact": "Enabled seamless P2P video streaming with industry-leading connection reliability"
+        },
+        {
+          "name": "Real-time Analytics Pipeline",
+          "description": "Developed comprehensive data processing pipeline for streaming analytics",
+          "technical_details": "Created event-driven architecture processing 1M+ events per hour with real-time dashboards",
+          "technologies": ["Python", "Kafka", "Redis", "InfluxDB", "Grafana"],
+          "impact": "Provided critical business intelligence driving product and technical decisions"
+        }
+      ],
+      "aws_infrastructure": [
+        "Designed and implemented complete AWS infrastructure using EC2, ELB, RDS, and ElastiCache",
+        "Created auto-scaling groups supporting 10x traffic spikes during viral content events",
+        "Implemented CloudWatch monitoring and alerting for proactive system health management",
+        "Designed multi-AZ deployment strategy ensuring high availability and disaster recovery"
+      ],
+      "performance_optimizations": [
+        "Optimized database queries reducing average response time from 200ms to 15ms",
+        "Implemented distributed caching strategy achieving 95%+ cache hit rates",
+        "Created connection pooling and async processing reducing server resource usage by 60%",
+        "Designed efficient video metadata storage reducing storage costs by 70%"
+      ],
+      "startup_contributions": [
+        "As employee #3, established foundational technical practices and coding standards",
+        "Created development workflow and deployment processes still used by 50+ person engineering team",
+        "Built technical documentation and knowledge base enabling rapid team scaling",
+        "Contributed to technical hiring process interviewing and onboarding 15+ engineers"
+      ]
+    },
+    {
+      "id": "iattc-fisheries-specialist",
+      "title": "Fisheries Information Systems Specialist",
+      "company": "IATTC (Inter-American Tropical Tuna Commission)",
+      "location": "La Jolla, CA, USA", 
+      "duration": "01/2007 - 03/2014",
+      "role_type": "Scientific Computing",
+      "team_size": "3-5 researchers",
+      "technologies": ["R", "FORTRAN", "SQL Server", ".NET", "C#", "VB.NET", "Statistical Computing"],
+      "detailed_description": "Developed and maintained scientific computing applications supporting international fisheries research and management. Worked closely with fisheries scientists and international regulatory bodies to create data processing systems critical for sustainable tuna fishing policies affecting global food security.",
+      "key_responsibilities": [
+        "Design and implement scientific computing applications for fisheries stock assessment",
+        "Develop data processing pipelines for complex biological and catch data analysis",
+        "Create statistical models and algorithms for population dynamics and fishing effort estimation",
+        "Collaborate with international scientists and regulatory bodies on fisheries management tools",
+        "Maintain and enhance legacy FORTRAN systems while modernizing to .NET frameworks",
+        "Contribute to FAO global initiatives for fishing vessel tracking and regulation",
+        "Provide technical support for scientific research supporting international fishing agreements"
+      ],
+      "major_technical_contributions": [
+        {
+          "name": "Length-Frequency Analysis Modernization",
+          "description": "Converted critical FORTRAN scientific applications to modern SQL-based data pipeline",
+          "technical_details": "Redesigned complex statistical algorithms into SQL stored procedures improving processing speed by 500%",
+          "technologies": ["FORTRAN", "SQL Server", "T-SQL", "Statistical Analysis"],
+          "impact": "Enabled real-time analysis of fish population data critical for international fishing quotas"
+        },
+        {
+          "name": "Species Composition Estimation System",
+          "description": "Rebuilt legacy species analysis system with modern architecture and enhanced capabilities",
+          "technical_details": "Implemented advanced statistical models for species composition analysis with improved accuracy",
+          "technologies": ["R", "SQL Server", ".NET", "Statistical Modeling"],
+          "impact": "Improved accuracy of species composition estimates by 25%, directly affecting conservation decisions"
+        },
+        {
+          "name": "FAO Global Record of Fishing Vessels",
+          "description": "Contributed to development of international fishing vessel tracking and identification system",
+          "technical_details": "Designed database schemas and APIs for global vessel registry supporting international compliance",
+          "technologies": [".NET", "C#", "SQL Server", "Web Services", "International Standards"],
+          "impact": "Enabled global tracking of fishing vessels supporting sustainable fishing enforcement"
+        }
+      ],
+      "scientific_domain_expertise": [
+        "Fisheries stock assessment methodologies and population dynamics modeling",
+        "Statistical analysis of biological data including length-frequency and catch-per-unit-effort",
+        "International fisheries management and regulatory compliance systems",
+        "Scientific data standards and protocols for international research collaboration",
+        "Conservation biology and sustainable fishing practice evaluation"
+      ],
+      "data_processing_innovations": [
+        "Developed automated data validation systems reducing manual review time by 80%",
+        "Created statistical quality control procedures improving data accuracy by 40%",
+        "Implemented efficient algorithms for processing vessel tracking data from 20+ countries",
+        "Designed cross-platform data exchange formats supporting international collaboration"
+      ],
+      "international_collaboration": [
+        "Worked directly with scientists from 15+ countries on shared research platforms",
+        "Contributed to international standards for fisheries data collection and reporting",
+        "Supported development of bilateral agreements between fishing nations",
+        "Provided technical expertise for international fishing regulation enforcement tools"
+      ],
+      "business_impact": "Technical contributions directly supported international fishing regulations affecting $4B+ annual tuna industry and conservation of marine ecosystems"
+    },
+    {
+      "id": "ieo-systems-administrator",
+      "title": "Systems Administrator",
+      "company": "IEO - Spanish Institute of Oceanography",
+      "location": "Santa Cruz de Tenerife, Spain",
+      "duration": "2003 - 2007",
+      "role_type": "Infrastructure",
+      "team_size": "2-3 IT staff",
+      "technologies": ["Windows Server", "Active Directory", "Network Administration", "SQL Server", "Backup Systems"],
+      "detailed_description": "Managed critical IT infrastructure supporting oceanographic research operations for one of Spain's premier marine research institutions. Responsible for ensuring high availability of research computing systems, data storage, and network infrastructure supporting scientific missions and international collaborations.",
+      "key_responsibilities": [
+        "Administer Windows Server infrastructure supporting 100+ researchers and staff",
+        "Manage Active Directory domains and user access controls for secure research environments",
+        "Maintain high-availability systems for critical oceanographic data collection and analysis",
+        "Implement and manage backup and disaster recovery procedures for irreplaceable research data",
+        "Configure and maintain network infrastructure including firewalls and VPN access",
+        "Provide technical support for specialized scientific computing applications and instruments",
+        "Coordinate with international research partners on shared computing and data exchange systems"
+      ],
+      "infrastructure_achievements": [
+        {
+          "name": "Windows Server 2000 Migration",
+          "description": "Led complete infrastructure upgrade from legacy systems to Windows Server 2000",
+          "technical_details": "Planned and executed zero-downtime migration affecting 100+ users and critical research systems",
+          "technologies": ["Windows Server 2000", "Active Directory", "DNS", "DHCP"],
+          "impact": "Improved system reliability by 90% and enhanced security for sensitive research data"
+        },
+        {
+          "name": "Research Data Backup System",
+          "description": "Designed and implemented comprehensive backup strategy for irreplaceable oceanographic data",
+          "technical_details": "Created multi-tier backup system with offsite storage ensuring 99.99% data protection",
+          "technologies": ["Tape Backup", "SQL Server", "Scheduled Scripts"],
+          "impact": "Protected 10+ years of oceanographic research data worth millions in research investment"
+        },
+        {
+          "name": "Network Security Enhancement",
+          "description": "Implemented firewall and security policies protecting sensitive research communications",
+          "technical_details": "Configured enterprise firewalls and VPN access supporting secure international collaboration",
+          "technologies": ["Firewalls", "VPN", "Network Monitoring", "Access Controls"],
+          "impact": "Enabled secure data sharing with international partners while maintaining research confidentiality"
+        }
+      ],
+      "technical_operations": [
+        "Maintained 99.8% uptime for critical research computing infrastructure",
+        "Managed SQL Server databases containing decades of oceanographic research data",
+        "Implemented automated monitoring systems for proactive issue detection and resolution",
+        "Created detailed documentation and procedures for system maintenance and recovery"
+      ],
+      "research_support": [
+        "Provided specialized technical support for oceanographic instruments and data collection systems",
+        "Configured workstations and software for statistical analysis and scientific modeling",
+        "Supported international research expeditions with remote technical assistance",
+        "Maintained email and communication systems for collaboration with global research institutions"
+      ],
+      "early_career_development": [
+        "Gained foundational experience in enterprise system administration and network management",
+        "Developed skills in managing critical systems where downtime directly impacts scientific research",
+        "Learned to balance security requirements with accessibility needs of researchers",
+        "Built experience working in international, multilingual research environments"
+      ]
+    }
+  ]
+}
