@@ -393,8 +393,13 @@ class PersonalSite {
         const themeButtons = document.querySelectorAll('.theme-button');
         const body = document.body;
         
-        // Load saved theme or default to 'current'
-        const savedTheme = localStorage.getItem('selectedTheme') || 'current';
+        // Load saved theme with backward compatibility
+        let savedTheme = localStorage.getItem('selectedTheme') || 'light';
+        
+        // Handle old theme names for backward compatibility
+        if (savedTheme === 'current') savedTheme = 'light';
+        if (savedTheme === 'futuristic') savedTheme = 'dark';
+        
         this.setTheme(savedTheme);
         
         // Add click handlers to theme buttons
