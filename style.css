@@ -653,6 +653,1064 @@ main {
     }
 }
 
+/* Theme Switcher */
+.theme-switcher {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    padding: 0.5rem;
+    border: 1px solid rgba(224, 224, 224, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.theme-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: transparent;
+    color: #666;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.theme-button:hover {
+    background: rgba(74, 144, 226, 0.1);
+    color: #4a90e2;
+    transform: translateY(-2px);
+}
+
+.theme-button.active {
+    background: #4a90e2;
+    color: white;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+}
+
+@media (max-width: 768px) {
+    .theme-switcher {
+        top: 1rem;
+        right: 1rem;
+        gap: 0.3rem;
+        padding: 0.3rem;
+    }
+    
+    .theme-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Default/Current Theme - already defined above */
+body[data-theme="current"] {
+    /* Current styles already applied */
+}
+
+/* 90s Retro Theme - Windows 95 Style */
+body[data-theme="retro"] {
+    background: #ffffff;
+    color: #000000;
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 11px;
+}
+
+body[data-theme="retro"] .container {
+    background: #ffffff;
+    border: none;
+    padding: 1rem;
+}
+
+body[data-theme="retro"] .name {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    background-clip: unset;
+    color: #000080;
+    text-shadow: none;
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+body[data-theme="retro"] .title {
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    color: #000000;
+    font-size: 11px;
+    text-transform: none;
+    font-weight: normal;
+}
+
+body[data-theme="retro"] .bio {
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 11px;
+    color: #000000;
+    line-height: 1.4;
+}
+
+/* Windows 95 style navigation bar */
+body[data-theme="retro"] .floating-menu {
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+body[data-theme="retro"] .menu-link {
+    background: #c0c0c0;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    color: #000000;
+    margin: 1px;
+    border-radius: 0;
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    padding: 4px 8px;
+}
+
+body[data-theme="retro"] .menu-link:hover {
+    background: #c0c0c0;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+body[data-theme="retro"] .menu-link.active {
+    background: #c0c0c0;
+    color: #000000;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    box-shadow: none;
+}
+
+/* Square icons for 90s theme */
+body[data-theme="retro"] .menu-icon {
+    border-radius: 0;
+    background: #c0c0c0;
+    padding: 2px;
+    border: 1px solid #808080;
+}
+
+/* Windows 95 style content items */
+body[data-theme="retro"] .item {
+    background: #ffffff;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    border-radius: 0;
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 11px;
+    padding: 8px;
+}
+
+body[data-theme="retro"] .item:hover {
+    background: #ffffff;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+body[data-theme="retro"] .item-title {
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #000080;
+}
+
+body[data-theme="retro"] .item-subtitle {
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 11px;
+    color: #000000;
+    font-weight: normal;
+}
+
+body[data-theme="retro"] .item-location {
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 11px;
+    color: #000000;
+}
+
+body[data-theme="retro"] .item-duration {
+    background: #c0c0c0;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    color: #000000;
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 0;
+}
+
+body[data-theme="retro"] .item-description {
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 11px;
+    color: #000000;
+    line-height: 1.4;
+}
+
+body[data-theme="retro"] .item-details li {
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 11px;
+    color: #000000;
+}
+
+body[data-theme="retro"] .tag {
+    background: #c0c0c0;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    color: #000000;
+    border-radius: 0;
+    font-weight: normal;
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 11px;
+    padding: 2px 6px;
+}
+
+body[data-theme="retro"] .tag:hover {
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+/* Windows 95 style theme switcher */
+body[data-theme="retro"] .theme-switcher {
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    border-radius: 0;
+    padding: 2px;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+body[data-theme="retro"] .theme-button {
+    background: #c0c0c0;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    color: #000000;
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    padding: 3px 8px;
+    border-radius: 0;
+}
+
+body[data-theme="retro"] .theme-button:hover {
+    background: #c0c0c0;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    transform: none;
+}
+
+body[data-theme="retro"] .theme-button.active {
+    background: #c0c0c0;
+    color: #000000;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    box-shadow: none;
+}
+
+/* Windows 95 style contact links */
+body[data-theme="retro"] .contact-link {
+    background: #c0c0c0;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    color: #000000;
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 11px;
+    border-radius: 0;
+    padding: 4px 8px;
+}
+
+body[data-theme="retro"] .contact-link:hover {
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    background: #c0c0c0;
+    transform: none;
+    box-shadow: none;
+}
+
+body[data-theme="retro"] .contact-list {
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+/* Square contact icons */
+body[data-theme="retro"] .contact-list img {
+    border-radius: 0;
+    border: 1px solid #808080;
+    background: #ffffff;
+    padding: 2px;
+}
+
+/* Section titles */
+body[data-theme="retro"] .section-title {
+    font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000080;
+}
+
+body[data-theme="retro"] .section-title::after {
+    display: none;
+}
+
+/* Profile image square */
+body[data-theme="retro"] .profile-image {
+    border-radius: 0;
+    border: 2px solid #808080;
+    background: #ffffff;
+}
+
+/* C64 Terminal Theme */
+body[data-theme="c64"] {
+    background: #0e1419;
+    color: #40ff40;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 14px;
+    line-height: 1.2;
+    overflow-x: hidden;
+}
+
+body[data-theme="c64"]::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(64, 255, 64, 0.03) 2px,
+            rgba(64, 255, 64, 0.03) 4px
+        );
+    pointer-events: none;
+    z-index: 1;
+}
+
+body[data-theme="c64"] .container {
+    background: transparent;
+    border: none;
+    max-width: 80ch;
+    padding: 1rem;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+}
+
+body[data-theme="c64"] .name {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    background-clip: unset;
+    color: #40ff40;
+    text-shadow: 0 0 5px #40ff40;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-weight: bold;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+body[data-theme="c64"] .name::before {
+    content: '> ';
+    color: #40ff40;
+}
+
+body[data-theme="c64"] .title {
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    color: #40ff40;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+body[data-theme="c64"] .title::before {
+    content: '  ';
+}
+
+body[data-theme="c64"] .bio {
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 14px;
+    color: #40ff40;
+    line-height: 1.4;
+    max-width: 70ch;
+    text-align: left;
+}
+
+body[data-theme="c64"] .bio::before {
+    content: '> ';
+    color: #40ff40;
+}
+
+/* ASCII art profile image for C64 theme */
+body[data-theme="c64"] .profile-image {
+    display: none;
+}
+
+body[data-theme="c64"] header::before {
+    content: '++++===-----:::::::::::::::::----===++++\A+===---:::::......:-::......:::::---===+\A=---::::.......:------==-. .....::::--==\A--:::....  ..:::::::------:.   ....:::--\A:::...    ..:.:::::::::------.    ...:::\A:...    .:::....::::::::------:     ...:\A..      .:::....::::::::-------.     ...\A.       ..........:::..:::::---:      ..\A        ...-+**+-...:::-----::-.       .\A        ..:.:+%%=...:-=+#*+*#*-.        \A       :..-+:-##*:..:=*#%@*%#+-.        \A       -:.::::--....:---=+====-.        \A        :....::-....::------::-.        \A        -....:--.   .::----:-::.        \A        =....-:.:*#%*##=-==----:        \A        *=:.-=****@@@%%%%%#*=*%-        \A        =*=.-@=..:-==+**+*@=#@@        .\A         =#+=%:..:=++=--:%#%@@        ..\A          =%#%+:.:=***-=#@@@@.       ...\A          =.*@#=+--+*#%@@@@#+:     .....\A..        -@*-+-++*##@@@@@++*-. ........\A...        .*#%**+%%@%@@#+=*:.  .......:\A:::...     ..:#%#+=-===+==++   . ...::::\A---:::.    ::.:+*+----=-=*#. .-=-..::---\A=-----:. .-::-:.:==--==++.:-:::-------==\A===---::-=--..::: :+***-.::::-:--::-===+\A+++=====----:.:::::::*-:::--:------==+++\A**++++=====--:--::::::-:-----=-=====+***';
+    white-space: pre;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    color: #40ff40;
+    font-size: 16px;
+    line-height: 1.2;
+    display: block;
+    text-align: center;
+    margin: 0 auto 2rem auto;
+    border: 1px solid #40ff40;
+    padding: 1rem;
+    background: transparent;
+    max-width: fit-content;
+}
+
+/* C64 style navigation */
+body[data-theme="c64"] .floating-menu {
+    background: #0e1419;
+    border: 1px solid #40ff40;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+body[data-theme="c64"] .menu-link {
+    background: transparent;
+    border: none;
+    color: #40ff40;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 12px;
+}
+
+body[data-theme="c64"] .menu-link::before {
+    content: '[';
+}
+
+body[data-theme="c64"] .menu-link::after {
+    content: ']';
+}
+
+body[data-theme="c64"] .menu-link:hover {
+    background: rgba(64, 255, 64, 0.1);
+    color: #0e1419;
+    background-color: #40ff40;
+}
+
+body[data-theme="c64"] .menu-link.active {
+    background-color: #40ff40;
+    color: #0e1419;
+    text-shadow: none;
+}
+
+body[data-theme="c64"] .menu-link.active::before {
+    content: '>';
+}
+
+body[data-theme="c64"] .menu-link.active::after {
+    content: '<';
+}
+
+/* Hide menu icons in C64 theme */
+body[data-theme="c64"] .menu-icon {
+    display: none;
+}
+
+body[data-theme="c64"] .menu-text {
+    display: block;
+    font-size: 12px;
+}
+
+/* C64 style content items */
+body[data-theme="c64"] .item {
+    background: transparent;
+    border: 1px solid #40ff40;
+    border-radius: 0;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 14px;
+    padding: 16px;
+    margin: 16px 0;
+}
+
+body[data-theme="c64"] .item:hover {
+    background: rgba(64, 255, 64, 0.05);
+    border-color: #40ff40;
+    box-shadow: 0 0 10px rgba(64, 255, 64, 0.3);
+}
+
+body[data-theme="c64"] .item-title {
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 16px;
+    font-weight: bold;
+    color: #40ff40;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+body[data-theme="c64"] .item-title::before {
+    content: '>> ';
+}
+
+body[data-theme="c64"] .item-subtitle {
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 14px;
+    color: #40ff40;
+    font-weight: normal;
+}
+
+body[data-theme="c64"] .item-subtitle::before {
+    content: '   ';
+}
+
+body[data-theme="c64"] .item-location {
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    color: #40ff40;
+}
+
+body[data-theme="c64"] .item-duration {
+    background: transparent;
+    border: 1px solid #40ff40;
+    color: #40ff40;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 0;
+    text-transform: uppercase;
+}
+
+body[data-theme="c64"] .item-duration::before {
+    content: '[';
+}
+
+body[data-theme="c64"] .item-duration::after {
+    content: ']';
+}
+
+body[data-theme="c64"] .item-description {
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 14px;
+    color: #40ff40;
+    line-height: 1.4;
+    text-align: left;
+    margin-top: 8px;
+}
+
+body[data-theme="c64"] .item-details {
+    border-top: 1px solid #40ff40;
+    margin-top: 12px;
+    padding-top: 12px;
+}
+
+body[data-theme="c64"] .item-details li {
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 13px;
+    color: #40ff40;
+    padding-left: 0;
+}
+
+body[data-theme="c64"] .item-details li::before {
+    content: '  * ';
+    color: #40ff40;
+    position: static;
+}
+
+body[data-theme="c64"] .tag {
+    background: transparent;
+    border: 1px solid #40ff40;
+    color: #40ff40;
+    border-radius: 0;
+    font-weight: normal;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    padding: 2px 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+body[data-theme="c64"] .tag::before {
+    content: '[';
+}
+
+body[data-theme="c64"] .tag::after {
+    content: ']';
+}
+
+body[data-theme="c64"] .tag:hover {
+    background: #40ff40;
+    color: #0e1419;
+}
+
+/* C64 style theme switcher */
+body[data-theme="c64"] .theme-switcher {
+    background: #0e1419;
+    border: 1px solid #40ff40;
+    border-radius: 0;
+    padding: 4px;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+body[data-theme="c64"] .theme-button {
+    background: transparent;
+    border: none;
+    color: #40ff40;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 4px 8px;
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+body[data-theme="c64"] .theme-button::before {
+    content: '[';
+}
+
+body[data-theme="c64"] .theme-button::after {
+    content: ']';
+}
+
+body[data-theme="c64"] .theme-button:hover {
+    background: #40ff40;
+    color: #0e1419;
+    transform: none;
+}
+
+body[data-theme="c64"] .theme-button.active {
+    background: #40ff40;
+    color: #0e1419;
+    box-shadow: none;
+}
+
+/* C64 style contact links */
+body[data-theme="c64"] .contact-link {
+    background: #40ff40;
+    border: 1px solid #40ff40;
+    color: #40ff40;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    border-radius: 0;
+    padding: 8px 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+body[data-theme="c64"] .contact-link::before {
+    content: '[';
+}
+
+body[data-theme="c64"] .contact-link::after {
+    content: ']';
+}
+
+body[data-theme="c64"] .contact-link:hover {
+    background: #40ff40;
+    color: #0e1419;
+    transform: none;
+    box-shadow: none;
+}
+
+body[data-theme="c64"] .contact-list {
+    background: transparent;
+    border: 1px solid #40ff40;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+/* Make contact icons clickable text in C64 theme */
+body[data-theme="c64"] .contact-list {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    background: rgb(179, 255, 28);
+}
+
+body[data-theme="c64"] .contact-list li {
+    width: auto;
+    height: auto;
+    position: relative;
+}
+
+body[data-theme="c64"] .contact-list img {
+    display: none !important;
+    background: rgb(179, 255, 28);
+}
+
+body[data-theme="c64"] .contact-list a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+body[data-theme="c64"] .contact-list li:nth-child(1) a::after {
+    content: '[GITHUB]';
+    background: transparent;
+    border: 1px solid #40ff40;
+    color: #40ff40;
+    border-radius: 0;
+    font-weight: normal;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    padding: 2px 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+body[data-theme="c64"] .contact-list li:nth-child(2) a::after {
+    content: '[LINKEDIN]';
+    background: transparent;
+    border: 1px solid #40ff40;
+    color: #40ff40;
+    border-radius: 0;
+    font-weight: normal;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    padding: 2px 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+body[data-theme="c64"] .contact-list li:nth-child(3) a::after {
+    content: '[X]';
+    background: transparent;
+    border: 1px solid #40ff40;
+    color: #40ff40;
+    border-radius: 0;
+    font-weight: normal;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    padding: 2px 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+body[data-theme="c64"] .contact-list li:nth-child(4) a::after {
+    content: '[MAIL]';
+    background: transparent;
+    border: 1px solid #40ff40;
+    color: #40ff40;
+    border-radius: 0;
+    font-weight: normal;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    padding: 2px 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+body[data-theme="c64"] .contact-list li a:hover::after {
+    background: #40ff40;
+    color: #0e1419;
+}
+
+/* Section titles */
+body[data-theme="c64"] .section-title {
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 18px;
+    font-weight: bold;
+    color: #40ff40;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: left;
+}
+
+body[data-theme="c64"] .section-title::before {
+    content: '=== ';
+    color: #40ff40;
+}
+
+body[data-theme="c64"] .section-title::after {
+    content: ' ===';
+    color: #40ff40;
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    border-radius: 0;
+}
+
+/* Hide floating shapes in C64 theme */
+body[data-theme="c64"] .floating-shape {
+    display: none;
+}
+
+/* Hide scroll indicator in C64 theme */
+body[data-theme="c64"] .scroll-indicator {
+    display: none;
+}
+
+/* Terminal cursor effect */
+body[data-theme="c64"] .name::after {
+    content: '_';
+    animation: blink 1s infinite;
+    color: #40ff40;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Futuristic Theme */
+body[data-theme="futuristic"] {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #00ffff;
+    font-family: 'Fira Code', monospace;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body[data-theme="futuristic"]::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(0, 100, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+body[data-theme="futuristic"] .container {
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.2),
+        inset 0 0 20px rgba(0, 100, 255, 0.1);
+    border-radius: 1rem;
+}
+
+body[data-theme="futuristic"] .bio {
+    color: #0099ff;
+    text-shadow: 0 0 10px rgba(0, 153, 255, 0.6);
+    animation: bioGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes bioGlow {
+    from { 
+        color: #0099ff;
+        text-shadow: 0 0 10px rgba(0, 153, 255, 0.6);
+    }
+    to { 
+        color: #00ccff;
+        text-shadow: 0 0 15px rgba(0, 204, 255, 0.8), 0 0 25px rgba(0, 153, 255, 0.4);
+    }
+}
+
+body[data-theme="futuristic"] .name {
+    background: linear-gradient(45deg, #00ffff, #0066ff, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    animation: neonPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+    from { text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+    to { text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.3); }
+}
+
+body[data-theme="futuristic"] .floating-menu {
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+}
+
+body[data-theme="futuristic"] .menu-link {
+    color: #00ffff;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    background: rgba(0, 255, 255, 0.05);
+}
+
+body[data-theme="futuristic"] .menu-link:hover {
+    background: rgba(0, 255, 255, 0.15);
+    border-color: rgba(0, 255, 255, 0.6);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+body[data-theme="futuristic"] .menu-link.active {
+    background: rgba(0, 100, 255, 0.3);
+    border-color: #0066ff;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 100, 255, 0.5);
+}
+
+body[data-theme="futuristic"] .item {
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.1);
+}
+
+body[data-theme="futuristic"] .item:hover {
+    border-color: rgba(0, 255, 255, 0.6);
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.2);
+    background: rgba(0, 255, 255, 0.05);
+}
+
+body[data-theme="futuristic"] .item-title {
+    color: #00ffff;
+}
+
+body[data-theme="futuristic"] .item-subtitle {
+    color: #0066ff;
+}
+
+body[data-theme="futuristic"] .tag {
+    background: rgba(0, 100, 255, 0.2);
+    border: 1px solid rgba(0, 100, 255, 0.4);
+    color: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 100, 255, 0.2);
+}
+
+body[data-theme="futuristic"] .tag:hover {
+    background: rgba(0, 100, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 100, 255, 0.4);
+}
+
+body[data-theme="futuristic"] .theme-switcher {
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+body[data-theme="futuristic"] .theme-button {
+    color: #00ffff;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+body[data-theme="futuristic"] .theme-button:hover {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: rgba(0, 255, 255, 0.4);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+body[data-theme="futuristic"] .theme-button.active {
+    background: rgba(0, 100, 255, 0.3);
+    color: #ffffff;
+    border-color: #0066ff;
+    box-shadow: 0 0 15px rgba(0, 100, 255, 0.4);
+}
+
+/* Futuristic contact icons */
+body[data-theme="futuristic"] .contact-list {
+    background-color: deepskyblue;
+    border: 1px solid rgba(0, 153, 255, 0.6);
+    box-shadow: 0 0 25px rgba(0, 153, 255, 0.4);
+    backdrop-filter: blur(20px);
+}
+
+body[data-theme="futuristic"] .contact-list img {
+    filter: invert(1) brightness(0.5) sepia(1) hue-rotate(180deg) saturate(5);
+    animation: iconPulse 2s ease-in-out infinite alternate;
+    border: 1px solid #0099ff;
+    border-radius: 4px;
+    padding: 2px;
+    box-shadow: 0 0 10px rgba(0, 153, 255, 0.5);
+}
+
+@keyframes iconPulse {
+    from { 
+        filter: invert(1) brightness(0.5) sepia(1) hue-rotate(180deg) saturate(5);
+        box-shadow: 0 0 10px rgba(0, 153, 255, 0.5);
+    }
+    to { 
+        filter: invert(1) brightness(0.8) sepia(1) hue-rotate(180deg) saturate(8);
+        box-shadow: 0 0 20px rgba(0, 153, 255, 0.8);
+    }
+}
+
+body[data-theme="futuristic"] .contact-list li:hover img {
+    filter: invert(1) brightness(1) sepia(1) hue-rotate(180deg) saturate(10);
+    box-shadow: 0 0 25px rgba(0, 153, 255, 1);
+    border-color: #0099ff;
+    transform: scale(1.1);
+}
+
+/* Laser scan lines effect for futuristic theme */
+body[data-theme="futuristic"]::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ffff, transparent);
+    animation: laserScan 3s linear infinite;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+@keyframes laserScan {
+    0% { transform: translateY(-2px); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
 /* Utilities */
 .loading {
     text-align: center;

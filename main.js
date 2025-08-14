@@ -196,6 +196,7 @@ class PersonalSite {
         this.initHover();
         this.initFloatingMenu();
         this.initDockAutoHide();
+        this.initThemeSwitcher();
     }
 
     initTyping() {
@@ -386,6 +387,43 @@ class PersonalSite {
                 isMenuVisible = false;
             }
         });
+    }
+
+    initThemeSwitcher() {
+        const themeButtons = document.querySelectorAll('.theme-button');
+        const body = document.body;
+        
+        // Load saved theme or default to 'current'
+        const savedTheme = localStorage.getItem('selectedTheme') || 'current';
+        this.setTheme(savedTheme);
+        
+        // Add click handlers to theme buttons
+        themeButtons.forEach(button => {
+            const theme = button.dataset.theme;
+            
+            // Set active state for current theme
+            if (theme === savedTheme) {
+                button.classList.add('active');
+            }
+            
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                themeButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Apply theme
+                this.setTheme(theme);
+                
+                // Save theme preference
+                localStorage.setItem('selectedTheme', theme);
+            });
+        });
+    }
+    
+    setTheme(theme) {
+        document.body.setAttribute('data-theme', theme);
     }
 }
 
