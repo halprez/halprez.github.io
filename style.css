@@ -1690,6 +1690,11 @@ body[data-theme="dark"] .item-details li {
     opacity: 0.8;
 }
 
+body[data-theme="dark"] .section-title {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
 body[data-theme="dark"] .tag {
     background: rgba(0, 100, 255, 0.2);
     border: 1px solid rgba(0, 100, 255, 0.4);
