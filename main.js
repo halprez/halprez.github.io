@@ -391,16 +391,20 @@ class PersonalSite {
 
     initThemeSwitcher() {
         const themeButtons = document.querySelectorAll('.theme-button');
+        const autoButton = document.getElementById('auto-theme');
         const body = document.body;
         
         // Load saved theme with backward compatibility
-        let savedTheme = localStorage.getItem('selectedTheme') || 'light';
+        let savedTheme = localStorage.getItem('selectedTheme') || 'auto';
         
         // Handle old theme names for backward compatibility
         if (savedTheme === 'current') savedTheme = 'light';
         if (savedTheme === 'futuristic') savedTheme = 'dark';
+        if (savedTheme === 'retro' || savedTheme === 'c64') savedTheme = 'auto';
         
-        this.setTheme(savedTheme);
+        // Initialize theme detection
+        this.initAutoTheme();
+        this.applyTheme(savedTheme);
         
         // Add click handlers to theme buttons
         themeButtons.forEach(button => {
@@ -411,20 +415,69 @@ class PersonalSite {
                 button.classList.add('active');
             }
             
-            button.addEventListener('click', () => {
+            if (theme) {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    themeButtons.forEach(btn => btn.classList.remove('active'));
+                    autoButton.classList.remove('active');
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Apply theme
+                    this.setTheme(theme);
+                    
+                    // Save theme preference
+                    localStorage.setItem('selectedTheme', theme);
+                });
+            }
+        });
+        
+        // Add auto theme button handler
+        if (autoButton) {
+            if (savedTheme === 'auto') {
+                autoButton.classList.add('active');
+            }
+            
+            autoButton.addEventListener('click', () => {
                 // Remove active class from all buttons
                 themeButtons.forEach(btn => btn.classList.remove('active'));
                 
-                // Add active class to clicked button
-                button.classList.add('active');
+                // Add active class to auto button
+                autoButton.classList.add('active');
                 
-                // Apply theme
-                this.setTheme(theme);
+                // Apply auto theme
+                this.applyAutoTheme();
                 
                 // Save theme preference
-                localStorage.setItem('selectedTheme', theme);
+                localStorage.setItem('selectedTheme', 'auto');
             });
+        }
+    }
+    
+    initAutoTheme() {
+        // Listen for system theme changes
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        mediaQuery.addListener(() => {
+            const savedTheme = localStorage.getItem('selectedTheme');
+            if (savedTheme === 'auto') {
+                this.applyAutoTheme();
+            }
         });
+    }
+    
+    applyTheme(theme) {
+        if (theme === 'auto') {
+            this.applyAutoTheme();
+        } else {
+            this.setTheme(theme);
+        }
+    }
+    
+    applyAutoTheme() {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const autoTheme = prefersDark ? 'dark' : 'light';
+        this.setTheme(autoTheme);
     }
     
     setTheme(theme) {
