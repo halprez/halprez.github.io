@@ -35,12 +35,23 @@
       ]
   },
   "experience": [
+      {
+          "title": "Senior Backend Software Engineer",
+          "subtitle": "Visualfabriq.com",
+          "url": "https://visualfabriq.com",
+          "location": "Santa Cruz de Tenerife, Spain",
+          "duration": "06/2023 - 09/2025",
+          "description": "",
+          "tags": ["AI/ML", "Python", "Docker", "Microservices", "AWS"],
+          "details": [
+          ]
+        },
         {
           "title": "Technical Leader",
           "subtitle": "XalDigital.com",
           "url": "https://xaldigital.com",
           "location": "Santa Cruz de Tenerife, Spain",
-          "duration": "06/2023 - Present",
+          "duration": "06/2023 - 09/2025",
           "description": "Leading technical strategy and development for AI/ML and IoT projects serving enterprise clients across multiple industries.",
           "tags": ["AI/ML", "Automatization", "IoT", "LLMs", "Team Leadership"],
           "details": [
