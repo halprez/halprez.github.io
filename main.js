@@ -100,27 +100,36 @@ class PersonalSite {
 
     renderPersonal(personal) {
         return `
-            <section id="personal">
-                <header>
-                <img class="profile-image" src="${personal.image}" alt="${personal.name}" />
-                <h1 class="name">${personal.name}</h1>
-                <p class="title">${personal.title}</p>
-                </header>
-                <main>
-                <p class="bio">${personal.bio}</p>
-                ${personal.contact ? `
-                <div class="contact-links">
-                    ${personal.contact.map(item => `
-                    <a href="${item.url}" class="contact-link" ${item.url ? 'target="_blank"' : ''}>
-                    <div class="contact-item">
-                        <img src="${item.icon}" alt="${item.label}" class="contact-icon" />
-                    </div>
-                    </a>
-                    `).join('')}
+            <div class="window site-window">
+                <div class="title-bar">
+                    <button aria-label="Close" class="close"></button>
+                    <h1 class="title">About</h1>
+                    <button aria-label="Resize" class="resize"></button>
                 </div>
-                ` : ''}
-                </main>
-            </section>
+                <div class="separator"></div>
+                <div class="window-pane">
+                    <section id="personal">
+                        <header>
+                        <h1 class="name">${personal.name}</h1>
+                        <p class="role">${personal.title}</p>
+                        </header>
+                        <main>
+                        <p class="bio">${personal.bio}</p>
+                        ${personal.contact ? `
+                        <div class="contact-links">
+                            ${personal.contact.map(item => `
+                            <a href="${item.url}" class="contact-link" ${item.url ? 'target="_blank"' : ''}>
+                            <div class="contact-item">
+                                <img src="${item.icon}" alt="${item.label}" class="contact-icon" />
+                            </div>
+                            </a>
+                            `).join('')}
+                        </div>
+                        ` : ''}
+                        </main>
+                    </section>
+                </div>
+            </div>
         `;
     }
 
@@ -135,15 +144,25 @@ class PersonalSite {
 
     renderTagsSection(section) {
         const tags = section.items.map(item => `<span class="tag">${item}</span>`).join('');
-        const titleContent = section.link 
+        const titleContent = section.link
             ? `<a href="#${section.link}" class="section-title-link">${section.title}</a>`
             : section.title;
-        
+
         return `
-            <section class="section tags" id="${section.id}">
-                <h2 class="section-title">${titleContent}</h2>
-                <div class="section-content">${tags}</div>
-            </section>
+            <div class="window site-window">
+                <div class="title-bar">
+                    <button aria-label="Close" class="close"></button>
+                    <h1 class="title">${section.title}</h1>
+                    <button aria-label="Resize" class="resize"></button>
+                </div>
+                <div class="separator"></div>
+                <div class="window-pane">
+                    <section class="section tags" id="${section.id}">
+                        <h2 class="section-title">${titleContent}</h2>
+                        <div class="section-content">${tags}</div>
+                    </section>
+                </div>
+            </div>
         `;
     }
 
@@ -166,15 +185,25 @@ class PersonalSite {
             </a>
         `).join('');
 
-        const titleContent = section.link 
+        const titleContent = section.link
             ? `<a href="#${section.link}" class="section-title-link">${section.title}</a>`
             : section.title;
 
         return `
-            <section class="section timeline" id="${section.id}">
-                <h2 class="section-title">${titleContent}</h2>
-                <div class="section-content">${items}</div>
-            </section>
+            <div class="window site-window">
+                <div class="title-bar">
+                    <button aria-label="Close" class="close"></button>
+                    <h1 class="title">${section.title}</h1>
+                    <button aria-label="Resize" class="resize"></button>
+                </div>
+                <div class="separator"></div>
+                <div class="window-pane">
+                    <section class="section timeline" id="${section.id}">
+                        <h2 class="section-title">${titleContent}</h2>
+                        <div class="section-content">${items}</div>
+                    </section>
+                </div>
+            </div>
         `;
     }
 
@@ -395,7 +424,7 @@ class PersonalSite {
         const body = document.body;
         
         // Load saved theme with backward compatibility
-        let savedTheme = localStorage.getItem('selectedTheme') || 'auto';
+        let savedTheme = localStorage.getItem('selectedTheme') || 'system';
         
         // Handle old theme names for backward compatibility
         if (savedTheme === 'current') savedTheme = 'light';

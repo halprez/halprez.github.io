@@ -114,7 +114,7 @@ header {
     background-clip: text;
 }
 
-.title {
+.role {
     font-size: 1.1rem;
     color: #666;
     font-weight: 400;
@@ -758,7 +758,7 @@ body[data-theme="retro"] .name {
     font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
-body[data-theme="retro"] .title {
+body[data-theme="retro"] .role {
     font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
     color: #000000;
     font-size: 11px;
@@ -1113,7 +1113,7 @@ body[data-theme="c64"] .name::before {
     color: #40ff40;
 }
 
-body[data-theme="c64"] .title {
+body[data-theme="c64"] .role {
     font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
     color: #40ff40;
     font-size: 14px;
@@ -1122,7 +1122,7 @@ body[data-theme="c64"] .title {
     letter-spacing: 1px;
 }
 
-body[data-theme="c64"] .title::before {
+body[data-theme="c64"] .role::before {
     content: '  ';
 }
 
@@ -1787,6 +1787,397 @@ body[data-theme="dark"] .contact-list li:hover img {
 }
 
 
+/* ============================================
+   Neutralize system.css window chrome in non-system themes
+   ============================================ */
+body:not([data-theme="system"]) .site-window {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    width: auto;
+    min-width: 0;
+}
+
+body:not([data-theme="system"]) .site-window > .title-bar,
+body:not([data-theme="system"]) .site-window > .separator {
+    display: none;
+}
+
+body:not([data-theme="system"]) .site-window > .window-pane {
+    overflow: visible;
+    max-height: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+}
+
+/* ============================================
+   System Theme - Apple System 6 (system.css)
+   ============================================ */
+body[data-theme="system"] {
+    font-family: Inconsolata, Menlo, Chicago, Geneva, monospace;
+    color: #000;
+    /* Checkerboard pattern from system.css */
+    background: linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%),
+                linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%);
+    background-color: #fff;
+    background-size: 4px 4px;
+    background-position: 0 0, 2px 2px;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+body[data-theme="system"]::before {
+    display: none;
+}
+
+body[data-theme="system"] .background-elements {
+    display: none;
+}
+
+body[data-theme="system"] .container {
+    max-width: 700px;
+    padding: 1rem 2rem 6rem;
+    justify-content: flex-start;
+    padding-top: 2rem;
+}
+
+body[data-theme="system"] .site-window {
+    margin-bottom: 1.5rem;
+    background-color: #fff;
+    border: 0.1em solid #000;
+    box-shadow: 2px 2px #000;
+    min-width: 0;
+}
+
+body[data-theme="system"] .site-window .window-pane {
+    overflow: visible;
+    max-height: none;
+    padding: 1rem;
+    border: none;
+}
+
+body[data-theme="system"] .name {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: #000;
+    background-clip: unset;
+    color: #000;
+    font-family: Chicago_12, Chicago, Geneva, monospace;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+body[data-theme="system"] .role {
+    font-family: Geneva_9, Geneva, Chicago, monospace;
+    color: #000;
+    font-size: 13px;
+    text-transform: none;
+    font-weight: normal;
+    letter-spacing: 0;
+}
+
+body[data-theme="system"] .bio {
+    font-family: Inconsolata, Menlo, Geneva, monospace;
+    font-size: 13px;
+    color: #000;
+    line-height: 1.5;
+    text-align: left;
+    max-width: none;
+}
+
+body[data-theme="system"] header {
+    text-align: left;
+    margin-bottom: 1rem;
+    opacity: 1;
+    animation: none;
+}
+
+body[data-theme="system"] main {
+    opacity: 1;
+    animation: none;
+}
+
+body[data-theme="system"] .section {
+    margin: 0;
+    opacity: 1;
+    animation: none;
+}
+
+body[data-theme="system"] .section-title {
+    display: none;
+}
+
+body[data-theme="system"] .section-title::after {
+    display: none;
+}
+
+body[data-theme="system"] .item {
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 0;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    font-family: Inconsolata, Menlo, Geneva, monospace;
+    font-size: 12px;
+    box-shadow: none;
+}
+
+body[data-theme="system"] .item:hover {
+    background: #000;
+    color: #fff;
+    transform: none;
+    box-shadow: none;
+    border-color: #000;
+}
+
+body[data-theme="system"] .item:hover .item-title,
+body[data-theme="system"] .item:hover .item-subtitle,
+body[data-theme="system"] .item:hover .item-location,
+body[data-theme="system"] .item:hover .item-duration,
+body[data-theme="system"] .item:hover .item-description,
+body[data-theme="system"] .item:hover .item-details li {
+    color: #fff;
+}
+
+body[data-theme="system"] .item-title {
+    font-family: Chicago_12, Chicago, Geneva, monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #000;
+}
+
+body[data-theme="system"] .item-subtitle {
+    font-family: Geneva_9, Geneva, Chicago, monospace;
+    font-size: 12px;
+    color: #000;
+    font-weight: normal;
+}
+
+body[data-theme="system"] .item-location {
+    font-size: 11px;
+    color: #000;
+}
+
+body[data-theme="system"] .item-duration {
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 8px;
+    color: #000;
+    font-family: Geneva_9, Geneva, Chicago, monospace;
+    font-size: 11px;
+    padding: 1px 6px;
+}
+
+body[data-theme="system"] .item:hover .item-duration {
+    border-color: #fff;
+    color: #fff;
+    background: #000;
+}
+
+body[data-theme="system"] .item-description {
+    font-family: Inconsolata, Menlo, Geneva, monospace;
+    font-size: 12px;
+    color: #000;
+    line-height: 1.5;
+    text-align: left;
+}
+
+body[data-theme="system"] .item-details li {
+    font-family: Inconsolata, Menlo, Geneva, monospace;
+    font-size: 11px;
+    color: #000;
+}
+
+body[data-theme="system"] .item-details li::before {
+    content: '\25B8';
+    color: #000;
+}
+
+body[data-theme="system"] .item:hover .item-details li::before {
+    color: #fff;
+}
+
+body[data-theme="system"] .item-details {
+    border-top: 1px solid #000;
+}
+
+body[data-theme="system"] .item:hover .item-details {
+    border-top-color: #fff;
+}
+
+body[data-theme="system"] .tag {
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 8px;
+    color: #000;
+    font-family: Geneva_9, Geneva, Chicago, monospace;
+    font-size: 11px;
+    font-weight: normal;
+    padding: 2px 8px;
+}
+
+body[data-theme="system"] .tag:hover {
+    background: #000;
+    color: #fff;
+    transform: none;
+}
+
+body[data-theme="system"] .item:hover .tag {
+    background: #fff;
+    color: #000;
+}
+
+body[data-theme="system"] .tags .tag {
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 8px;
+    color: #000;
+    font-family: Geneva_9, Geneva, Chicago, monospace;
+    font-size: 12px;
+    padding: 3px 10px;
+}
+
+body[data-theme="system"] .contact-links {
+    gap: 0.5rem;
+}
+
+body[data-theme="system"] .contact-link {
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+    color: #000;
+    font-family: Geneva_9, Geneva, Chicago, monospace;
+}
+
+body[data-theme="system"] .contact-link:hover {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+    transform: none;
+    box-shadow: none;
+}
+
+body[data-theme="system"] .contact-icon {
+    filter: none;
+}
+
+body[data-theme="system"] .contact-link:hover .contact-icon {
+    filter: invert(1);
+}
+
+/* System theme - floating menu */
+body[data-theme="system"] .floating-menu {
+    background: #fff;
+    border: 0.1em solid #000;
+    border-radius: 0;
+    backdrop-filter: none;
+    box-shadow: 2px 2px #000;
+}
+
+@media (min-width: 1025px) {
+    body[data-theme="system"] .floating-menu {
+        border-radius: 0;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    body[data-theme="system"] .floating-menu {
+        border: none;
+        border-top: 0.1em solid #000;
+        box-shadow: none;
+    }
+}
+
+body[data-theme="system"] .menu-link {
+    color: #000;
+    font-family: Chicago_12, Chicago, Geneva, monospace;
+    font-size: 11px;
+    border-radius: 0;
+    min-height: auto;
+}
+
+body[data-theme="system"] .menu-link:hover {
+    background: #000;
+    color: #fff;
+    transform: none;
+    border-radius: 0;
+}
+
+body[data-theme="system"] .menu-link:hover .menu-icon {
+    transform: none;
+    stroke: #fff;
+    color: #fff;
+}
+
+body[data-theme="system"] .menu-link.active {
+    background: #000;
+    color: #fff;
+    transform: none;
+    font-weight: normal;
+}
+
+body[data-theme="system"] .menu-link.active .menu-icon {
+    stroke: #fff;
+    color: #fff;
+}
+
+body[data-theme="system"] .menu-link.active::before {
+    display: none;
+}
+
+body[data-theme="system"] .menu-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* System theme - theme switcher */
+body[data-theme="system"] .theme-switcher {
+    background: #fff;
+    border: 0.1em solid #000;
+    border-top: none;
+    border-radius: 0;
+    backdrop-filter: none;
+    box-shadow: 2px 2px #000;
+    padding: 0.2rem;
+}
+
+body[data-theme="system"] .theme-button {
+    font-family: Chicago_12, Chicago, Geneva, monospace;
+    font-size: 11px;
+    color: #000;
+    border-radius: 0;
+    padding: 2px 6px;
+}
+
+body[data-theme="system"] .theme-button:hover {
+    background: #000;
+    color: #fff;
+    transform: none;
+}
+
+body[data-theme="system"] .theme-button.active {
+    background: #000;
+    color: #fff;
+    box-shadow: none;
+}
+
+body[data-theme="system"] .scroll-indicator {
+    display: none;
+}
+
+body[data-theme="system"] .floating-shape {
+    display: none;
+}
+
 /* Utilities */
 .loading {
     text-align: center;
@@ -1834,7 +2225,7 @@ body[data-theme="dark"] .contact-list li:hover img {
     .container { padding: 0 1rem; justify-content: flex-start; padding-top: 2rem; padding-bottom: 6rem; }
     .profile-image { width: 120px; height: 150px; border-width: 3px; margin-bottom: 1.5rem; }
     .name { font-size: clamp(2rem, 8vw, 2.5rem); margin-bottom: 0.8rem; }
-    .title { font-size: 1rem; margin-bottom: 1rem; }
+    .role { font-size: 1rem; margin-bottom: 1rem; }
     header { margin-bottom: 1rem; }
     .bio { font-size: 1rem; line-height: 1.6; margin-bottom: 2rem; text-align: justify; }
     .section { margin: 2rem 0; }
