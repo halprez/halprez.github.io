@@ -1841,7 +1841,7 @@ body[data-theme="system"] .background-elements {
 }
 
 body[data-theme="system"] .container {
-    max-width: 700px;
+    max-width: 95%;
     padding: 1rem 2rem 6rem;
     justify-content: flex-start;
     padding-top: 2rem;
@@ -1877,7 +1877,7 @@ body[data-theme="system"] .name {
 body[data-theme="system"] .role {
     font-family: Geneva_9, Geneva, Chicago, monospace;
     color: #000;
-    font-size: 13px;
+    font-size: 20px;
     text-transform: none;
     font-weight: normal;
     letter-spacing: 0;
@@ -1885,15 +1885,15 @@ body[data-theme="system"] .role {
 
 body[data-theme="system"] .bio {
     font-family: Inconsolata, Menlo, Geneva, monospace;
-    font-size: 13px;
+    font-size: 16px;
     color: #000;
-    line-height: 1.5;
+    line-height: 1.6;
     text-align: left;
     max-width: none;
 }
 
 body[data-theme="system"] header {
-    text-align: left;
+    text-align: center;
     margin-bottom: 1rem;
     opacity: 1;
     animation: none;
@@ -1922,10 +1922,10 @@ body[data-theme="system"] .item {
     background: #fff;
     border: 1px solid #000;
     border-radius: 0;
-    padding: 0.8rem;
+    padding: 1rem;
     margin-bottom: 0.5rem;
     font-family: Inconsolata, Menlo, Geneva, monospace;
-    font-size: 12px;
+    font-size: 16px;
     box-shadow: none;
 }
 
@@ -1948,20 +1948,20 @@ body[data-theme="system"] .item:hover .item-details li {
 
 body[data-theme="system"] .item-title {
     font-family: Chicago_12, Chicago, Geneva, monospace;
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 700;
     color: #000;
 }
 
 body[data-theme="system"] .item-subtitle {
     font-family: Geneva_9, Geneva, Chicago, monospace;
-    font-size: 12px;
+    font-size: 18px;
     color: #000;
     font-weight: normal;
 }
 
 body[data-theme="system"] .item-location {
-    font-size: 11px;
+    font-size: 15px;
     color: #000;
 }
 
@@ -1971,8 +1971,8 @@ body[data-theme="system"] .item-duration {
     border-radius: 8px;
     color: #000;
     font-family: Geneva_9, Geneva, Chicago, monospace;
-    font-size: 11px;
-    padding: 1px 6px;
+    font-size: 15px;
+    padding: 2px 8px;
 }
 
 body[data-theme="system"] .item:hover .item-duration {
@@ -1983,15 +1983,15 @@ body[data-theme="system"] .item:hover .item-duration {
 
 body[data-theme="system"] .item-description {
     font-family: Inconsolata, Menlo, Geneva, monospace;
-    font-size: 12px;
+    font-size: 16px;
     color: #000;
-    line-height: 1.5;
+    line-height: 1.6;
     text-align: left;
 }
 
 body[data-theme="system"] .item-details li {
     font-family: Inconsolata, Menlo, Geneva, monospace;
-    font-size: 11px;
+    font-size: 15px;
     color: #000;
 }
 
@@ -2018,9 +2018,9 @@ body[data-theme="system"] .tag {
     border-radius: 8px;
     color: #000;
     font-family: Geneva_9, Geneva, Chicago, monospace;
-    font-size: 11px;
+    font-size: 15px;
     font-weight: normal;
-    padding: 2px 8px;
+    padding: 4px 12px;
 }
 
 body[data-theme="system"] .tag:hover {
@@ -2040,8 +2040,8 @@ body[data-theme="system"] .tags .tag {
     border-radius: 8px;
     color: #000;
     font-family: Geneva_9, Geneva, Chicago, monospace;
-    font-size: 12px;
-    padding: 3px 10px;
+    font-size: 18px;
+    padding: 6px 16px;
 }
 
 body[data-theme="system"] .contact-links {
