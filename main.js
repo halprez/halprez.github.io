@@ -226,6 +226,7 @@ class PersonalSite {
         this.initFloatingMenu();
         this.initDockAutoHide();
         this.initThemeSwitcher();
+        this.initGames();
     }
 
     initTyping() {
@@ -511,6 +512,22 @@ class PersonalSite {
     
     setTheme(theme) {
         document.body.setAttribute('data-theme', theme);
+    }
+
+    initGames() {
+        const gamesLink = document.getElementById('games-link');
+        if (!gamesLink) return;
+
+        gamesLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.game = new ArkanoidGame(this.container);
+            this.game.start();
+        });
+
+        // Re-init site when game exits
+        document.addEventListener('arkanoid-exit', () => {
+            this.initEffects();
+        });
     }
 }
 

@@ -2209,6 +2209,31 @@ body[data-theme="system"] .floating-shape {
     50% { opacity: 0.2; }
 }
 
+/* Arkanoid Game */
+.arkanoid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.arkanoid-hud {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 500;
+}
+
+#arkanoid-canvas {
+    display: block;
+    max-width: 100%;
+    cursor: none;
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
