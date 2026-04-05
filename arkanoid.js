@@ -30,8 +30,8 @@ class ArkanoidGame {
             brick: isDark ? '#4a90e2' : '#333',
             brickText: isDark ? '#fff' : '#fff',
             brickStroke: isDark ? '#6ab0ff' : '#555',
-            paddle: isDark ? '#50af95' : '#4a90e2',
-            ball: isDark ? '#ff6b6b' : '#e24a4a',
+            paddle: isDark ? '#e0e0e0' : '#1a1a1a',
+            ball: isDark ? '#ffffff' : '#000000',
             text: isDark ? '#e0e0e0' : '#1a1a1a',
             textMuted: isDark ? '#aaa' : '#666',
             overlay: isDark ? 'rgba(0,0,0,0.7)' : 'rgba(255,255,255,0.85)',
@@ -52,6 +52,10 @@ class ArkanoidGame {
         windows.forEach((w, i) => {
             if (i > 0) w.style.display = 'none';
         });
+
+        // Hide the bottom nav bar
+        const nav = document.querySelector('.floating-menu');
+        if (nav) nav.style.display = 'none';
 
         // Replace window pane content with game canvas
         const pane = aboutWindow.querySelector('.window-pane');
@@ -397,6 +401,10 @@ class ArkanoidGame {
         }
         this.detachEvents();
         this.container.innerHTML = this.originalHTML;
+
+        // Restore the bottom nav bar
+        const nav = document.querySelector('.floating-menu');
+        if (nav) nav.style.display = '';
 
         // Re-init effects since we replaced the DOM
         const event = new CustomEvent('arkanoid-exit');
