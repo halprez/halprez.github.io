@@ -421,95 +421,26 @@ class PersonalSite {
 
     initThemeSwitcher() {
         const themeButtons = document.querySelectorAll('.theme-button');
-        const autoButton = document.getElementById('auto-theme');
-        const body = document.body;
-        
-        // Load saved theme with backward compatibility
-        let savedTheme = localStorage.getItem('selectedTheme') || 'system';
-        
-        // Handle old theme names for backward compatibility
-        if (savedTheme === 'current') savedTheme = 'light';
-        if (savedTheme === 'futuristic') savedTheme = 'dark';
-        if (savedTheme === 'retro' || savedTheme === 'c64') savedTheme = 'auto';
-        
-        // Initialize theme detection
-        this.initAutoTheme();
-        this.applyTheme(savedTheme);
-        
-        // Add click handlers to theme buttons
+        const validThemes = ['light', 'dark', 'retro', 'c64', 'system'];
+
+        let savedTheme = localStorage.getItem('selectedTheme') || 'light';
+        if (!validThemes.includes(savedTheme)) savedTheme = 'light';
+
+        this.setTheme(savedTheme);
+
         themeButtons.forEach(button => {
             const theme = button.dataset.theme;
-            
-            // Set active state for current theme
-            if (theme === savedTheme) {
-                button.classList.add('active');
-            }
-            
-            if (theme) {
-                button.addEventListener('click', () => {
-                    // Remove active class from all buttons
-                    themeButtons.forEach(btn => btn.classList.remove('active'));
-                    autoButton.classList.remove('active');
-                    
-                    // Add active class to clicked button
-                    button.classList.add('active');
-                    
-                    // Apply theme
-                    this.setTheme(theme);
-                    
-                    // Save theme preference
-                    localStorage.setItem('selectedTheme', theme);
-                });
-            }
-        });
-        
-        // Add auto theme button handler
-        if (autoButton) {
-            if (savedTheme === 'auto') {
-                autoButton.classList.add('active');
-            }
-            
-            autoButton.addEventListener('click', () => {
-                // Remove active class from all buttons
+            if (theme === savedTheme) button.classList.add('active');
+
+            button.addEventListener('click', () => {
                 themeButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Add active class to auto button
-                autoButton.classList.add('active');
-                
-                // Apply auto theme
-                this.applyAutoTheme();
-                
-                // Save theme preference
-                localStorage.setItem('selectedTheme', 'auto');
+                button.classList.add('active');
+                this.setTheme(theme);
+                localStorage.setItem('selectedTheme', theme);
             });
-        }
-    }
-    
-    initAutoTheme() {
-        // Listen for system theme changes
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        mediaQuery.addListener(() => {
-            const savedTheme = localStorage.getItem('selectedTheme');
-            if (savedTheme === 'auto') {
-                this.applyAutoTheme();
-            }
         });
     }
-    
-    applyTheme(theme) {
-        if (theme === 'auto') {
-            this.applyAutoTheme();
-        } else {
-            this.setTheme(theme);
-        }
-    }
-    
-    applyAutoTheme() {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const autoTheme = prefersDark ? 'dark' : 'light';
-        this.setTheme(autoTheme);
-    }
-    
+
     setTheme(theme) {
         document.body.setAttribute('data-theme', theme);
     }
