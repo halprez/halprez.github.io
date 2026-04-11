@@ -177,6 +177,12 @@
       "subtitle": "ADMB (Automatic Differentiation Model Builder) Python Wrapper",
       "description": "A modern Python interface for AD Model Builder (ADMB), bringing automatic differentiation and advanced optimization to fisheries stock assessment and ecological modeling.",
       "url": "https://github.com/halprez/pyadmb"
+    },
+    {
+      "title": "Canary Islands Maritime Traffic Predictor",
+      "subtitle": "Real-time ferry delay predictions using ML in the browser",
+      "description": "A static web app that tracks and predicts maritime traffic delays for inter-island ferry routes across the Canary Islands. Uses live AIS vessel data, weather conditions, and a browser-based XGBoost model (ONNX Runtime) with 1.7-minute MAE accuracy. Features an interactive map with 13 ports, analytics dashboard, and bilingual EN/ES interface.",
+      "url": "https://github.com/halprez/canary-islands-maritime-traffic-analytics"
     }
   ],
   "games": [
