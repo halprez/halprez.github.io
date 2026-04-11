@@ -45,6 +45,7 @@ body {
 
 @media (max-width: 1024px) {
     .container {
+        padding-top: 4.5rem;
         padding-bottom: 6rem;
     }
 }
