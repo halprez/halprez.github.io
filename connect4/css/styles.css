@@ -17,6 +17,8 @@
     --border: #263850;
     --radius: 12px;
     --cell-size: min(12vw, 60px);
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 html, body {
@@ -35,6 +37,8 @@ html, body {
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    padding-top: calc(1rem + var(--safe-top));
+    padding-bottom: calc(1rem + var(--safe-bottom));
 }
 
 .hidden { display: none !important; }
@@ -74,11 +78,12 @@ html, body {
 
 .join-form {
     display: flex;
+    flex-direction: column;
     gap: 0.5rem;
 }
 
 .input-code {
-    flex: 1;
+    width: 100%;
     padding: 0.9rem 1rem;
     border: 2px solid var(--border);
     border-radius: var(--radius);
@@ -91,6 +96,12 @@ html, body {
     text-transform: uppercase;
 }
 
+.input-code:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.25);
+}
+
 .input-code::placeholder {
     color: var(--text-muted);
     font-weight: 400;
@@ -99,6 +110,16 @@ html, body {
 }
 
 .home-footer { display: flex; gap: 1rem; }
+
+@media (min-width: 400px) {
+    .join-form {
+        flex-direction: row;
+    }
+    .input-code {
+        flex: 1;
+        width: auto;
+    }
+}
 
 /* --- Buttons --- */
 .btn {
@@ -119,10 +140,14 @@ html, body {
 .btn-large { padding: 1.1rem 2rem; font-size: 1.2rem; }
 .btn-primary { background: var(--primary); color: #fff; }
 .btn-primary:hover { background: var(--primary-dark); }
+.btn-primary:active { transform: scale(0.96); }
 .btn-secondary { background: var(--surface); color: var(--primary); border: 2px solid var(--primary); }
+.btn-secondary:active { transform: scale(0.96); }
 .btn-ghost { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
+.btn-ghost:active { transform: scale(0.96); }
 .btn-small { padding: 0.5rem 1rem; font-size: 0.85rem; }
 .btn-lang { font-weight: 800; min-width: 48px; }
+.btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
 /* --- Waiting --- */
 .screen-waiting { gap: 2rem; }
@@ -427,11 +452,28 @@ html, body {
     to { opacity: 0; }
 }
 
+/* --- Small phones --- */
+@media (max-width: 380px) {
+    :root { --cell-size: 11vw; }
+
+    .game-code {
+        font-size: 1.8rem;
+        padding: 0.6rem 1rem;
+        letter-spacing: 0.3em;
+    }
+
+    .screen-home h1 { font-size: 2rem; }
+    .btn-large { padding: 0.9rem 1.5rem; font-size: 1rem; }
+
+    .player-indicator {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .turn-text { font-size: 0.8rem; }
+}
+
 /* --- Desktop --- */
 @media (min-width: 768px) {
     :root { --cell-size: 60px; }
-}
-
-@media (max-width: 400px) {
-    :root { --cell-size: 11vw; }
 }
