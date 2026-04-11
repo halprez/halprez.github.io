@@ -98,7 +98,8 @@ function renderHomeScreen(onCreateGame, onJoinGame, onToggleLang) {
 }
 
 function renderWaitingScreen(code) {
-    const whatsAppUrl = `https://wa.me/?text=${encodeURIComponent(t('waiting.whatsAppMessage') + ' ' + code)}`;
+    const joinUrl = `${location.origin}${location.pathname}?join=${code}`;
+    const whatsAppUrl = `https://wa.me/?text=${encodeURIComponent(t('waiting.whatsAppMessage') + ' ' + joinUrl)}`;
     return `
         <div class="screen screen-waiting">
             <h2>${t('waiting.title')}</h2>
@@ -106,7 +107,10 @@ function renderWaitingScreen(code) {
                 <span class="game-code">${code}</span>
                 <button class="btn btn-small" id="btn-copy">${t('waiting.copy')}</button>
             </div>
-            <a href="${whatsAppUrl}" target="_blank" class="btn btn-secondary">${t('waiting.shareWhatsApp')}</a>
+            <div id="qr-code" class="qr-container"></div>
+            <div class="share-buttons">
+                <a href="${whatsAppUrl}" target="_blank" class="btn btn-secondary">${t('waiting.shareWhatsApp')}</a>
+            </div>
             <div class="spinner"></div>
             <button class="btn btn-ghost" id="btn-cancel">${t('waiting.cancel')}</button>
         </div>

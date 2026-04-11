@@ -29,7 +29,14 @@ class BattleshipApp {
 
     async init() {
         await i18n.load(i18n.locale);
-        this.showHome();
+
+        const joinCode = new URLSearchParams(location.search).get('join');
+        if (joinCode) {
+            history.replaceState(null, '', location.pathname);
+            this.joinGameByCode(joinCode.toUpperCase());
+        } else {
+            this.showHome();
+        }
     }
 
     // --- Screens ---
@@ -73,6 +80,7 @@ class BattleshipApp {
     showWaiting(code) {
         this.state = 'waiting';
         this.root.innerHTML = renderWaitingScreen(code);
+        this.renderQR(code);
 
         document.getElementById('btn-copy').addEventListener('click', () => {
             navigator.clipboard.writeText(code).then(() => {
@@ -87,6 +95,16 @@ class BattleshipApp {
             this.cleanup();
             this.showHome();
         });
+    }
+
+    renderQR(code) {
+        const container = document.getElementById('qr-code');
+        if (!container || typeof qrcode === 'undefined') return;
+        const joinUrl = `${location.origin}${location.pathname}?join=${code}`;
+        const qr = qrcode(0, 'M');
+        qr.addData(joinUrl);
+        qr.make();
+        container.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0 });
     }
 
     showPlacing() {

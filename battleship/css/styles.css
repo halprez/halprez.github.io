@@ -205,6 +205,24 @@ html, body {
     border: 2px solid var(--border);
 }
 
+.qr-container {
+    background: #fff;
+    padding: 0.6rem;
+    border-radius: 8px;
+    display: inline-block;
+    line-height: 0;
+}
+
+.qr-container svg {
+    width: 140px;
+    height: 140px;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
 .spinner {
     width: 40px;
     height: 40px;

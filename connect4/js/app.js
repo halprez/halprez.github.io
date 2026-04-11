@@ -20,7 +20,14 @@ class ConnectFourApp {
 
     async init() {
         await i18n.load(i18n.locale);
-        this.showHome();
+
+        const joinCode = new URLSearchParams(location.search).get('join');
+        if (joinCode) {
+            history.replaceState(null, '', location.pathname);
+            this.joinByCode(joinCode.toUpperCase());
+        } else {
+            this.showHome();
+        }
     }
 
     // --- Screens ---
@@ -81,7 +88,8 @@ class ConnectFourApp {
 
     showWaiting(code) {
         this.state = 'waiting';
-        const waUrl = `https://wa.me/?text=${encodeURIComponent(t('waiting.whatsAppMessage') + ' ' + code)}`;
+        const joinUrl = `${location.origin}${location.pathname}?join=${code}`;
+        const waUrl = `https://wa.me/?text=${encodeURIComponent(t('waiting.whatsAppMessage') + ' ' + joinUrl)}`;
         this.root.innerHTML = `
             <div class="screen screen-waiting">
                 <h2>${t('waiting.title')}</h2>
@@ -89,11 +97,15 @@ class ConnectFourApp {
                     <span class="game-code">${code}</span>
                     <button class="btn btn-small" id="btn-copy">${t('waiting.copy')}</button>
                 </div>
-                <a href="${waUrl}" target="_blank" class="btn btn-secondary">${t('waiting.shareWhatsApp')}</a>
+                <div id="qr-code" class="qr-container"></div>
+                <div class="share-buttons">
+                    <a href="${waUrl}" target="_blank" class="btn btn-secondary">${t('waiting.shareWhatsApp')}</a>
+                </div>
                 <div class="spinner"></div>
                 <button class="btn btn-ghost" id="btn-cancel">${t('waiting.cancel')}</button>
             </div>
         `;
+        this.renderQR(code);
         document.getElementById('btn-copy').addEventListener('click', () => {
             navigator.clipboard.writeText(code).then(() => {
                 const btn = document.getElementById('btn-copy');
@@ -105,6 +117,16 @@ class ConnectFourApp {
             this.cleanup();
             this.showHome();
         });
+    }
+
+    renderQR(code) {
+        const container = document.getElementById('qr-code');
+        if (!container || typeof qrcode === 'undefined') return;
+        const joinUrl = `${location.origin}${location.pathname}?join=${code}`;
+        const qr = qrcode(0, 'M');
+        qr.addData(joinUrl);
+        qr.make();
+        container.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0 });
     }
 
     showPlaying() {
