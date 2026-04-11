@@ -176,6 +176,12 @@
       "subtitle": "ADMB (Automatic Differentiation Model Builder) Python Wrapper",
       "description": "A modern Python interface for AD Model Builder (ADMB), bringing automatic differentiation and advanced optimization to fisheries stock assessment and ecological modeling.",
       "url": "https://github.com/halprez/pyadmb"
+    },
+    {
+      "title": "Battleship - Sink the Fleet",
+      "subtitle": "Multiplayer P2P battleship game via WebRTC",
+      "description": "A mobile-first, bilingual (EN/ES) battleship game playable between two people via a shared code. Built with vanilla JS, PeerJS for real-time P2P communication, and deployed on GitHub Pages with no backend.",
+      "url": "battleship/"
     }
   ]
 }

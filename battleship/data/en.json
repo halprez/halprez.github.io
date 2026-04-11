@@ -1,0 +1,87 @@
+{
+  "title": "Battleship",
+  "home": {
+    "title": "Battleship",
+    "subtitle": "Sink the fleet!",
+    "create": "Create Game",
+    "join": "Join Game",
+    "joinPlaceholder": "Enter code",
+    "connect": "Connect",
+    "rules": "Rules",
+    "rulesTitle": "How to Play",
+    "rulesText": [
+      "Each player places 5 ships on a 10x10 grid.",
+      "Players take turns firing at the opponent's grid.",
+      "Hit all cells of a ship to sink it.",
+      "Sink all 5 ships to win!"
+    ],
+    "close": "Close"
+  },
+  "waiting": {
+    "title": "Waiting for opponent",
+    "shareCode": "Share this code:",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "shareWhatsApp": "Share via WhatsApp",
+    "whatsAppMessage": "Join my Battleship game:",
+    "cancel": "Cancel"
+  },
+  "lobby": {
+    "title": "Both players connected!",
+    "player1": "Player 1",
+    "player2": "Player 2",
+    "connected": "Connected",
+    "startPlacing": "Place Ships"
+  },
+  "placing": {
+    "title": "Place your ships",
+    "fleet": "Fleet",
+    "carrier": "Carrier",
+    "battleship": "Battleship",
+    "submarine": "Submarine",
+    "destroyer": "Destroyer",
+    "rotate": "Rotate",
+    "random": "Random",
+    "reset": "Reset",
+    "ready": "Ready!",
+    "waitingOpponent": "Waiting for opponent...",
+    "opponentReady": "Opponent is ready!",
+    "tapToPlace": "Tap grid to place ship",
+    "allPlaced": "All ships placed!"
+  },
+  "playing": {
+    "myFleet": "My Fleet",
+    "enemyWaters": "Enemy Waters",
+    "yourTurn": "Your turn!",
+    "opponentTurn": "Opponent's turn...",
+    "fire": "Fire!",
+    "selectTarget": "Select a target",
+    "hit": "Hit!",
+    "miss": "Miss!",
+    "sunk": "Sunk!",
+    "youSunk": "You sunk the"
+  },
+  "gameover": {
+    "victory": "Victory!",
+    "defeat": "Defeat!",
+    "stats": "Statistics",
+    "turns": "Turns",
+    "hits": "Hits",
+    "misses": "Misses",
+    "accuracy": "Accuracy",
+    "rematch": "Rematch",
+    "newGame": "New Game"
+  },
+  "ships": {
+    "carrier": "Carrier",
+    "battleship": "Battleship",
+    "submarine": "Submarine",
+    "destroyer": "Destroyer"
+  },
+  "errors": {
+    "invalidCode": "Invalid code",
+    "roomFull": "Game is full",
+    "connectionFailed": "Connection failed",
+    "disconnected": "Opponent disconnected"
+  }
+}

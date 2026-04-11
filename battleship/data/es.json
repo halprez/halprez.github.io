@@ -1,0 +1,87 @@
+{
+  "title": "Hundir la Flota",
+  "home": {
+    "title": "Hundir la Flota",
+    "subtitle": "\u00a1Hunde la flota enemiga!",
+    "create": "Crear partida",
+    "join": "Unirse a partida",
+    "joinPlaceholder": "Introduce c\u00f3digo",
+    "connect": "Conectar",
+    "rules": "Reglas",
+    "rulesTitle": "C\u00f3mo jugar",
+    "rulesText": [
+      "Cada jugador coloca 5 barcos en una cuadr\u00edcula 10x10.",
+      "Los jugadores disparan por turnos a la cuadr\u00edcula rival.",
+      "Impacta todas las casillas de un barco para hundirlo.",
+      "\u00a1Hunde los 5 barcos para ganar!"
+    ],
+    "close": "Cerrar"
+  },
+  "waiting": {
+    "title": "Esperando rival",
+    "shareCode": "Comparte este c\u00f3digo:",
+    "copy": "Copiar",
+    "copied": "\u00a1Copiado!",
+    "shareWhatsApp": "Compartir por WhatsApp",
+    "whatsAppMessage": "\u00danete a mi partida de Hundir la Flota:",
+    "cancel": "Cancelar"
+  },
+  "lobby": {
+    "title": "\u00a1Ambos jugadores conectados!",
+    "player1": "Jugador 1",
+    "player2": "Jugador 2",
+    "connected": "Conectado",
+    "startPlacing": "Colocar barcos"
+  },
+  "placing": {
+    "title": "Coloca tus barcos",
+    "fleet": "Flota",
+    "carrier": "Portaaviones",
+    "battleship": "Acorazado",
+    "submarine": "Submarino",
+    "destroyer": "Destructor",
+    "rotate": "Rotar",
+    "random": "Aleatorio",
+    "reset": "Reiniciar",
+    "ready": "\u00a1Listo!",
+    "waitingOpponent": "Esperando al rival...",
+    "opponentReady": "\u00a1El rival est\u00e1 listo!",
+    "tapToPlace": "Toca la cuadr\u00edcula para colocar",
+    "allPlaced": "\u00a1Todos los barcos colocados!"
+  },
+  "playing": {
+    "myFleet": "Mi flota",
+    "enemyWaters": "Aguas enemigas",
+    "yourTurn": "\u00a1Tu turno!",
+    "opponentTurn": "Turno del rival...",
+    "fire": "\u00a1Disparar!",
+    "selectTarget": "Selecciona objetivo",
+    "hit": "\u00a1Tocado!",
+    "miss": "\u00a1Agua!",
+    "sunk": "\u00a1Hundido!",
+    "youSunk": "Has hundido el"
+  },
+  "gameover": {
+    "victory": "\u00a1Victoria!",
+    "defeat": "\u00a1Derrota!",
+    "stats": "Estad\u00edsticas",
+    "turns": "Turnos",
+    "hits": "Aciertos",
+    "misses": "Fallos",
+    "accuracy": "Precisi\u00f3n",
+    "rematch": "Revancha",
+    "newGame": "Nueva partida"
+  },
+  "ships": {
+    "carrier": "Portaaviones",
+    "battleship": "Acorazado",
+    "submarine": "Submarino",
+    "destroyer": "Destructor"
+  },
+  "errors": {
+    "invalidCode": "C\u00f3digo inv\u00e1lido",
+    "roomFull": "Partida llena",
+    "connectionFailed": "Error de conexi\u00f3n",
+    "disconnected": "El rival se ha desconectado"
+  }
+}

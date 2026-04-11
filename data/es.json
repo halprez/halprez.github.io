@@ -176,6 +176,12 @@
       "subtitle": "Wrapper Python para ADMB (Automatic Differentiation Model Builder)",
       "description": "Una interfaz moderna en Python para AD Model Builder (ADMB), que aporta diferenciaci\u00f3n autom\u00e1tica y optimizaci\u00f3n avanzada a la evaluaci\u00f3n de stocks pesqueros y modelado ecol\u00f3gico.",
       "url": "https://github.com/halprez/pyadmb"
+    },
+    {
+      "title": "Hundir la Flota",
+      "subtitle": "Juego multijugador P2P de batalla naval v\u00eda WebRTC",
+      "description": "Un juego de batalla naval mobile-first y biling\u00fce (EN/ES) para dos jugadores mediante un c\u00f3digo compartido. Desarrollado con vanilla JS, PeerJS para comunicaci\u00f3n P2P en tiempo real, y desplegado en GitHub Pages sin backend.",
+      "url": "battleship/"
     }
   ]
 }
