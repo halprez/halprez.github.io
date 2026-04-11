@@ -421,7 +421,7 @@ class PersonalSite {
 
     initThemeSwitcher() {
         const themeButtons = document.querySelectorAll('.theme-button');
-        const validThemes = ['light', 'dark', 'retro', 'c64', 'system'];
+        const validThemes = ['light', 'dark', 'retro', 'system'];
 
         let savedTheme = localStorage.getItem('selectedTheme') || 'light';
         if (!validThemes.includes(savedTheme)) savedTheme = 'light';
