@@ -8,6 +8,7 @@
     "education": "Formaci\u00f3n",
     "skills": "Habilidades",
     "sideProjects": "Proyectos",
+    "games": "Juegos",
     "arkanoid": "Arkanoid",
     "score": "Puntos",
     "lives": "Vidas",
@@ -176,6 +177,14 @@
       "subtitle": "Wrapper Python para ADMB (Automatic Differentiation Model Builder)",
       "description": "Una interfaz moderna en Python para AD Model Builder (ADMB), que aporta diferenciaci\u00f3n autom\u00e1tica y optimizaci\u00f3n avanzada a la evaluaci\u00f3n de stocks pesqueros y modelado ecol\u00f3gico.",
       "url": "https://github.com/halprez/pyadmb"
+    }
+  ],
+  "games": [
+    {
+      "title": "Arkanoid",
+      "subtitle": "Juego cl\u00e1sico de romper ladrillos",
+      "description": "Rompe todos los ladrillos usando palabras de la bio como etiquetas. Integrado en el sitio principal con renderizado canvas.",
+      "action": "arkanoid"
     },
     {
       "title": "Hundir la Flota",

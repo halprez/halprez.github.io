@@ -98,6 +98,16 @@ class PersonalSite {
             this.container.insertAdjacentHTML('beforeend', this.renderSection(projectsSection));
         }
 
+        if (data.games && data.games.length > 0) {
+            const gamesSection = {
+                id: 'games',
+                title: i18n.t('ui.games'),
+                type: 'timeline',
+                items: data.games
+            };
+            this.container.insertAdjacentHTML('beforeend', this.renderSection(gamesSection));
+        }
+
         this.updateNavLabels();
     }
 
@@ -173,13 +183,16 @@ class PersonalSite {
 
     renderTimelineSection(section) {
         const t = (k) => i18n.t(k);
-        const items = section.items.map(item => `
-            <a href="${item.url}" class="item-link">
+        const items = section.items.map(item => {
+            const href = item.url || '#';
+            const actionAttr = item.action ? `data-action="${item.action}"` : '';
+            return `
+            <a href="${href}" class="item-link" ${actionAttr}>
                 <div class="item">
                     <div class="item-header">
                         <div>
                             <h3 class="item-title">${item.title}</h3>
-                            <span class="item-subtitle">${item.subtitle}</span>
+                            <span class="item-subtitle">${item.subtitle || ''}</span>
                             ${item.location ? `<span class="item-location"> • ${item.location}</span>` : ''}
                         </div>
                         ${item.duration ? `<span class="item-duration">${item.duration}</span>` : ''}
@@ -188,8 +201,8 @@ class PersonalSite {
                     ${item.details ? this.renderDetails(item.details) : ''}
                     ${item.tags ? this.renderTags(item.tags) : ''}
                 </div>
-            </a>
-        `).join('');
+            </a>`;
+        }).join('');
 
         const titleContent = section.link
             ? `<a href="#${section.link}" class="section-title-link">${section.title}</a>`
@@ -456,13 +469,12 @@ class PersonalSite {
     }
 
     initGames() {
-        const gamesLink = document.getElementById('games-link');
-        if (!gamesLink) return;
-
-        gamesLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.game = new ArkanoidGame(this.container);
-            this.game.start();
+        document.querySelectorAll('[data-action="arkanoid"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.game = new ArkanoidGame(this.container);
+                this.game.start();
+            });
         });
 
         document.addEventListener('arkanoid-exit', () => {

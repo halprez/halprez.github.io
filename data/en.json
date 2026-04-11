@@ -8,6 +8,7 @@
     "education": "Education",
     "skills": "Skills",
     "sideProjects": "Side projects",
+    "games": "Games",
     "arkanoid": "Arkanoid",
     "score": "Score",
     "lives": "Lives",
@@ -176,6 +177,14 @@
       "subtitle": "ADMB (Automatic Differentiation Model Builder) Python Wrapper",
       "description": "A modern Python interface for AD Model Builder (ADMB), bringing automatic differentiation and advanced optimization to fisheries stock assessment and ecological modeling.",
       "url": "https://github.com/halprez/pyadmb"
+    }
+  ],
+  "games": [
+    {
+      "title": "Arkanoid",
+      "subtitle": "Classic brick-breaker game",
+      "description": "Break all the bricks using words from the bio as brick labels. Built into the main site with canvas rendering.",
+      "action": "arkanoid"
     },
     {
       "title": "Battleship - Sink the Fleet",
