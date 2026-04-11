@@ -1,0 +1,47 @@
+{
+  "title": "Connect Four",
+  "home": {
+    "title": "Connect Four",
+    "subtitle": "Line up four to win!",
+    "create": "Create Game",
+    "join": "Join Game",
+    "joinPlaceholder": "Enter code",
+    "connect": "Connect",
+    "rules": "Rules",
+    "rulesTitle": "How to Play",
+    "rulesText": [
+      "Players take turns dropping discs into a 7-column, 6-row grid.",
+      "Each disc falls to the lowest available position in the column.",
+      "Connect 4 discs in a row — horizontally, vertically, or diagonally — to win!",
+      "If the board fills up with no winner, it's a draw."
+    ],
+    "close": "Close"
+  },
+  "waiting": {
+    "title": "Waiting for opponent",
+    "shareCode": "Share this code:",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "shareWhatsApp": "Share via WhatsApp",
+    "whatsAppMessage": "Join my Connect Four game:",
+    "cancel": "Cancel"
+  },
+  "playing": {
+    "yourTurn": "Your turn!",
+    "opponentTurn": "Opponent's turn...",
+    "you": "You",
+    "opponent": "Opponent"
+  },
+  "gameover": {
+    "victory": "You win!",
+    "defeat": "You lose!",
+    "draw": "It's a draw!",
+    "moves": "Moves",
+    "rematch": "Rematch",
+    "newGame": "New Game"
+  },
+  "errors": {
+    "connectionFailed": "Connection failed",
+    "disconnected": "Opponent disconnected"
+  }
+}

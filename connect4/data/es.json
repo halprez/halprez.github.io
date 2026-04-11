@@ -1,0 +1,47 @@
+{
+  "title": "4 en L\u00ednea",
+  "home": {
+    "title": "4 en L\u00ednea",
+    "subtitle": "\u00a1Conecta cuatro para ganar!",
+    "create": "Crear partida",
+    "join": "Unirse a partida",
+    "joinPlaceholder": "Introduce c\u00f3digo",
+    "connect": "Conectar",
+    "rules": "Reglas",
+    "rulesTitle": "C\u00f3mo jugar",
+    "rulesText": [
+      "Los jugadores alternan turnos dejando caer fichas en una cuadr\u00edcula de 7 columnas y 6 filas.",
+      "Cada ficha cae a la posici\u00f3n m\u00e1s baja disponible de la columna.",
+      "\u00a1Conecta 4 fichas en l\u00ednea \u2014 horizontal, vertical o diagonal \u2014 para ganar!",
+      "Si el tablero se llena sin ganador, es empate."
+    ],
+    "close": "Cerrar"
+  },
+  "waiting": {
+    "title": "Esperando rival",
+    "shareCode": "Comparte este c\u00f3digo:",
+    "copy": "Copiar",
+    "copied": "\u00a1Copiado!",
+    "shareWhatsApp": "Compartir por WhatsApp",
+    "whatsAppMessage": "\u00danete a mi partida de 4 en L\u00ednea:",
+    "cancel": "Cancelar"
+  },
+  "playing": {
+    "yourTurn": "\u00a1Tu turno!",
+    "opponentTurn": "Turno del rival...",
+    "you": "T\u00fa",
+    "opponent": "Rival"
+  },
+  "gameover": {
+    "victory": "\u00a1Has ganado!",
+    "defeat": "\u00a1Has perdido!",
+    "draw": "\u00a1Empate!",
+    "moves": "Movimientos",
+    "rematch": "Revancha",
+    "newGame": "Nueva partida"
+  },
+  "errors": {
+    "connectionFailed": "Error de conexi\u00f3n",
+    "disconnected": "El rival se ha desconectado"
+  }
+}

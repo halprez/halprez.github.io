@@ -182,6 +182,12 @@
       "subtitle": "Multiplayer P2P battleship game via WebRTC",
       "description": "A mobile-first, bilingual (EN/ES) battleship game playable between two people via a shared code. Built with vanilla JS, PeerJS for real-time P2P communication, and deployed on GitHub Pages with no backend.",
       "url": "battleship/"
+    },
+    {
+      "title": "Connect Four - 4 en L\u00ednea",
+      "subtitle": "Multiplayer P2P Connect Four game via WebRTC",
+      "description": "A mobile-first, bilingual (EN/ES) Connect Four game for two players via a shared code. Drop discs, connect four in a row to win. Built with vanilla JS and PeerJS, no backend required.",
+      "url": "connect4/"
     }
   ]
 }
