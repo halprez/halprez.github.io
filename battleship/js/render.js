@@ -139,9 +139,12 @@ function renderPlacingScreen() {
 function renderPlayingScreen() {
     return `
         <div class="screen screen-playing">
-            <div class="turn-indicator" id="turn-indicator"></div>
+            <div class="play-topbar">
+                <div class="turn-indicator" id="turn-indicator"></div>
+                <button class="btn btn-primary btn-fire" id="btn-fire" disabled>${t('playing.fire')}</button>
+            </div>
             <div class="boards">
-                <div class="board-section">
+                <div class="board-section board-enemy">
                     <h3 class="board-label">${t('playing.enemyWaters')}</h3>
                     <div id="enemy-grid"></div>
                 </div>
@@ -150,7 +153,6 @@ function renderPlayingScreen() {
                     <div id="my-grid"></div>
                 </div>
             </div>
-            <button class="btn btn-primary" id="btn-fire" disabled>${t('playing.fire')}</button>
         </div>
     `;
 }
