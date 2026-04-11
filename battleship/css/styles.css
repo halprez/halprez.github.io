@@ -637,13 +637,13 @@ html, body {
 
 .boards {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex: 1;
     width: 100%;
     align-items: center;
     justify-content: center;
-    gap: 0.4rem;
-    padding: 0.4rem;
+    gap: 0.3rem;
+    padding: 0.3rem;
     overflow: hidden;
 }
 
@@ -653,20 +653,20 @@ html, body {
 }
 
 .board-label {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: var(--text-muted);
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.15rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
 
 .board-enemy {
-    --cell-size: min(8.2vw, 36px);
+    --cell-size: min(7.5vw, 36px);
 }
 
 .board-mine {
-    --cell-size: min(4.2vw, 22px);
-    opacity: 0.8;
+    --cell-size: min(5vw, 22px);
+    opacity: 0.75;
 }
 
 /* --- Game Over --- */
@@ -797,18 +797,32 @@ html, body {
     .home-header h1 { font-size: 1.8rem; }
     .btn-large { padding: 0.9rem 1.5rem; font-size: 1rem; }
 
-    .board-enemy { --cell-size: 7.2vw; }
-    .board-mine { --cell-size: 3.6vw; }
+    .board-enemy { --cell-size: 6.8vw; }
+    .board-mine { --cell-size: 4.5vw; }
 }
 
 /* --- Very small phones (iPhone SE) --- */
 @media (max-width: 340px) {
-    .board-enemy { --cell-size: 6.5vw; }
-    .board-mine { --cell-size: 3.2vw; }
+    .board-enemy { --cell-size: 6.2vw; }
+    .board-mine { --cell-size: 4vw; }
+}
+
+/* --- Short phones (landscape or short viewport) --- */
+@media (max-height: 700px) {
+    .board-enemy { --cell-size: min(6.5vw, 4.5vh); }
+    .board-mine { --cell-size: min(4.5vw, 3vh); }
+    .boards { gap: 0.15rem; }
+    .board-label { font-size: 0.5rem; margin-bottom: 0; }
+    .play-topbar { padding: 0.3rem 0.8rem; }
 }
 
 /* --- Desktop --- */
 @media (min-width: 768px) {
+    .boards {
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+
     .board-enemy {
         --cell-size: 32px;
     }
@@ -816,10 +830,6 @@ html, body {
     .board-mine {
         --cell-size: 28px;
         opacity: 1;
-    }
-
-    .boards {
-        gap: 1.5rem;
     }
 
     .board-label {
