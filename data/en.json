@@ -1,8 +1,27 @@
 {
+  "lang": "en",
+  "ui": {
+    "loading": "Loading...",
+    "error": "Error loading site",
+    "about": "About",
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "sideProjects": "Side projects",
+    "arkanoid": "Arkanoid",
+    "score": "Score",
+    "lives": "Lives",
+    "clickToLaunch": "Click or tap to launch",
+    "youWin": "You Win!",
+    "gameOver": "Game Over",
+    "playAgain": "Click to play again",
+    "close": "Close",
+    "resize": "Resize"
+  },
   "personal": {
     "name": "Alejandro Pérez",
     "title": "Software Engineer",
-    "bio": "I am a Senior Software Engineer with 20+ years of field experience, currently specializing in distributed systems and AI technologies. I combine technical expertise with analytical curiosity, grounded in strong software engineering principles. I've been building software since I was 8 years old, so I feel incredibly fortunate to have turned a childhood passion into a fulfilling career. For me, coding isn't just work; it's a craft I continuously pursue. When not building software, I find clarity through yoga, meditation, chess, and outdoor adventures—practices I leverage to empower my day-to-day working activities.",
+    "bio": "I am a Senior Software Engineer with 20+ years of field experience, currently specializing in distributed systems and AI technologies. I combine technical expertise with analytical curiosity, grounded in strong software engineering principles. I've been building software since I was 8 years old, so I feel incredibly fortunate to have turned a childhood passion into a fulfilling career. For me, coding isn't just work; it's a craft I continuously pursue. When not building software, I find clarity through yoga, meditation, chess, and outdoor adventures\u2014practices I leverage to empower my day-to-day working activities.",
     "email": "jalpre@gmail.com",
     "image": "/images/me.jpg",
     "interests": [
@@ -50,13 +69,7 @@
       "location": "Santa Cruz de Tenerife, Spain",
       "duration": "10/2017 - 09/2019",
       "description": "Promoted to lead architect of the P2P streaming platform and while managed a development team of 20+ software developers.",
-      "tags": [
-        "AWS",
-        "Team Management",
-        "P2P Streaming",
-        "Microservices architecture",
-        "Real-time Systems"
-      ],
+      "tags": ["AWS", "Team Management", "P2P Streaming", "Microservices architecture", "Real-time Systems"],
       "details": [
         "Led technical standards implementation across development teams.",
         "Designed evolution of microservices architecture. Extended platform capabilities to support real time video analytics."
@@ -69,15 +82,7 @@
       "location": "Santa Cruz de Tenerife, Spain",
       "duration": "11/2015 - 09/2017",
       "description": "Served as an early team member and lead backend developer for an innovative P2P live video streaming platform start-up.",
-      "tags": [
-        "Python",
-        "AWS",
-        "WebRTC",
-        "Microservices",
-        "Real-time Systems",
-        "Kafka",
-        "Redis"
-      ],
+      "tags": ["Python", "AWS", "WebRTC", "Microservices", "Real-time Systems", "Kafka", "Redis"],
       "details": [
         "Built distributed backend microservices architecture capable of handling thousands of concurrent video streams.",
         "Developed AWS-based infrastructure for stream management, and real-time data analytics."
@@ -90,15 +95,7 @@
       "location": "La Jolla, CA, USA",
       "duration": "01/2007 - 03/2014",
       "description": "Developed and maintained scientific computing applications for the IATTC, supporting international fisheries research.",
-      "tags": [
-        "R",
-        "FORTRAN",
-        "Ms SQL Server",
-        "Data Processing",
-        ".NET",
-        "C#",
-        "vB.NET"
-      ],
+      "tags": ["R", "FORTRAN", "Ms SQL Server", "Data Processing", ".NET", "C#", "vB.NET"],
       "details": [
         "Converted Length-Frequency and Species Composition Estimation programs from FORTRAN to a data pipeline using SQL stored procedures.",
         "Contributed to the development of the FAO's Global Record of Fishing Vessels."
@@ -111,13 +108,7 @@
       "location": "Santa Cruz de Tenerife, Spain",
       "duration": "2023 - 2007",
       "description": "Managed IT infrastructure and provided technical support for the IEO's research operations.",
-      "tags": [
-        "Windows Server",
-        "Active Directory",
-        "Network Administration",
-        "Technical Support",
-        "Firewall setup and management"
-      ],
+      "tags": ["Windows Server", "Active Directory", "Network Administration", "Technical Support", "Firewall setup and management"],
       "details": [
         "Administered Windows servers, ensuring high availability and security for research applications.",
         "Updated IEO - COC Server infrastructure to Windows Server 2000, enhancing performance and security."
@@ -171,7 +162,7 @@
     {
       "title": "Trade Promotion Management MCP Server",
       "subtitle": "AI-Powered Trade Promotion Manager for Claude Desktop",
-      "description": " An MCP (Model Context Protocol) server that connects FastAPI-powered trade promotion management service to Claude Desktop, showcasing AI integration through MCP, Python code, and Docker architecture.",
+      "description": "An MCP (Model Context Protocol) server that connects FastAPI-powered trade promotion management service to Claude Desktop, showcasing AI integration through MCP, Python code, and Docker architecture.",
       "url": "https://github.com/halprez/mcp-trade-position-mgmnt"
     },
     {

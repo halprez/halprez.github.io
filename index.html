@@ -13,11 +13,17 @@
         <div class="floating-shape shape-2"></div>
         <div class="floating-shape shape-3"></div>
     </div>
-    <div class="theme-switcher">
-        <button class="theme-button" data-theme="light" title="Modern light">Modern</button>
-        <button class="theme-button" data-theme="dark" title="Cyberpunk">Cyber</button>
-        <button class="theme-button" data-theme="retro" title="Windows 95">Win95</button>
-        <button class="theme-button" data-theme="system" title="Classic Mac">Classic</button>
+    <div class="top-bar">
+        <div class="lang-switcher">
+            <button class="lang-button active" data-lang="en">EN</button>
+            <button class="lang-button" data-lang="es">ES</button>
+        </div>
+        <div class="theme-switcher">
+            <button class="theme-button" data-theme="light" title="Modern light">Modern</button>
+            <button class="theme-button" data-theme="dark" title="Cyberpunk">Cyber</button>
+            <button class="theme-button" data-theme="retro" title="Windows 95">Win95</button>
+            <button class="theme-button" data-theme="system" title="Classic Mac">Classic</button>
+        </div>
     </div>
     <nav class="floating-menu">
         <ul class="menu-items">
@@ -26,7 +32,7 @@
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                     <circle cx="12" cy="7" r="4"></circle>
                 </svg>
-                <span class="menu-text">About</span>
+                <span class="menu-text" data-i18n="ui.about">About</span>
             </a></li>
             <li><a href="#experience" class="menu-link" data-section="experience">
                 <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -34,20 +40,20 @@
                     <line x1="8" y1="21" x2="16" y2="21"></line>
                     <line x1="12" y1="17" x2="12" y2="21"></line>
                 </svg>
-                <span class="menu-text">Experience</span>
+                <span class="menu-text" data-i18n="ui.experience">Experience</span>
             </a></li>
             <li><a href="#education" class="menu-link" data-section="education">
                 <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
                     <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
                 </svg>
-                <span class="menu-text">Education</span>
+                <span class="menu-text" data-i18n="ui.education">Education</span>
             </a></li>
             <li><a href="#projects" class="menu-link" data-section="projects">
                 <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
                 </svg>
-                <span class="menu-text">Side projects</span>
+                <span class="menu-text" data-i18n="ui.sideProjects">Side projects</span>
             </a>
                 <a href="#" class="menu-link menu-sublink" id="games-link">
                     <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -55,13 +61,14 @@
                         <circle cx="9" cy="12" r="2"></circle>
                         <path d="M15 10h2M16 9v2"></path>
                     </svg>
-                    <span class="menu-text">Arkanoid</span>
+                    <span class="menu-text" data-i18n="ui.arkanoid">Arkanoid</span>
                 </a>
             </li>
         </ul>
     </nav>
     <div class="container"></div>
     <div class="scroll-indicator"></div>
+    <script src="i18n.js"></script>
     <script src="arkanoid.js"></script>
     <script src="main.js"></script>
 </body>

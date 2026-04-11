@@ -44,7 +44,7 @@ class ArkanoidGame {
         if (!aboutWindow) return;
 
         const bioEl = aboutWindow.querySelector('.bio');
-        const bioText = bioEl ? bioEl.textContent : 'Arkanoid Game';
+        const bioText = bioEl ? bioEl.textContent : (i18n.t('ui.arkanoid') || 'Arkanoid');
         this.brickWords = bioText.split(/\s+/).filter(w => w.length > 0);
 
         // Hide all windows except the first (About)
@@ -60,7 +60,7 @@ class ArkanoidGame {
         // Replace window pane content with game canvas
         const pane = aboutWindow.querySelector('.window-pane');
         const titleBar = aboutWindow.querySelector('.title-bar .title');
-        if (titleBar) titleBar.textContent = 'Arkanoid';
+        if (titleBar) titleBar.textContent = i18n.t('ui.arkanoid') || 'Arkanoid';
 
         // Add exit button
         const closeBtn = aboutWindow.querySelector('.close');
@@ -72,8 +72,8 @@ class ArkanoidGame {
         pane.innerHTML = `
             <div class="arkanoid-container">
                 <div class="arkanoid-hud">
-                    <span class="arkanoid-score">Score: 0</span>
-                    <span class="arkanoid-lives">Lives: 3</span>
+                    <span class="arkanoid-score">${i18n.t('ui.score') || 'Score'}: 0</span>
+                    <span class="arkanoid-lives">${i18n.t('ui.lives') || 'Lives'}: 3</span>
                 </div>
                 <canvas id="arkanoid-canvas"></canvas>
             </div>
@@ -258,7 +258,7 @@ class ArkanoidGame {
         // Ball lost
         if (b.y - b.radius > ch) {
             this.lives--;
-            this.livesEl.textContent = `Lives: ${this.lives}`;
+            this.livesEl.textContent = `${i18n.t('ui.lives') || 'Lives'}: ${this.lives}`;
             if (this.lives <= 0) {
                 this.state = 'lost';
                 return;
@@ -279,7 +279,7 @@ class ArkanoidGame {
             ) {
                 brick.alive = false;
                 this.score += 10;
-                this.scoreEl.textContent = `Score: ${this.score}`;
+                this.scoreEl.textContent = `${i18n.t('ui.score') || 'Score'}: ${this.score}`;
 
                 // Determine bounce direction
                 const overlapLeft = b.x + b.radius - brick.x;
@@ -350,11 +350,11 @@ class ArkanoidGame {
             ctx.fillStyle = c.textMuted;
             ctx.font = '14px "Fira Code", monospace';
             ctx.textAlign = 'center';
-            ctx.fillText('Click or tap to launch', cw / 2, this.paddle.y - 40);
+            ctx.fillText(i18n.t('ui.clickToLaunch') || 'Click or tap to launch', cw / 2, this.paddle.y - 40);
         } else if (this.state === 'won') {
-            this.drawOverlay('You Win!', `Score: ${this.score}`);
+            this.drawOverlay(i18n.t('ui.youWin') || 'You Win!', `${i18n.t('ui.score') || 'Score'}: ${this.score}`);
         } else if (this.state === 'lost') {
-            this.drawOverlay('Game Over', `Score: ${this.score}`);
+            this.drawOverlay(i18n.t('ui.gameOver') || 'Game Over', `${i18n.t('ui.score') || 'Score'}: ${this.score}`);
         }
 
         this.update();
@@ -380,14 +380,14 @@ class ArkanoidGame {
         ctx.fillText(subtitle, cw / 2, ch / 2 + 15);
 
         ctx.font = '13px "Fira Code", monospace';
-        ctx.fillText('Click to play again', cw / 2, ch / 2 + 50);
+        ctx.fillText(i18n.t('ui.playAgain') || 'Click to play again', cw / 2, ch / 2 + 50);
     }
 
     restart() {
         this.score = 0;
         this.lives = 3;
-        this.scoreEl.textContent = 'Score: 0';
-        this.livesEl.textContent = 'Lives: 3';
+        this.scoreEl.textContent = `${i18n.t('ui.score') || 'Score'}: 0`;
+        this.livesEl.textContent = `${i18n.t('ui.lives') || 'Lives'}: 3`;
         this.colors = this.readThemeColors();
         this.buildBricks();
         this.resetBallAndPaddle();

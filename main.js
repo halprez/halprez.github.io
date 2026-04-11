@@ -7,41 +7,43 @@ class PersonalSite {
     async init() {
         try {
             this.showLoading();
-            const data = await this.loadData();
-            if (!data) {
-                this.showError();
-                return;
-            }
-            this.render(data);
+            await i18n.load(i18n.locale);
+            this.render(i18n.data);
             this.initEffects();
+
+            i18n.onChange((data) => {
+                this.render(data);
+                this.updateNavLabels();
+                this.initEffects();
+            });
         } catch (error) {
             console.error('Site initialization failed:', error);
             this.showError();
         }
     }
 
-    async loadData() {
-        try {
-            const response = await fetch('data/data.json');
-            return await response.json();
-        } catch (error) {
-            console.error('Failed to load data:', error);
-            return null;
-        }
-    }
-
     showLoading() {
-        this.container.innerHTML = '<div class="loading">Loading...</div>';
+        const text = i18n.t('ui.loading') || 'Loading...';
+        this.container.innerHTML = `<div class="loading">${text}</div>`;
     }
 
     showError() {
-        this.container.innerHTML = '<div class="loading">Error loading site</div>';
+        const text = i18n.t('ui.error') || 'Error loading site';
+        this.container.innerHTML = `<div class="loading">${text}</div>`;
+    }
+
+    updateNavLabels() {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.dataset.i18n;
+            const val = i18n.t(key);
+            if (val) el.textContent = val;
+        });
+        document.documentElement.lang = i18n.locale;
     }
 
     render(data) {
-  
         this.container.innerHTML = '';
-        
+
         if (data.personal && data.personal.name) {
             document.title = data.personal.name;
             this.container.insertAdjacentHTML('beforeend', this.renderPersonal(data.personal));
@@ -50,7 +52,7 @@ class PersonalSite {
         if (data.experience && data.experience.length > 0) {
             const experienceSection = {
                 id: 'experience',
-                title: 'Experience',
+                title: i18n.t('ui.experience'),
                 type: 'timeline',
                 items: data.experience
             };
@@ -59,17 +61,16 @@ class PersonalSite {
         if (data.education && data.education.length > 0) {
             const educationSection = {
                 id: 'education',
-                title: 'Education',
+                title: i18n.t('ui.education'),
                 type: 'timeline',
                 items: data.education
             };
             this.container.insertAdjacentHTML('beforeend', this.renderSection(educationSection));
-            
-            // Add skills section under education
+
             if (data.skills && data.skills.length > 0) {
                 const skillsSection = {
                     id: 'skills',
-                    title: 'Skills',
+                    title: i18n.t('ui.skills'),
                     type: 'tags',
                     items: data.skills
                 };
@@ -90,21 +91,24 @@ class PersonalSite {
         if (data.projects && data.projects.length > 0) {
             const projectsSection = {
                 id: 'projects',
-                title: 'Side projects',
+                title: i18n.t('ui.sideProjects'),
                 type: 'timeline',
                 items: data.projects
             };
             this.container.insertAdjacentHTML('beforeend', this.renderSection(projectsSection));
         }
+
+        this.updateNavLabels();
     }
 
     renderPersonal(personal) {
+        const t = (k) => i18n.t(k);
         return `
             <div class="window site-window">
                 <div class="title-bar">
-                    <button aria-label="Close" class="close"></button>
-                    <h1 class="title">About</h1>
-                    <button aria-label="Resize" class="resize"></button>
+                    <button aria-label="${t('ui.close')}" class="close"></button>
+                    <h1 class="title">${t('ui.about')}</h1>
+                    <button aria-label="${t('ui.resize')}" class="resize"></button>
                 </div>
                 <div class="separator"></div>
                 <div class="window-pane">
@@ -143,6 +147,7 @@ class PersonalSite {
     }
 
     renderTagsSection(section) {
+        const t = (k) => i18n.t(k);
         const tags = section.items.map(item => `<span class="tag">${item}</span>`).join('');
         const titleContent = section.link
             ? `<a href="#${section.link}" class="section-title-link">${section.title}</a>`
@@ -151,9 +156,9 @@ class PersonalSite {
         return `
             <div class="window site-window">
                 <div class="title-bar">
-                    <button aria-label="Close" class="close"></button>
+                    <button aria-label="${t('ui.close')}" class="close"></button>
                     <h1 class="title">${section.title}</h1>
-                    <button aria-label="Resize" class="resize"></button>
+                    <button aria-label="${t('ui.resize')}" class="resize"></button>
                 </div>
                 <div class="separator"></div>
                 <div class="window-pane">
@@ -167,6 +172,7 @@ class PersonalSite {
     }
 
     renderTimelineSection(section) {
+        const t = (k) => i18n.t(k);
         const items = section.items.map(item => `
             <a href="${item.url}" class="item-link">
                 <div class="item">
@@ -192,9 +198,9 @@ class PersonalSite {
         return `
             <div class="window site-window">
                 <div class="title-bar">
-                    <button aria-label="Close" class="close"></button>
+                    <button aria-label="${t('ui.close')}" class="close"></button>
                     <h1 class="title">${section.title}</h1>
-                    <button aria-label="Resize" class="resize"></button>
+                    <button aria-label="${t('ui.resize')}" class="resize"></button>
                 </div>
                 <div class="separator"></div>
                 <div class="window-pane">
@@ -219,13 +225,13 @@ class PersonalSite {
 
     initEffects() {
         this.initTyping();
-        // this.initCursor();
         this.initParallax();
         this.initScroll();
         this.initHover();
         this.initFloatingMenu();
         this.initDockAutoHide();
         this.initThemeSwitcher();
+        this.initLangSwitcher();
         this.initGames();
     }
 
@@ -289,19 +295,17 @@ class PersonalSite {
     initFloatingMenu() {
         const menuLinks = document.querySelectorAll('.menu-link');
         const sections = document.querySelectorAll('section[id]');
-        
-        // Smooth scroll for menu links
+
         menuLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetId = link.getAttribute('href').substring(1);
                 const targetSection = document.getElementById(targetId);
-                
+
                 if (targetSection) {
-                    // Calculate offset for mobile navigation
                     const isMobile = window.innerWidth <= 1024;
                     const offset = isMobile ? 100 : 50;
-                    
+
                     const elementPosition = targetSection.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -313,7 +317,6 @@ class PersonalSite {
             });
         });
 
-        // Intersection Observer for active section highlighting
         const isMobile = window.innerWidth <= 1024;
         const observerOptions = {
             root: null,
@@ -322,23 +325,19 @@ class PersonalSite {
         };
 
         const observer = new IntersectionObserver((entries) => {
-            // Find the section with highest intersection ratio
             let mostVisibleSection = null;
             let highestRatio = 0;
-            
+
             entries.forEach(entry => {
                 if (entry.isIntersecting && entry.intersectionRatio > highestRatio) {
                     mostVisibleSection = entry.target;
                     highestRatio = entry.intersectionRatio;
                 }
             });
-            
-            // Update active navigation only if we found a visible section
+
             if (mostVisibleSection) {
-                // Remove active class from all menu links
                 menuLinks.forEach(link => link.classList.remove('active'));
-                
-                // Add active class to most visible section's menu link
+
                 const targetLink = document.querySelector(`[data-section="${mostVisibleSection.id}"]`);
                 if (targetLink) {
                     targetLink.classList.add('active');
@@ -346,12 +345,10 @@ class PersonalSite {
             }
         }, observerOptions);
 
-        // Observe all sections
         sections.forEach(section => {
             observer.observe(section);
         });
 
-        // Set initial active state
         setTimeout(() => {
             const firstVisibleSection = document.querySelector('section[id]');
             if (firstVisibleSection) {
@@ -364,7 +361,6 @@ class PersonalSite {
     }
 
     initDockAutoHide() {
-        // Only apply auto-hide on desktop
         if (window.innerWidth <= 1024) return;
 
         const menu = document.querySelector('.floating-menu');
@@ -385,13 +381,12 @@ class PersonalSite {
             hideTimeout = setTimeout(() => {
                 menu.classList.remove('show');
                 isMenuVisible = false;
-            }, 1000); // Hide after 1 second
+            }, 1000);
         };
 
-        // Show menu when cursor is near the bottom
         document.addEventListener('mousemove', (e) => {
-            const bottomThreshold = window.innerHeight - 150; // Show when cursor is within 150px of bottom
-            
+            const bottomThreshold = window.innerHeight - 150;
+
             if (e.clientY > bottomThreshold) {
                 showMenu();
             } else {
@@ -399,18 +394,15 @@ class PersonalSite {
             }
         });
 
-        // Keep menu visible when hovering over it
         menu.addEventListener('mouseenter', () => {
             clearTimeout(hideTimeout);
             showMenu();
         });
 
-        // Hide menu when leaving it (with delay)
         menu.addEventListener('mouseleave', () => {
             hideMenu();
         });
 
-        // Handle window resize
         window.addEventListener('resize', () => {
             if (window.innerWidth <= 1024) {
                 menu.classList.remove('show');
@@ -445,6 +437,24 @@ class PersonalSite {
         document.body.setAttribute('data-theme', theme);
     }
 
+    initLangSwitcher() {
+        const langButtons = document.querySelectorAll('.lang-button');
+
+        langButtons.forEach(btn => {
+            if (btn.dataset.lang === i18n.locale) btn.classList.add('active');
+            else btn.classList.remove('active');
+
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                if (lang === i18n.locale) return;
+
+                langButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                i18n.load(lang);
+            });
+        });
+    }
+
     initGames() {
         const gamesLink = document.getElementById('games-link');
         if (!gamesLink) return;
@@ -455,7 +465,6 @@ class PersonalSite {
             this.game.start();
         });
 
-        // Re-init site when game exits
         document.addEventListener('arkanoid-exit', () => {
             this.initEffects();
         });
