@@ -603,7 +603,13 @@ class PersonalSite {
         font('normal', 7.5);
         const sep = () => { color(160, 160, 160); doc.text('  |  ', cx, y); cx += doc.getTextWidth('  |  '); };
 
-        // Website first
+        // Phone
+        color(60, 60, 60);
+        doc.text('+34 663 822 594', cx, y);
+        cx += doc.getTextWidth('+34 663 822 594');
+
+        // Website
+        sep();
         color(40, 80, 160);
         doc.textWithLink('Site', cx, y, { url: 'https://halprez.github.io' });
         cx += doc.getTextWidth('Site');
