@@ -479,11 +479,66 @@ class PersonalSite {
         if (!btn) return;
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            document.body.classList.add('printing');
-            window.print();
-            window.addEventListener('afterprint', () => {
-                document.body.classList.remove('printing');
-            }, { once: true });
+            this.generatePDF();
+        });
+    }
+
+    generatePDF() {
+        const container = this.container;
+        const name = i18n.t('personal.name') || 'CV';
+
+        const clone = document.createElement('div');
+        clone.style.cssText = 'position:absolute;top:0;left:0;width:700px;background:#fff;padding:1rem;z-index:10000;font-family:Helvetica Neue,Arial,sans-serif;font-size:10pt;line-height:1.5;color:#222;';
+        clone.innerHTML = container.innerHTML;
+
+        // Remove games section and download button
+        clone.querySelectorAll('#games, #btn-download-cv').forEach(el => {
+            const parent = el.closest('.site-window') || el.closest('.contact-link') || el;
+            parent.remove();
+        });
+
+        // Hide window chrome
+        clone.querySelectorAll('.title-bar, .separator').forEach(el => el.remove());
+
+        // Force all text visible with inline styles (beats any theme CSS)
+        clone.querySelectorAll('*').forEach(el => {
+            el.style.color = '#222';
+            el.style.webkitTextFillColor = '#222';
+            el.style.background = 'transparent';
+            el.style.boxShadow = 'none';
+            el.style.textShadow = 'none';
+            el.style.animation = 'none';
+            el.style.opacity = '1';
+            el.style.visibility = 'visible';
+        });
+
+        // Style specific elements
+        clone.style.background = '#fff';
+        clone.querySelectorAll('.site-window').forEach(el => { el.style.border = 'none'; el.style.marginBottom = '0.3rem'; });
+        clone.querySelectorAll('.window-pane').forEach(el => { el.style.padding = '0'; el.style.overflow = 'visible'; el.style.maxHeight = 'none'; });
+        clone.querySelectorAll('.section-title').forEach(el => { el.style.fontSize = '13pt'; el.style.fontWeight = '700'; el.style.borderBottom = '2px solid #222'; el.style.paddingBottom = '2px'; el.style.marginBottom = '6px'; el.style.textTransform = 'uppercase'; el.style.letterSpacing = '1px'; });
+        clone.querySelectorAll('.section-title::after, .section-title:after').forEach(el => el.remove());
+        clone.querySelectorAll('.item').forEach(el => { el.style.border = 'none'; el.style.borderLeft = '2px solid #ddd'; el.style.padding = '2px 0 2px 10px'; el.style.marginBottom = '4px'; el.style.borderRadius = '0'; });
+        clone.querySelectorAll('.tag').forEach(el => { el.style.border = '1px solid #ccc'; el.style.fontSize = '8pt'; el.style.padding = '1px 5px'; el.style.borderRadius = '2px'; el.style.color = '#555'; el.style.webkitTextFillColor = '#555'; });
+
+        const nameEl = clone.querySelector('.name');
+        if (nameEl) { nameEl.style.fontSize = '24pt'; nameEl.style.fontWeight = '700'; nameEl.style.backgroundClip = 'unset'; nameEl.style.webkitBackgroundClip = 'unset'; }
+
+        const roleEl = clone.querySelector('.role');
+        if (roleEl) { roleEl.style.fontSize = '11pt'; roleEl.style.color = '#555'; roleEl.style.webkitTextFillColor = '#555'; roleEl.style.textTransform = 'uppercase'; roleEl.style.letterSpacing = '0.5px'; }
+
+        document.body.appendChild(clone);
+        window.scrollTo(0, 0);
+
+        html2pdf().set({
+            margin: [10, 12, 10, 12],
+            filename: `${name.replace(/\s+/g, '_')}_CV.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff', scrollY: 0 },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+        }).from(clone).save().then(() => {
+            clone.remove();
         });
     }
 
