@@ -487,35 +487,35 @@ class PersonalSite {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF({ unit: 'mm', format: 'a4' });
         const data = i18n.data;
-        const W = 210, M = 15, CW = W - 2 * M; // A4 width, margin, content width
+        const W = 210, M = 15, CW = W - 2 * M;
+        const LH = 3.8; // line height in mm
         let y = M;
 
         const color = (r, g, b) => doc.setTextColor(r, g, b);
         const font = (style, size) => { doc.setFont('helvetica', style); doc.setFontSize(size); };
 
-        const text = (str, x, size, style = 'normal', rgb = [34, 34, 34]) => {
-            font(style, size);
-            color(...rgb);
-            doc.text(str, x, y);
-        };
-
-        const wrappedText = (str, x, maxW, size, style = 'normal', rgb = [68, 68, 68]) => {
-            font(style, size);
-            color(...rgb);
-            const lines = doc.splitTextToSize(str, maxW);
-            doc.text(lines, x, y);
-            y += lines.length * size * 0.45;
-        };
-
         const checkPage = (needed) => {
             if (y + needed > 282) { doc.addPage(); y = M; }
         };
 
+        const wrapped = (str, x, maxW, size, style = 'normal', rgb = [68, 68, 68]) => {
+            font(style, size);
+            color(...rgb);
+            const lines = doc.splitTextToSize(str, maxW);
+            doc.text(lines, x, y);
+            y += lines.length * LH;
+        };
+
+        const link = (label, url, x, size, style = 'normal', rgb = [40, 80, 160]) => {
+            font(style, size);
+            color(...rgb);
+            doc.textWithLink(label, x, y, { url });
+        };
+
         const sectionTitle = (title) => {
-            checkPage(15);
-            y += 4;
-            font('bold', 11);
-            color(34, 34, 34);
+            checkPage(14);
+            y += 5;
+            font('bold', 11); color(34, 34, 34);
             doc.text(title.toUpperCase(), M, y);
             y += 1.5;
             doc.setDrawColor(34, 34, 34);
@@ -525,21 +525,27 @@ class PersonalSite {
         };
 
         // --- Header ---
-        text(data.personal.name, M, 22, 'bold', [17, 17, 17]);
+        font('bold', 22); color(17, 17, 17);
+        doc.text(data.personal.name, M, y);
+        y += 6;
+        font('normal', 10); color(100, 100, 100);
+        doc.text(data.personal.title.toUpperCase(), M, y);
         y += 5;
-        text(data.personal.title.toUpperCase(), M, 10, 'normal', [100, 100, 100]);
-        y += 3;
 
-        // Contact line
-        const contactParts = [];
-        if (data.personal.email) contactParts.push(data.personal.email);
-        data.personal.contact?.forEach(c => { if (c.url && !c.url.startsWith('mailto')) contactParts.push(c.url); });
-        if (contactParts.length) {
-            font('normal', 7.5);
-            color(100, 100, 100);
-            doc.text(contactParts.join('  •  '), M, y);
-            y += 5;
-        }
+        // Contact line with links
+        let cx = M;
+        font('normal', 7.5);
+        data.personal.contact?.forEach((c, i) => {
+            if (i > 0) {
+                color(160, 160, 160);
+                doc.text('  |  ', cx, y);
+                cx += doc.getTextWidth('  |  ');
+            }
+            color(40, 80, 160);
+            doc.textWithLink(c.label, cx, y, { url: c.url });
+            cx += doc.getTextWidth(c.label);
+        });
+        y += 5;
 
         // Divider
         doc.setDrawColor(200, 200, 200);
@@ -548,7 +554,7 @@ class PersonalSite {
         y += 4;
 
         // --- Bio ---
-        wrappedText(data.personal.bio, M, CW, 9, 'normal', [60, 60, 60]);
+        wrapped(data.personal.bio, M, CW, 9, 'normal', [60, 60, 60]);
         y += 2;
 
         // --- Experience ---
@@ -556,30 +562,59 @@ class PersonalSite {
             sectionTitle(i18n.t('ui.experience'));
             data.experience.forEach(item => {
                 checkPage(25);
+
+                // Title
                 font('bold', 10); color(17, 17, 17);
                 doc.text(item.title, M, y);
+
+                // Duration (right-aligned)
                 if (item.duration) {
                     font('normal', 8); color(100, 100, 100);
                     doc.text(item.duration, M + CW - doc.getTextWidth(item.duration), y);
                 }
                 y += 4;
-                font('normal', 8.5); color(80, 80, 80);
-                doc.text(`${item.subtitle}  •  ${item.location}`, M, y);
-                y += 4;
-                if (item.description) { wrappedText(item.description, M, CW, 8.5, 'normal', [60, 60, 60]); y += 1; }
-                if (item.details) {
+
+                // Company as link + location
+                if (item.url) {
+                    link(item.subtitle, item.url, M, 8.5);
+                    const sw = doc.getTextWidth(item.subtitle);
+                    font('normal', 8.5); color(80, 80, 80);
+                    doc.text(`  •  ${item.location}`, M + sw, y);
+                } else {
+                    font('normal', 8.5); color(80, 80, 80);
+                    doc.text(`${item.subtitle}  •  ${item.location}`, M, y);
+                }
+                y += 5;
+
+                // Description
+                if (item.description) {
+                    wrapped(item.description, M, CW, 8.5, 'normal', [60, 60, 60]);
+                    y += 1;
+                }
+
+                // Details as proper bullet list
+                if (item.details?.length) {
                     item.details.forEach(d => {
-                        checkPage(8);
-                        wrappedText(`▸  ${d}`, M + 2, CW - 4, 8, 'normal', [70, 70, 70]);
-                        y += 0.5;
+                        checkPage(10);
+                        font('normal', 8); color(120, 120, 120);
+                        doc.text('•', M + 3, y);
+                        font('normal', 8); color(70, 70, 70);
+                        const lines = doc.splitTextToSize(d, CW - 10);
+                        doc.text(lines, M + 7, y);
+                        y += lines.length * LH + 0.5;
                     });
+                    y += 1;
                 }
+
+                // Tags
                 if (item.tags?.length) {
-                    font('normal', 7); color(120, 120, 120);
-                    doc.text(item.tags.join('  ·  '), M, y);
-                    y += 3;
+                    font('normal', 7); color(130, 130, 130);
+                    const tagsText = item.tags.join('   |   ');
+                    const tagLines = doc.splitTextToSize(tagsText, CW);
+                    doc.text(tagLines, M, y);
+                    y += tagLines.length * 3 + 1;
                 }
-                y += 2;
+                y += 3;
             });
         }
 
@@ -595,10 +630,17 @@ class PersonalSite {
                     doc.text(item.duration, M + CW - doc.getTextWidth(item.duration), y);
                 }
                 y += 4;
-                font('normal', 8.5); color(80, 80, 80);
-                doc.text(`${item.subtitle}  •  ${item.location}`, M, y);
+                if (item.url) {
+                    link(item.subtitle, item.url, M, 8.5);
+                    const sw = doc.getTextWidth(item.subtitle);
+                    font('normal', 8.5); color(80, 80, 80);
+                    doc.text(`  •  ${item.location}`, M + sw, y);
+                } else {
+                    font('normal', 8.5); color(80, 80, 80);
+                    doc.text(`${item.subtitle}  •  ${item.location}`, M, y);
+                }
                 y += 4;
-                if (item.description) { wrappedText(item.description, M, CW, 8.5, 'normal', [60, 60, 60]); }
+                if (item.description) { wrapped(item.description, M, CW, 8.5, 'normal', [60, 60, 60]); }
                 y += 4;
             });
         }
@@ -606,11 +648,11 @@ class PersonalSite {
         // --- Skills ---
         if (data.skills?.length) {
             sectionTitle(i18n.t('ui.skills'));
-            font('normal', 8); color(80, 80, 80);
-            const skillsText = data.skills.join('  ·  ');
+            font('normal', 8.5); color(60, 60, 60);
+            const skillsText = data.skills.join('   |   ');
             const skillLines = doc.splitTextToSize(skillsText, CW);
             doc.text(skillLines, M, y);
-            y += skillLines.length * 4 + 2;
+            y += skillLines.length * LH + 2;
         }
 
         // --- Projects ---
@@ -618,14 +660,20 @@ class PersonalSite {
             sectionTitle(i18n.t('ui.sideProjects'));
             data.projects.forEach(item => {
                 checkPage(15);
-                font('bold', 9.5); color(17, 17, 17);
-                doc.text(item.title, M, y);
-                y += 3.5;
-                font('italic', 8); color(100, 100, 100);
-                doc.text(item.subtitle || '', M, y);
-                y += 3.5;
-                if (item.description) { wrappedText(item.description, M, CW, 8, 'normal', [70, 70, 70]); }
-                y += 3;
+                if (item.url) {
+                    link(item.title, item.url, M, 9.5, 'bold');
+                } else {
+                    font('bold', 9.5); color(17, 17, 17);
+                    doc.text(item.title, M, y);
+                }
+                y += 4;
+                if (item.subtitle) {
+                    font('normal', 8); color(100, 100, 100);
+                    doc.text(item.subtitle, M, y);
+                    y += 3.5;
+                }
+                if (item.description) { wrapped(item.description, M, CW, 8, 'normal', [70, 70, 70]); }
+                y += 4;
             });
         }
 
