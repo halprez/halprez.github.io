@@ -138,6 +138,11 @@ class PersonalSite {
                             </div>
                             </a>
                             `).join('')}
+                            <a href="#" class="contact-link" id="btn-download-cv">
+                            <div class="contact-item">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z'/%3E%3C/svg%3E" alt="${t('ui.downloadCV')}" class="contact-icon" />
+                            </div>
+                            </a>
                         </div>
                         ` : ''}
                         </main>
@@ -246,6 +251,7 @@ class PersonalSite {
         this.initThemeSwitcher();
         this.initLangSwitcher();
         this.initGames();
+        this.initDownloadCV();
     }
 
     initTyping() {
@@ -465,6 +471,19 @@ class PersonalSite {
                 btn.classList.add('active');
                 i18n.load(lang);
             });
+        });
+    }
+
+    initDownloadCV() {
+        const btn = document.getElementById('btn-download-cv');
+        if (!btn) return;
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.body.classList.add('printing');
+            window.print();
+            window.addEventListener('afterprint', () => {
+                document.body.classList.remove('printing');
+            }, { once: true });
         });
     }
 

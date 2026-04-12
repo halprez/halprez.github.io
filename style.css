@@ -1880,3 +1880,61 @@ body[data-theme="system"] .floating-shape {
     .item { padding: 1rem; }
     .contact-link { max-width: 240px; padding: 0.7rem 1.2rem; font-size: 0.85rem; }
 }
+
+/* ============================================
+   Print styles — clean, professional CV
+   ============================================ */
+@media print {
+    * { color: #000 !important; background: #fff !important; box-shadow: none !important; text-shadow: none !important; }
+
+    body { font-family: 'Georgia', 'Times New Roman', serif; font-size: 11pt; line-height: 1.4; }
+
+    .floating-menu, .lang-switcher, .theme-switcher,
+    .background-elements, .scroll-indicator,
+    .title-bar, .separator,
+    #btn-download-cv { display: none !important; }
+
+    .container { max-width: 100%; padding: 0; margin: 0; min-height: auto; justify-content: flex-start; }
+    .site-window { border: none; box-shadow: none; margin-bottom: 0.5rem; }
+    .window-pane { padding: 0; }
+
+    .name {
+        font-size: 22pt !important;
+        -webkit-text-fill-color: #000 !important;
+        background: none !important;
+        margin-bottom: 0.2rem;
+    }
+
+    .role { font-size: 12pt; color: #444 !important; margin-bottom: 0.5rem; }
+    .bio { font-size: 10pt; text-align: justify; margin-bottom: 0.8rem; max-width: 100%; }
+
+    .section { margin: 0.5rem 0; page-break-inside: avoid; }
+    .section-title { font-size: 14pt; border-bottom: 1px solid #000; padding-bottom: 0.2rem; margin-bottom: 0.4rem; }
+    .section-title::after { display: none; }
+
+    .item { border: none; padding: 0.3rem 0; margin-bottom: 0.3rem; page-break-inside: avoid; }
+    .item:hover { background: #fff !important; transform: none; }
+    .item-link { text-decoration: none; color: #000; }
+    .item-title { font-size: 11pt; }
+    .item-subtitle { font-size: 10pt; color: #333 !important; }
+    .item-location { font-size: 9pt; }
+    .item-duration { font-size: 9pt; border: 1px solid #999; padding: 0.1rem 0.4rem; }
+    .item-description { font-size: 10pt; }
+    .item-details li { font-size: 9.5pt; }
+    .item-details li::before { color: #000 !important; }
+
+    .tag { border: 1px solid #999 !important; font-size: 8pt; padding: 0.1rem 0.4rem; border-radius: 3px; }
+    .tags .tag { font-size: 9pt; }
+
+    .contact-links { gap: 0.3rem; }
+    .contact-link { border: 1px solid #999; padding: 0.2rem 0.5rem; border-radius: 4px; }
+    .contact-icon { width: 14px; height: 14px; filter: none !important; }
+
+    .profile-image { border: 1px solid #ccc; }
+
+    header { animation: none; opacity: 1; }
+    main { animation: none; opacity: 1; }
+    .section { animation: none; opacity: 1; }
+
+    @page { margin: 1.5cm; size: A4; }
+}
