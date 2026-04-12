@@ -671,14 +671,22 @@ main {
 
 }
 
+/* Top Bar */
+.top-bar {
+    position: fixed;
+    top: 0.8rem;
+    left: 1rem;
+    right: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1001;
+}
+
 /* Language Switcher */
 .lang-switcher {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
     display: flex;
     gap: 0.15rem;
-    z-index: 1001;
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(12px);
     border-radius: 0.6rem;
@@ -712,12 +720,8 @@ main {
 
 /* Theme Switcher */
 .theme-switcher {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
     display: flex;
     gap: 0.25rem;
-    z-index: 1001;
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(12px);
     border-radius: 0.6rem;
@@ -752,9 +756,13 @@ main {
 }
 
 @media (max-width: 768px) {
-    .lang-switcher {
+    .top-bar {
         top: 0.5rem;
         left: 0.5rem;
+        right: 0.5rem;
+    }
+
+    .lang-switcher {
         padding: 0.15rem;
     }
 

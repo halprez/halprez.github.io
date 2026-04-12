@@ -605,8 +605,8 @@ class PersonalSite {
 
         // Website first
         color(40, 80, 160);
-        doc.textWithLink('halprez.github.io', cx, y, { url: 'https://halprez.github.io' });
-        cx += doc.getTextWidth('halprez.github.io');
+        doc.textWithLink('Site', cx, y, { url: 'https://halprez.github.io' });
+        cx += doc.getTextWidth('Site');
 
         data.personal.contact?.forEach(c => {
             sep();
