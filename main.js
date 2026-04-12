@@ -78,6 +78,40 @@ class PersonalSite {
             }
         }
 
+        if (data.softSkills && data.softSkills.length > 0) {
+            const softSkillsSection = {
+                id: 'softSkills',
+                title: i18n.t('ui.softSkills'),
+                type: 'tags',
+                items: data.softSkills
+            };
+            this.container.insertAdjacentHTML('beforeend', this.renderSection(softSkillsSection));
+        }
+
+        if (data.languages && data.languages.length > 0) {
+            const langSection = {
+                id: 'languages',
+                title: i18n.t('ui.languages'),
+                type: 'tags',
+                items: data.languages.map(l => `${l.name}: ${l.level}`)
+            };
+            this.container.insertAdjacentHTML('beforeend', this.renderSection(langSection));
+        }
+
+        if (data.certifications && data.certifications.length > 0) {
+            const certSection = {
+                id: 'certifications',
+                title: i18n.t('ui.certifications'),
+                type: 'tags',
+                items: data.certifications
+            };
+            this.container.insertAdjacentHTML('beforeend', this.renderSection(certSection));
+        }
+
+        if (data.publications && data.publications.length > 0) {
+            this.container.insertAdjacentHTML('beforeend', this.renderPublications(data.publications));
+        }
+
         if (data.thoughts && data.thoughts.length > 0) {
             const thoughtsSection = {
                 id: 'thoughts',
@@ -224,6 +258,34 @@ class PersonalSite {
                 <div class="window-pane">
                     <section class="section timeline" id="${section.id}">
                         <h2 class="section-title">${titleContent}</h2>
+                        <div class="section-content">${items}</div>
+                    </section>
+                </div>
+            </div>
+        `;
+    }
+
+    renderPublications(publications) {
+        const t = (k) => i18n.t(k);
+        const items = publications.map(pub => `
+            <div class="item publication">
+                <p class="item-description">${pub.text}</p>
+                <p class="item-subtitle"><em>${pub.source}</em>
+                ${pub.url ? ` — <a href="${pub.url}" target="_blank" class="pub-link">IATTC.org</a>` : ''}</p>
+            </div>
+        `).join('');
+
+        return `
+            <div class="window site-window">
+                <div class="title-bar">
+                    <button aria-label="${t('ui.close')}" class="close"></button>
+                    <h1 class="title">${t('ui.publications')}</h1>
+                    <button aria-label="${t('ui.resize')}" class="resize"></button>
+                </div>
+                <div class="separator"></div>
+                <div class="window-pane">
+                    <section class="section" id="publications">
+                        <h2 class="section-title">${t('ui.publications')}</h2>
                         <div class="section-content">${items}</div>
                     </section>
                 </div>
@@ -498,11 +560,15 @@ class PersonalSite {
             if (y + needed > 282) { doc.addPage(); y = M; }
         };
 
-        const wrapped = (str, x, maxW, size, style = 'normal', rgb = [68, 68, 68]) => {
+        const wrapped = (str, x, maxW, size, style = 'normal', rgb = [68, 68, 68], justify = false) => {
             font(style, size);
             color(...rgb);
             const lines = doc.splitTextToSize(str, maxW);
-            doc.text(lines, x, y);
+            if (justify) {
+                doc.text(lines, x, y, { maxWidth: maxW, align: 'justify' });
+            } else {
+                doc.text(lines, x, y);
+            }
             y += lines.length * LH;
         };
 
@@ -535,12 +601,15 @@ class PersonalSite {
         // Contact line with links
         let cx = M;
         font('normal', 7.5);
-        data.personal.contact?.forEach((c, i) => {
-            if (i > 0) {
-                color(160, 160, 160);
-                doc.text('  |  ', cx, y);
-                cx += doc.getTextWidth('  |  ');
-            }
+        const sep = () => { color(160, 160, 160); doc.text('  |  ', cx, y); cx += doc.getTextWidth('  |  '); };
+
+        // Website first
+        color(40, 80, 160);
+        doc.textWithLink('halprez.github.io', cx, y, { url: 'https://halprez.github.io' });
+        cx += doc.getTextWidth('halprez.github.io');
+
+        data.personal.contact?.forEach(c => {
+            sep();
             color(40, 80, 160);
             doc.textWithLink(c.label, cx, y, { url: c.url });
             cx += doc.getTextWidth(c.label);
@@ -554,7 +623,7 @@ class PersonalSite {
         y += 4;
 
         // --- Bio ---
-        wrapped(data.personal.bio, M, CW, 9, 'normal', [60, 60, 60]);
+        wrapped(data.personal.bio, M, CW, 9, 'normal', [60, 60, 60], true);
         y += 2;
 
         // --- Experience ---
@@ -653,6 +722,46 @@ class PersonalSite {
             const skillLines = doc.splitTextToSize(skillsText, CW);
             doc.text(skillLines, M, y);
             y += skillLines.length * LH + 2;
+        }
+
+        // --- Soft Skills ---
+        if (data.softSkills?.length) {
+            sectionTitle(i18n.t('ui.softSkills'));
+            font('normal', 8.5); color(60, 60, 60);
+            doc.text(data.softSkills.join('   |   '), M, y);
+            y += LH + 2;
+        }
+
+        // --- Languages ---
+        if (data.languages?.length) {
+            sectionTitle(i18n.t('ui.languages'));
+            font('normal', 8.5); color(60, 60, 60);
+            doc.text(data.languages.map(l => `${l.name}: ${l.level}`).join('   |   '), M, y);
+            y += LH + 2;
+        }
+
+        // --- Certifications ---
+        if (data.certifications?.length) {
+            sectionTitle(i18n.t('ui.certifications'));
+            font('normal', 8.5); color(60, 60, 60);
+            doc.text(data.certifications.join('   |   '), M, y);
+            y += LH + 2;
+        }
+
+        // --- Publications ---
+        if (data.publications?.length) {
+            sectionTitle(i18n.t('ui.publications'));
+            data.publications.forEach(pub => {
+                checkPage(15);
+                wrapped(pub.text, M, CW, 8, 'normal', [50, 50, 50]);
+                font('italic', 7.5); color(100, 100, 100);
+                doc.text(pub.source, M, y);
+                if (pub.url) {
+                    const sw = doc.getTextWidth(pub.source + '  ');
+                    link('View publication', pub.url, M + sw, 7.5, 'normal');
+                }
+                y += LH + 3;
+            });
         }
 
         // --- Projects ---

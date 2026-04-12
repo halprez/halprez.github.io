@@ -8,6 +8,10 @@
     "education": "Formaci\u00f3n",
     "skills": "Habilidades",
     "sideProjects": "Proyectos",
+    "softSkills": "Otras habilidades",
+    "languages": "Idiomas",
+    "certifications": "Certificaciones",
+    "publications": "Publicaciones",
     "games": "Juegos",
     "arkanoid": "Arkanoid",
     "score": "Puntos",
@@ -154,6 +158,32 @@
     "Comunicaci\u00f3n",
     "Colaboraci\u00f3n",
     "Aprendizaje continuo"
+  ],
+  "softSkills": [
+    "Curiosidad genuina",
+    "Liderazgo",
+    "Resoluci\u00f3n de problemas",
+    "Comunicaci\u00f3n"
+  ],
+  "languages": [
+    { "name": "Espa\u00f1ol", "level": "Nativo" },
+    { "name": "Ingl\u00e9s", "level": "Profesional" }
+  ],
+  "certifications": [
+    "AWS Certified Cloud Practitioner",
+    "AWS Certified AI Practitioner"
+  ],
+  "publications": [
+    {
+      "text": "Lennert-Cody, C.E., Maunder, M.N., Tomlinson, P.K., Aires-da-Silva, A., P\u00e9rez, A., McCracken, M. \"Poststratified Estimators of Total Catch for the Purse-Seine Fishery Port-Sampling Data.\"",
+      "source": "Inter-American Tropical Tuna Commission (2010)",
+      "url": "https://iattc.org/GetAttachment/59dd17fe-c85b-4c54-bc25-78c777be0af7/No-12-2012_Status-of-the-tuna-and-billfish-stocks-in-2010.pdf#page=179"
+    },
+    {
+      "text": "Lennert-Cody, C.E., Maunder, M.N., Tomlinson, P.K., Aires-da-Silva, A., P\u00e9rez, A. \"Progress Report on the Development of Poststratified Estimators of Total Catch for the Purse-Seine Fishery Port-Sampling Data.\"",
+      "source": "Inter-American Tropical Tuna Commission (2011)",
+      "url": "https://iattc.org/GetAttachment/d336c4e2-b84b-4d3e-8153-9d245e8bcd4b/No-13-2012_Status-of-the-tuna-and-billfish-stocks-in-2011.pdf#page=122"
+    }
   ],
   "projects": [
     {

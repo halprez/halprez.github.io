@@ -46,7 +46,7 @@ body {
 @media (max-width: 1024px) {
     .container {
         justify-content: flex-start;
-        padding-top: 3.5rem;
+        padding-top: 5.5rem;
         padding-bottom: 6rem;
     }
 }
@@ -304,6 +304,20 @@ main {
     line-height: 1.6;
     font-size: 1rem;
     text-align: justify;
+}
+
+.publication {
+    padding: 0.8rem 0;
+}
+
+.pub-link {
+    color: #4a90e2;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.pub-link:hover {
+    text-decoration: underline;
 }
 
 .item-details {
