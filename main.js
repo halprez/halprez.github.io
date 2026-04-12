@@ -484,62 +484,152 @@ class PersonalSite {
     }
 
     generatePDF() {
-        const container = this.container;
-        const name = i18n.t('personal.name') || 'CV';
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+        const data = i18n.data;
+        const W = 210, M = 15, CW = W - 2 * M; // A4 width, margin, content width
+        let y = M;
 
-        const clone = document.createElement('div');
-        clone.style.cssText = 'position:absolute;top:0;left:0;width:700px;background:#fff;padding:1rem;z-index:10000;font-family:Helvetica Neue,Arial,sans-serif;font-size:10pt;line-height:1.5;color:#222;';
-        clone.innerHTML = container.innerHTML;
+        const color = (r, g, b) => doc.setTextColor(r, g, b);
+        const font = (style, size) => { doc.setFont('helvetica', style); doc.setFontSize(size); };
 
-        // Remove games section and download button
-        clone.querySelectorAll('#games, #btn-download-cv').forEach(el => {
-            const parent = el.closest('.site-window') || el.closest('.contact-link') || el;
-            parent.remove();
-        });
+        const text = (str, x, size, style = 'normal', rgb = [34, 34, 34]) => {
+            font(style, size);
+            color(...rgb);
+            doc.text(str, x, y);
+        };
 
-        // Hide window chrome
-        clone.querySelectorAll('.title-bar, .separator').forEach(el => el.remove());
+        const wrappedText = (str, x, maxW, size, style = 'normal', rgb = [68, 68, 68]) => {
+            font(style, size);
+            color(...rgb);
+            const lines = doc.splitTextToSize(str, maxW);
+            doc.text(lines, x, y);
+            y += lines.length * size * 0.45;
+        };
 
-        // Force all text visible with inline styles (beats any theme CSS)
-        clone.querySelectorAll('*').forEach(el => {
-            el.style.color = '#222';
-            el.style.webkitTextFillColor = '#222';
-            el.style.background = 'transparent';
-            el.style.boxShadow = 'none';
-            el.style.textShadow = 'none';
-            el.style.animation = 'none';
-            el.style.opacity = '1';
-            el.style.visibility = 'visible';
-        });
+        const checkPage = (needed) => {
+            if (y + needed > 282) { doc.addPage(); y = M; }
+        };
 
-        // Style specific elements
-        clone.style.background = '#fff';
-        clone.querySelectorAll('.site-window').forEach(el => { el.style.border = 'none'; el.style.marginBottom = '0.3rem'; });
-        clone.querySelectorAll('.window-pane').forEach(el => { el.style.padding = '0'; el.style.overflow = 'visible'; el.style.maxHeight = 'none'; });
-        clone.querySelectorAll('.section-title').forEach(el => { el.style.fontSize = '13pt'; el.style.fontWeight = '700'; el.style.borderBottom = '2px solid #222'; el.style.paddingBottom = '2px'; el.style.marginBottom = '6px'; el.style.textTransform = 'uppercase'; el.style.letterSpacing = '1px'; });
-        clone.querySelectorAll('.section-title::after, .section-title:after').forEach(el => el.remove());
-        clone.querySelectorAll('.item').forEach(el => { el.style.border = 'none'; el.style.borderLeft = '2px solid #ddd'; el.style.padding = '2px 0 2px 10px'; el.style.marginBottom = '4px'; el.style.borderRadius = '0'; });
-        clone.querySelectorAll('.tag').forEach(el => { el.style.border = '1px solid #ccc'; el.style.fontSize = '8pt'; el.style.padding = '1px 5px'; el.style.borderRadius = '2px'; el.style.color = '#555'; el.style.webkitTextFillColor = '#555'; });
+        const sectionTitle = (title) => {
+            checkPage(15);
+            y += 4;
+            font('bold', 11);
+            color(34, 34, 34);
+            doc.text(title.toUpperCase(), M, y);
+            y += 1.5;
+            doc.setDrawColor(34, 34, 34);
+            doc.setLineWidth(0.4);
+            doc.line(M, y, M + CW, y);
+            y += 5;
+        };
 
-        const nameEl = clone.querySelector('.name');
-        if (nameEl) { nameEl.style.fontSize = '24pt'; nameEl.style.fontWeight = '700'; nameEl.style.backgroundClip = 'unset'; nameEl.style.webkitBackgroundClip = 'unset'; }
+        // --- Header ---
+        text(data.personal.name, M, 22, 'bold', [17, 17, 17]);
+        y += 5;
+        text(data.personal.title.toUpperCase(), M, 10, 'normal', [100, 100, 100]);
+        y += 3;
 
-        const roleEl = clone.querySelector('.role');
-        if (roleEl) { roleEl.style.fontSize = '11pt'; roleEl.style.color = '#555'; roleEl.style.webkitTextFillColor = '#555'; roleEl.style.textTransform = 'uppercase'; roleEl.style.letterSpacing = '0.5px'; }
+        // Contact line
+        const contactParts = [];
+        if (data.personal.email) contactParts.push(data.personal.email);
+        data.personal.contact?.forEach(c => { if (c.url && !c.url.startsWith('mailto')) contactParts.push(c.url); });
+        if (contactParts.length) {
+            font('normal', 7.5);
+            color(100, 100, 100);
+            doc.text(contactParts.join('  •  '), M, y);
+            y += 5;
+        }
 
-        document.body.appendChild(clone);
-        window.scrollTo(0, 0);
+        // Divider
+        doc.setDrawColor(200, 200, 200);
+        doc.setLineWidth(0.2);
+        doc.line(M, y, M + CW, y);
+        y += 4;
 
-        html2pdf().set({
-            margin: [10, 12, 10, 12],
-            filename: `${name.replace(/\s+/g, '_')}_CV.pdf`,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff', scrollY: 0 },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
-        }).from(clone).save().then(() => {
-            clone.remove();
-        });
+        // --- Bio ---
+        wrappedText(data.personal.bio, M, CW, 9, 'normal', [60, 60, 60]);
+        y += 2;
+
+        // --- Experience ---
+        if (data.experience?.length) {
+            sectionTitle(i18n.t('ui.experience'));
+            data.experience.forEach(item => {
+                checkPage(25);
+                font('bold', 10); color(17, 17, 17);
+                doc.text(item.title, M, y);
+                if (item.duration) {
+                    font('normal', 8); color(100, 100, 100);
+                    doc.text(item.duration, M + CW - doc.getTextWidth(item.duration), y);
+                }
+                y += 4;
+                font('normal', 8.5); color(80, 80, 80);
+                doc.text(`${item.subtitle}  •  ${item.location}`, M, y);
+                y += 4;
+                if (item.description) { wrappedText(item.description, M, CW, 8.5, 'normal', [60, 60, 60]); y += 1; }
+                if (item.details) {
+                    item.details.forEach(d => {
+                        checkPage(8);
+                        wrappedText(`▸  ${d}`, M + 2, CW - 4, 8, 'normal', [70, 70, 70]);
+                        y += 0.5;
+                    });
+                }
+                if (item.tags?.length) {
+                    font('normal', 7); color(120, 120, 120);
+                    doc.text(item.tags.join('  ·  '), M, y);
+                    y += 3;
+                }
+                y += 2;
+            });
+        }
+
+        // --- Education ---
+        if (data.education?.length) {
+            sectionTitle(i18n.t('ui.education'));
+            data.education.forEach(item => {
+                checkPage(18);
+                font('bold', 10); color(17, 17, 17);
+                doc.text(item.title, M, y);
+                if (item.duration) {
+                    font('normal', 8); color(100, 100, 100);
+                    doc.text(item.duration, M + CW - doc.getTextWidth(item.duration), y);
+                }
+                y += 4;
+                font('normal', 8.5); color(80, 80, 80);
+                doc.text(`${item.subtitle}  •  ${item.location}`, M, y);
+                y += 4;
+                if (item.description) { wrappedText(item.description, M, CW, 8.5, 'normal', [60, 60, 60]); }
+                y += 4;
+            });
+        }
+
+        // --- Skills ---
+        if (data.skills?.length) {
+            sectionTitle(i18n.t('ui.skills'));
+            font('normal', 8); color(80, 80, 80);
+            const skillsText = data.skills.join('  ·  ');
+            const skillLines = doc.splitTextToSize(skillsText, CW);
+            doc.text(skillLines, M, y);
+            y += skillLines.length * 4 + 2;
+        }
+
+        // --- Projects ---
+        if (data.projects?.length) {
+            sectionTitle(i18n.t('ui.sideProjects'));
+            data.projects.forEach(item => {
+                checkPage(15);
+                font('bold', 9.5); color(17, 17, 17);
+                doc.text(item.title, M, y);
+                y += 3.5;
+                font('italic', 8); color(100, 100, 100);
+                doc.text(item.subtitle || '', M, y);
+                y += 3.5;
+                if (item.description) { wrappedText(item.description, M, CW, 8, 'normal', [70, 70, 70]); }
+                y += 3;
+            });
+        }
+
+        doc.save(`${data.personal.name.replace(/\s+/g, '_')}_CV.pdf`);
     }
 
     initGames() {
