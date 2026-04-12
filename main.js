@@ -605,8 +605,8 @@ class PersonalSite {
 
         // Phone
         color(60, 60, 60);
-        doc.text('+34 663 822 594', cx, y);
-        cx += doc.getTextWidth('+34 663 822 594');
+        doc.text('Phone: +34 663 822 594', cx, y);
+        cx += doc.getTextWidth('Phone: +34 663 822 594');
 
         // Website
         sep();
