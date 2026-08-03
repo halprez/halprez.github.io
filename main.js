@@ -164,6 +164,7 @@ class PersonalSite {
                         <main>
                         <p class="bio">${personal.bio}</p>
                         ${personal.contact ? `
+                        <h2 class="contact-title">${t('ui.contact')}</h2>
                         <div class="contact-links">
                             ${personal.contact.map(item => `
                             <a href="${item.url}" class="contact-link" ${item.url ? 'target="_blank"' : ''}>
@@ -304,73 +305,12 @@ class PersonalSite {
     }
 
     initEffects() {
-        this.initTyping();
-        this.initParallax();
-        this.initScroll();
-        this.initHover();
         this.initFloatingMenu();
         this.initDockAutoHide();
         this.initThemeSwitcher();
         this.initLangSwitcher();
         this.initGames();
         this.initDownloadCV();
-    }
-
-    initTyping() {
-        setTimeout(() => {
-            const nameEl = document.querySelector('.name');
-            if (!nameEl) return;
-
-            const text = nameEl.textContent;
-            nameEl.textContent = '';
-
-            let i = 0;
-            const type = () => {
-                if (i < text.length) {
-                    nameEl.textContent += text.charAt(i++);
-                    setTimeout(type, 100);
-                }
-            };
-            type();
-        }, 1000);
-    }
-
-    initParallax() {
-        document.addEventListener('mousemove', (e) => {
-            const shapes = document.querySelectorAll('.floating-shape');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-
-            shapes.forEach((shape, i) => {
-                const speed = (i + 1) * 0.5;
-                const xOffset = (x - 0.5) * speed * 20;
-                const yOffset = (y - 0.5) * speed * 20;
-                shape.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
-            });
-        });
-    }
-
-    initScroll() {
-        const indicator = document.querySelector('.scroll-indicator');
-        if (!indicator) return;
-
-        window.addEventListener('scroll', () => {
-            const percent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-            indicator.style.opacity = percent > 0.1 ? '0' : '0.6';
-        });
-    }
-
-    initHover() {
-        setTimeout(() => {
-            document.querySelectorAll('.tag, .contact-link').forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    el.style.transform = 'translateY(-3px) scale(1.02)';
-                });
-                el.addEventListener('mouseleave', () => {
-                    el.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-        }, 200);
     }
 
     initFloatingMenu() {
@@ -493,25 +433,10 @@ class PersonalSite {
     }
 
     initThemeSwitcher() {
-        const themeButtons = document.querySelectorAll('.theme-button');
-        const validThemes = ['light', 'dark', 'retro', 'system'];
-
-        let savedTheme = localStorage.getItem('selectedTheme') || 'light';
-        if (!validThemes.includes(savedTheme)) savedTheme = 'light';
-
-        this.setTheme(savedTheme);
-
-        themeButtons.forEach(button => {
-            const theme = button.dataset.theme;
-            if (theme === savedTheme) button.classList.add('active');
-
-            button.addEventListener('click', () => {
-                themeButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                this.setTheme(theme);
-                localStorage.setItem('selectedTheme', theme);
-            });
-        });
+        // Single minimalist theme. The legacy switcher markup is kept but
+        // hidden via CSS; 'autarqui' is forced so stale saved themes don't resurface.
+        this.setTheme('autarqui');
+        localStorage.setItem('selectedTheme', 'autarqui');
     }
 
     setTheme(theme) {
@@ -617,8 +542,9 @@ class PersonalSite {
         data.personal.contact?.forEach(c => {
             sep();
             color(40, 80, 160);
-            doc.textWithLink(c.label, cx, y, { url: c.url });
-            cx += doc.getTextWidth(c.label);
+            const label = c.url && c.url.startsWith('mailto:') ? c.url.slice('mailto:'.length) : c.label;
+            doc.textWithLink(label, cx, y, { url: c.url });
+            cx += doc.getTextWidth(label);
         });
         y += 5;
 

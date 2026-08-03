@@ -21,6 +21,7 @@
     "gameOver": "Game Over",
     "playAgain": "Click to play again",
     "downloadCV": "Download CV",
+    "contact": "Contact",
     "close": "Close",
     "resize": "Resize"
   },
@@ -51,10 +52,29 @@
         "label": "X",
         "url": "https://x.com/halprez",
         "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/%3E%3C/svg%3E"
+      },
+      {
+        "label": "Journal",
+        "url": "https://autarqui.co/journal",
+        "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v7l-2.5-1.5L6 11V4z'/%3E%3C/svg%3E"
       }
     ]
   },
   "experience": [
+    {
+      "title": "Founder",
+      "subtitle": "autarqui.co",
+      "url": "https://autarqui.co",
+      "location": "Santa Cruz de Tenerife, Spain",
+      "duration": "10/2025 - Present",
+      "description": "Building agentic software for businesses:",
+      "tags": ["Agentic AI", "Integrations", "Automation", "LLMs", "APIs"],
+      "details": [
+        "Reservit.co — agentic customer management system.",
+        "Delta — conversational BI.",
+        "Sigma — AI-assisted tax and labor advisor."
+      ]
+    },
     {
       "title": "Technical Leader",
       "subtitle": "XalDigital.com",

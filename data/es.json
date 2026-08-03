@@ -21,6 +21,7 @@
     "gameOver": "Fin del juego",
     "playAgain": "Haz clic para jugar de nuevo",
     "downloadCV": "Descargar CV",
+    "contact": "Contacto",
     "close": "Cerrar",
     "resize": "Redimensionar"
   },
@@ -51,10 +52,29 @@
         "label": "X",
         "url": "https://x.com/halprez",
         "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/%3E%3C/svg%3E"
+      },
+      {
+        "label": "Reflexiones",
+        "url": "https://autarqui.co/journal",
+        "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v7l-2.5-1.5L6 11V4z'/%3E%3C/svg%3E"
       }
     ]
   },
   "experience": [
+    {
+      "title": "Fundador",
+      "subtitle": "autarqui.co",
+      "url": "https://autarqui.co",
+      "location": "Santa Cruz de Tenerife, Espa\u00f1a",
+      "duration": "10/2025 - Actualidad",
+      "description": "Construyendo software ag\u00e9ntico para empresas:",
+      "tags": ["IA Ag\u00e9ntica", "Integraciones", "Automatizaci\u00f3n", "LLMs", "APIs"],
+      "details": [
+        "Reservit.co \u2014 sistema de gesti\u00f3n de clientes ag\u00e9ntico.",
+        "Delta \u2014 BI conversacional.",
+        "Sigma \u2014 Asesor fiscal y laboral asistido por IA."
+      ]
+    },
     {
       "title": "L\u00edder T\u00e9cnico",
       "subtitle": "XalDigital.com",

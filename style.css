@@ -1903,3 +1903,375 @@ body[data-theme="system"] .floating-shape {
     .contact-link { max-width: 240px; padding: 0.7rem 1.2rem; font-size: 0.85rem; }
 }
 
+/* =========================================================
+   AUTARQUI — minimalist editorial theme (autarqui.co dossier)
+   Single active theme. Flat, hairline-ruled, Lora + Poppins.
+   All rules scoped under body[data-theme="autarqui"].
+   ========================================================= */
+body[data-theme="autarqui"] {
+    --color-bg: #ffffff;
+    --color-text: #1a1a1a;
+    --color-heading: #000000;
+    --color-muted: #6e6e6e;
+    --color-faint: #9a9a9a;
+    --color-rule: #d4d4d4;
+    --color-rule-soft: #ebebeb;
+    --color-surface: #fafafa;
+
+    --font-display: 'Lora', Georgia, 'Times New Roman', serif;
+    --font-body: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+
+    --track-wide: 0.08em;
+    --track-extra: 0.18em;
+
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+}
+
+/* --- Layout: left-aligned editorial column, section counter --- */
+body[data-theme="autarqui"] .container {
+    max-width: 760px;
+    justify-content: flex-start;
+    padding-top: 5rem;
+}
+
+/* Kill decoration & entrance animations */
+body[data-theme="autarqui"] .background-elements,
+body[data-theme="autarqui"] .floating-shape,
+body[data-theme="autarqui"] .scroll-indicator { display: none; }
+
+body[data-theme="autarqui"] header,
+body[data-theme="autarqui"] main,
+body[data-theme="autarqui"] .section {
+    opacity: 1;
+    animation: none;
+}
+
+/* --- Hero --- */
+body[data-theme="autarqui"] header {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+body[data-theme="autarqui"] .name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--color-heading);
+    /* undo the gradient-clipped text of the base theme */
+    background: none;
+    -webkit-text-fill-color: var(--color-heading);
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    margin-bottom: 0.6rem;
+}
+
+body[data-theme="autarqui"] .role {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: var(--track-extra);
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+
+body[data-theme="autarqui"] .bio {
+    font-family: var(--font-body);
+    font-weight: 350;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    text-align: justify;
+    max-width: none;
+    margin: 1.5rem 0 0;
+}
+
+body[data-theme="autarqui"] em { font-style: italic; }
+body[data-theme="autarqui"] strong { font-weight: 600; color: var(--color-heading); }
+
+/* --- Sections: hairline-separated blocks --- */
+body[data-theme="autarqui"] .container > .site-window {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--color-rule-soft);
+}
+body[data-theme="autarqui"] .container > .site-window:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+body[data-theme="autarqui"] .section { margin: 0; }
+
+body[data-theme="autarqui"] .section-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.55rem;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--color-heading);
+    text-align: left;
+    margin-bottom: 1.75rem;
+}
+body[data-theme="autarqui"] .section-title::after { display: none; }
+
+body[data-theme="autarqui"] .section-title-link {
+    color: var(--color-heading);
+    transition: color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+body[data-theme="autarqui"] .section-title-link:hover {
+    color: var(--color-muted);
+    transform: none;
+}
+body[data-theme="autarqui"] .section-title-link::before,
+body[data-theme="autarqui"] .section-title-link:hover::before { content: none; }
+
+/* Left-align content; timeline as hairline-separated list */
+body[data-theme="autarqui"] .section-content { justify-content: flex-start; }
+body[data-theme="autarqui"] .timeline .section-content { gap: 0; }
+
+/* --- Items --- */
+body[data-theme="autarqui"] .item {
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--color-rule-soft);
+}
+body[data-theme="autarqui"] .timeline .section-content > .item-link:first-child .item {
+    border-top: none;
+    padding-top: 0;
+}
+body[data-theme="autarqui"] .item:hover {
+    background: none;
+    border-color: var(--color-rule-soft);
+    box-shadow: none;
+    transform: none;
+}
+
+body[data-theme="autarqui"] .item-title {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-heading);
+}
+body[data-theme="autarqui"] .item-subtitle {
+    color: var(--color-text);
+    font-weight: 500;
+}
+body[data-theme="autarqui"] .item-link:hover .item-subtitle { text-decoration: underline; }
+body[data-theme="autarqui"] .item-location { color: var(--color-faint); }
+body[data-theme="autarqui"] .item-duration {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: var(--track-wide);
+    text-transform: uppercase;
+    color: var(--color-faint);
+}
+body[data-theme="autarqui"] .item-description {
+    color: var(--color-text);
+    font-weight: 350;
+    line-height: 1.65;
+    text-align: justify;
+}
+body[data-theme="autarqui"] .item-details {
+    border-top: 1px solid var(--color-rule-soft);
+}
+body[data-theme="autarqui"] .item-details li {
+    color: var(--color-text);
+    text-align: justify;
+    padding-left: 1.1rem;
+}
+body[data-theme="autarqui"] .item-details li::before {
+    content: '·';
+    color: var(--color-muted);
+    font-weight: 700;
+    left: 0.1rem;
+}
+
+/* Publications */
+body[data-theme="autarqui"] .publication .item-subtitle em { color: var(--color-muted); }
+body[data-theme="autarqui"] .pub-link { color: var(--color-text); text-decoration: underline; }
+
+/* --- Tags: squared hairline chips --- */
+body[data-theme="autarqui"] .tag,
+body[data-theme="autarqui"] .tags .tag {
+    background: var(--color-surface);
+    border: 1px solid var(--color-rule);
+    border-radius: 2px;
+    color: var(--color-muted);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: var(--track-wide);
+    text-transform: uppercase;
+    padding: 0.4rem 0.7rem;
+    transition: border-color 150ms cubic-bezier(0.2, 0, 0, 1),
+                color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+body[data-theme="autarqui"] .tag:hover {
+    background: var(--color-surface);
+    border-color: var(--color-heading);
+    color: var(--color-heading);
+    transform: none;
+}
+
+/* --- Contact: centered title + hairline chips --- */
+body[data-theme="autarqui"] .contact-title {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: var(--track-extra);
+    text-transform: uppercase;
+    color: var(--color-muted);
+    text-align: center;
+    margin: 2.5rem 0 1.25rem;
+}
+body[data-theme="autarqui"] .contact-links { justify-content: center; gap: 1.25rem; }
+body[data-theme="autarqui"] .contact-link {
+    background: none;
+    border: none;
+    border-radius: 0;
+    color: var(--color-text);
+    padding: 0.4rem;
+    opacity: 0.85;
+    transition: opacity 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+body[data-theme="autarqui"] .contact-link:hover {
+    opacity: 1;
+    background: none;
+    box-shadow: none;
+    transform: none;
+}
+body[data-theme="autarqui"] .contact-icon { width: 20px; height: 20px; }
+
+/* --- Navigation dock (desktop) --- */
+@media (min-width: 1025px) {
+    body[data-theme="autarqui"] .floating-menu {
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--color-rule);
+        border-radius: 8px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        padding: 0.5rem 0.75rem;
+    }
+    body[data-theme="autarqui"] .menu-link {
+        font-family: var(--font-body);
+        font-weight: 500;
+        color: var(--color-muted);
+        border-radius: 6px;
+        transition: color 150ms cubic-bezier(0.2, 0, 0, 1),
+                    background 150ms cubic-bezier(0.2, 0, 0, 1);
+    }
+    body[data-theme="autarqui"] .menu-link:hover {
+        color: var(--color-heading);
+        background: var(--color-surface);
+        transform: none;
+    }
+    body[data-theme="autarqui"] .menu-link:hover .menu-icon { transform: none; }
+    body[data-theme="autarqui"] .menu-link.active {
+        color: var(--color-heading);
+        background: var(--color-surface);
+        font-weight: 600;
+        transform: none;
+    }
+    body[data-theme="autarqui"] .menu-link.active::before {
+        background: var(--color-heading);
+        box-shadow: none;
+    }
+}
+
+/* --- Navigation (mobile bottom bar) --- */
+@media (max-width: 1024px) {
+    body[data-theme="autarqui"] .floating-menu {
+        background: rgba(255, 255, 255, 0.98);
+        border-top: 1px solid var(--color-rule);
+        box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.04);
+    }
+    body[data-theme="autarqui"] .menu-link {
+        font-family: var(--font-body);
+        color: var(--color-muted);
+        transition: color 150ms cubic-bezier(0.2, 0, 0, 1);
+    }
+    body[data-theme="autarqui"] .menu-link:hover,
+    body[data-theme="autarqui"] .menu-link.active {
+        color: var(--color-heading);
+        background: var(--color-surface);
+        transform: none;
+    }
+    body[data-theme="autarqui"] .menu-link.active::before {
+        background: var(--color-heading);
+        box-shadow: none;
+    }
+}
+
+/* --- Top bar: language switcher minimal; hide theme switcher --- */
+body[data-theme="autarqui"] .theme-switcher { display: none; }
+
+body[data-theme="autarqui"] .lang-switcher {
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid var(--color-rule);
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(8px);
+}
+body[data-theme="autarqui"] .lang-button {
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--color-muted);
+    border-radius: 4px;
+}
+body[data-theme="autarqui"] .lang-button:hover {
+    background: var(--color-surface);
+    color: var(--color-heading);
+}
+body[data-theme="autarqui"] .lang-button.active {
+    background: var(--color-heading);
+    color: #fff;
+}
+
+body[data-theme="autarqui"] .loading { color: var(--color-muted); }
+
+/* --- Minimalist scrollbar (viewport lives on <html>; use literal cold neutrals) --- */
+html:has(body[data-theme="autarqui"]) {
+    scrollbar-width: thin;
+    scrollbar-color: #d4d4d4 transparent;
+}
+html:has(body[data-theme="autarqui"])::-webkit-scrollbar,
+body[data-theme="autarqui"] ::-webkit-scrollbar { width: 10px; height: 10px; }
+html:has(body[data-theme="autarqui"])::-webkit-scrollbar-track,
+body[data-theme="autarqui"] ::-webkit-scrollbar-track { background: transparent; }
+html:has(body[data-theme="autarqui"])::-webkit-scrollbar-thumb,
+body[data-theme="autarqui"] ::-webkit-scrollbar-thumb {
+    background: #d4d4d4;
+    border-radius: 8px;
+    border: 3px solid #ffffff;
+    background-clip: padding-box;
+}
+html:has(body[data-theme="autarqui"])::-webkit-scrollbar-thumb:hover,
+body[data-theme="autarqui"] ::-webkit-scrollbar-thumb:hover { background: #9a9a9a; }
+
+/* --- Responsive tuning --- */
+@media (max-width: 1024px) {
+    body[data-theme="autarqui"] .container { padding-top: 3rem; }
+    body[data-theme="autarqui"] .container > .site-window {
+        margin-top: 2.25rem;
+        padding-top: 2.25rem;
+    }
+    body[data-theme="autarqui"] .section-title { font-size: 1.35rem; margin-bottom: 1.25rem; }
+    body[data-theme="autarqui"] .item { padding: 1.25rem 0; }
+    body[data-theme="autarqui"] .bio { font-size: 1rem; }
+}
+
