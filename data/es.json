@@ -133,7 +133,7 @@
       "subtitle": "IEO - Instituto Espa\u00f1ol de Oceanograf\u00eda",
       "url": "https://www.ieo.es/",
       "location": "Santa Cruz de Tenerife, Espa\u00f1a",
-      "duration": "2023 - 2007",
+      "duration": "2003 - 2007",
       "description": "Gestion\u00e9 la infraestructura inform\u00e1tica y proporcion\u00e9 soporte t\u00e9cnico para las operaciones de investigaci\u00f3n del IEO.",
       "tags": ["Windows Server", "Active Directory", "Administraci\u00f3n de redes", "Soporte t\u00e9cnico", "Configuraci\u00f3n y gesti\u00f3n de firewalls"],
       "details": [
@@ -164,7 +164,12 @@
   ],
   "skills": [
     "Python",
+    "TypeScript",
+    "React",
+    "Node.js",
     "Sistemas Distribuidos",
+    "REST APIs",
+    "WebSockets",
     "AI/ML",
     "MCP",
     "IoT",
@@ -176,7 +181,6 @@
     "Liderazgo de equipo",
     "Resoluci\u00f3n de problemas",
     "Comunicaci\u00f3n",
-    "Colaboraci\u00f3n",
     "Aprendizaje continuo"
   ],
   "softSkills": [
@@ -221,7 +225,7 @@
     {
       "title": "Herramientas de exploraci\u00f3n de datos at\u00faneros",
       "subtitle": "Datos de captura y esfuerzo y datos geoespaciales de cerco",
-      "description": "Proyecto de exploraci\u00f3n y an\u00e1lisis de datos pesqueros, utilizando Python para la compilaci\u00f3n de datos y un frontend basado en JS, CSS y HTML",
+      "description": "Proyecto de exploraci\u00f3n y an\u00e1lisis de datos pesqueros, utilizando Python para la compilaci\u00f3n y el procesamiento de datos, con un ligero frontend en navegador para la exploraci\u00f3n geoespacial.",
       "url": "https://alexperez.me/IATTC-sample/"
     },
     {
@@ -233,7 +237,8 @@
     {
       "title": "Predictor de Tr\u00e1fico Mar\u00edtimo de Canarias",
       "subtitle": "Predicciones de retrasos de ferris en tiempo real con ML en el navegador",
-      "description": "Aplicaci\u00f3n web est\u00e1tica que rastrea y predice retrasos del tr\u00e1fico mar\u00edtimo en rutas de ferris interinsulares en Canarias. Utiliza datos AIS de buques en vivo, condiciones meteorol\u00f3gicas y un modelo XGBoost en navegador (ONNX Runtime) con 1,7 minutos de MAE. Incluye mapa interactivo con 13 puertos, panel de an\u00e1lisis e interfaz biling\u00fce EN/ES.",
+      "description": "Aplicaci\u00f3n full-stack en <strong>React 19 + TypeScript</strong> que predice retrasos de ferris interinsulares en Canarias. Ejecuta un modelo XGBoost en el cliente mediante ONNX Runtime Web (1,7 min de MAE), transmite posiciones AIS de buques en vivo por WebSocket con reconexi\u00f3n resiliente, y sirve el feed a trav\u00e9s de un Cloudflare Worker en el edge. Mapa interactivo MapLibre con 13 puertos, panel de an\u00e1lisis, cach\u00e9 en IndexedDB e interfaz biling\u00fce EN/ES.",
+      "tags": ["React", "TypeScript", "Vite", "Tailwind", "WebSockets", "ONNX Runtime", "Cloudflare Workers"],
       "url": "https://github.com/halprez/canary-islands-maritime-traffic-analytics"
     }
   ],

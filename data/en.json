@@ -82,7 +82,7 @@
       "location": "Santa Cruz de Tenerife, Spain",
       "duration": "06/2023 - 09/2025",
       "description": "Leading technical strategy and development for AI/ML and IoT projects serving enterprise clients across multiple industries.",
-      "tags": ["AI/ML", "Automatization", "IoT", "LLMs", "MQTT", "RFID", "Team Leadership"],
+      "tags": ["AI/ML", "Automation", "IoT", "LLMs", "MQTT", "RFID", "Team Leadership"],
       "details": [
         "Designed a computer vision application for quality control for an international manufacturing company.",
         "Designed and built a real-time video analysis application for a major video streaming company.",
@@ -133,7 +133,7 @@
       "subtitle": "IEO - Spanish Institute of Oceanography",
       "url": "https://www.ieo.es/",
       "location": "Santa Cruz de Tenerife, Spain",
-      "duration": "2023 - 2007",
+      "duration": "2003 - 2007",
       "description": "Managed IT infrastructure and provided technical support for the IEO's research operations.",
       "tags": ["Windows Server", "Active Directory", "Network Administration", "Technical Support", "Firewall setup and management"],
       "details": [
@@ -164,7 +164,12 @@
   ],
   "skills": [
     "Python",
+    "TypeScript",
+    "React",
+    "Node.js",
     "Distributed Systems",
+    "REST APIs",
+    "WebSockets",
     "AI/ML",
     "MCP",
     "IoT",
@@ -176,7 +181,6 @@
     "Team Leadership",
     "Problem Solving",
     "Communication",
-    "Collaboration",
     "Continuous Learning"
   ],
   "softSkills": [
@@ -221,7 +225,7 @@
     {
       "title": "Tuna Fisheries Data Exploration Tools",
       "subtitle": "Catch and Effort Data and Purse seine Geospatial Data",
-      "description": "A comprehensive data exploration and analysis project focused on fisheries data, utilizing Python for data compilation a frontend based on vanilla JS, css and html",
+      "description": "A comprehensive data exploration and analysis project focused on fisheries data, utilizing Python for data compilation and processing, with a lightweight browser-based frontend for geospatial exploration.",
       "url": "https://alexperez.me/IATTC-sample/"
     },
     {
@@ -233,7 +237,8 @@
     {
       "title": "Canary Islands Maritime Traffic Predictor",
       "subtitle": "Real-time ferry delay predictions using ML in the browser",
-      "description": "A static web app that tracks and predicts maritime traffic delays for inter-island ferry routes across the Canary Islands. Uses live AIS vessel data, weather conditions, and a browser-based XGBoost model (ONNX Runtime) with 1.7-minute MAE accuracy. Features an interactive map with 13 ports, analytics dashboard, and bilingual EN/ES interface.",
+      "description": "Full-stack <strong>React 19 + TypeScript</strong> application predicting inter-island ferry delays across the Canary Islands. Runs an XGBoost model client-side via ONNX Runtime Web (1.7-min MAE), streams live AIS vessel positions over WebSocket with resilient reconnection, and proxies the feed through a Cloudflare Worker at the edge. Interactive MapLibre map with 13 ports, analytics dashboard, IndexedDB caching, and bilingual EN/ES interface.",
+      "tags": ["React", "TypeScript", "Vite", "Tailwind", "WebSockets", "ONNX Runtime", "Cloudflare Workers"],
       "url": "https://github.com/halprez/canary-islands-maritime-traffic-analytics"
     }
   ],
