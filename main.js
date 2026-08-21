@@ -318,6 +318,7 @@ class PersonalSite {
         this.initLangSwitcher();
         this.initGames();
         this.initDownloadCV();
+        this.initPhotoModal();
     }
 
     initFloatingMenu() {
@@ -475,6 +476,37 @@ class PersonalSite {
             e.preventDefault();
             this.generatePDF();
         });
+    }
+
+    initPhotoModal() {
+        const modal = document.getElementById('photo-modal');
+        if (!modal) return;
+        const modalImg = modal.querySelector('.photo-modal-img');
+        const photo = document.querySelector('.hero-photo img');
+
+        if (photo) {
+            photo.closest('.hero-photo').addEventListener('click', () => {
+                modalImg.src = photo.src;
+                modalImg.alt = photo.alt;
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if (!this._photoModalBound) {
+            this._photoModalBound = true;
+            const close = () => {
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            };
+            modal.querySelector('.photo-modal-close').addEventListener('click', close);
+            modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('open')) close();
+            });
+        }
     }
 
     generatePDF() {
