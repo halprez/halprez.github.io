@@ -2329,3 +2329,18 @@ body[data-theme="autarqui"] ::-webkit-scrollbar-thumb:hover { background: #9a9a9
     body[data-theme="autarqui"] .hero-photo { width: 84px; height: 104px; }
 }
 
+/* Mobile: language selector 2x, pinned to the right margin */
+@media (max-width: 768px) {
+    body[data-theme="autarqui"] .top-bar { justify-content: flex-end; }
+    body[data-theme="autarqui"] .lang-switcher {
+        gap: 0.3rem;
+        padding: 0.3rem;
+        border-radius: 8px;
+    }
+    body[data-theme="autarqui"] .lang-button {
+        padding: 0.4rem 0.6rem;
+        font-size: 1rem;
+        border-radius: 6px;
+    }
+}
+
