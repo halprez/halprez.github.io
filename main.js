@@ -158,8 +158,11 @@ class PersonalSite {
                 <div class="window-pane">
                     <section id="personal">
                         <header>
+                        <div class="hero-text">
                         <h1 class="name">${personal.name}</h1>
                         <p class="role">${personal.title}</p>
+                        </div>
+                        <div class="hero-photo"><img src="images/me-comfy.jpg" alt="${personal.name}" /></div>
                         </header>
                         <main>
                         <p class="bio">${personal.bio}</p>
@@ -180,6 +183,10 @@ class PersonalSite {
                             </a>
                         </div>
                         ` : ''}
+                        <div class="essays">
+                            <h2 class="essays-title">${t('ui.essays')}</h2>
+                            <a class="essays-link" href="https://autarqui.co/journal" target="_blank">${t('ui.essaysText')}</a>
+                        </div>
                         </main>
                     </section>
                 </div>

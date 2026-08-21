@@ -22,6 +22,8 @@
     "playAgain": "Haz clic para jugar de nuevo",
     "downloadCV": "Descargar CV",
     "contact": "Contacto",
+    "essays": "Ensayos",
+    "essaysText": "Escribo sobre IA, software a medida y el futuro del trabajo",
     "close": "Cerrar",
     "resize": "Redimensionar"
   },
@@ -52,11 +54,6 @@
         "label": "X",
         "url": "https://x.com/halprez",
         "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/%3E%3C/svg%3E"
-      },
-      {
-        "label": "Reflexiones",
-        "url": "https://autarqui.co/journal",
-        "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v7l-2.5-1.5L6 11V4z'/%3E%3C/svg%3E"
       }
     ]
   },
@@ -237,8 +234,8 @@
     {
       "title": "Predictor de Tr\u00e1fico Mar\u00edtimo de Canarias",
       "subtitle": "Predicciones de retrasos de ferris en tiempo real con ML en el navegador",
-      "description": "Aplicaci\u00f3n full-stack en <strong>React 19 + TypeScript</strong> que predice retrasos de ferris interinsulares en Canarias. Ejecuta un modelo XGBoost en el cliente mediante ONNX Runtime Web (1,7 min de MAE), transmite posiciones AIS de buques en vivo por WebSocket con reconexi\u00f3n resiliente, y sirve el feed a trav\u00e9s de un Cloudflare Worker en el edge. Mapa interactivo MapLibre con 13 puertos, panel de an\u00e1lisis, cach\u00e9 en IndexedDB e interfaz biling\u00fce EN/ES.",
-      "tags": ["React", "TypeScript", "Vite", "Tailwind", "WebSockets", "ONNX Runtime", "Cloudflare Workers"],
+      "description": "Aplicaci\u00f3n full-stack en <strong>React + TypeScript</strong> que predice retrasos de ferris interinsulares en Canarias. Ejecuta un modelo XGBoost en el cliente mediante ONNX Runtime Web (1,7 min de MAE), transmite posiciones AIS de buques en vivo por WebSocket con reconexi\u00f3n resiliente, y sirve el feed a trav\u00e9s de un Cloudflare Worker en el edge. Mapa interactivo MapLibre con 13 puertos, panel de an\u00e1lisis, cach\u00e9 en IndexedDB e interfaz biling\u00fce EN/ES.",
+      "tags": ["React", "TypeScript"],
       "url": "https://github.com/halprez/canary-islands-maritime-traffic-analytics"
     }
   ],
