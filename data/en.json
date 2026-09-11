@@ -31,7 +31,7 @@
     "name": "Alejandro Pérez",
     "title": "Software Engineer",
     "bio": "I am a Senior Software Engineer with 20+ years of field experience, currently specializing in distributed systems and AI technologies. I combine technical expertise with analytical curiosity, grounded in strong software engineering principles. I've been building software since I was 8 years old, so I feel incredibly fortunate to have turned a childhood passion into a fulfilling career. For me, coding isn't just work; it's a craft I continuously pursue. When not building software, I find clarity through yoga, meditation, chess, and outdoor adventures\u2014practices I leverage to empower my day-to-day working activities.",
-    "email": "jalpre@gmail.com",
+    "email": "contact@alexperez.dev",
     "image": "/images/me.jpg",
     "interests": [
       "Distributed Systems",
@@ -42,7 +42,7 @@
     "contact": [
       {
         "label": "Email",
-        "url": "mailto:jalpre@gmail.com",
+        "url": "mailto:contact@alexperez.dev",
         "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/%3E%3C/svg%3E"
       },
       {
@@ -60,16 +60,15 @@
   "experience": [
     {
       "title": "Founder",
-      "subtitle": "autarqui.co",
-      "url": "https://autarqui.co",
+      "subtitle": "<a href='https://autarqui.co' target='_blank' rel='noopener'>autarqui.co</a>",
       "location": "Santa Cruz de Tenerife, Spain",
       "duration": "10/2025 - Present",
       "description": "Building agentic software for businesses:",
       "tags": ["Agentic AI", "Integrations", "Automation", "LLMs", "APIs"],
       "details": [
-        "Reservit.co — agentic customer management system.",
-        "Delta — conversational BI.",
-        "Sigma — AI-assisted tax and labor advisor."
+        "<a href='https://reservit.co' target='_blank' rel='noopener'>Reservit.co</a> — agentic customer management system.",
+        "<a href='https://autarqui.co/delta' target='_blank' rel='noopener'>Delta</a> — conversational BI.",
+        "<a href='https://autarqui.co/sigma' target='_blank' rel='noopener'>Sigma</a> — AI-assisted tax and labor advisor."
       ]
     },
     {

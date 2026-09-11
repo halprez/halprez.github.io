@@ -231,10 +231,8 @@ class PersonalSite {
     renderTimelineSection(section) {
         const t = (k) => i18n.t(k);
         const items = section.items.map(item => {
-            const href = item.url || '#';
             const actionAttr = item.action ? `data-action="${item.action}"` : '';
-            return `
-            <a href="${href}" class="item-link" ${actionAttr}>
+            const inner = `
                 <div class="item">
                     <div class="item-header">
                         <div>
@@ -247,8 +245,13 @@ class PersonalSite {
                     ${item.description ? `<p class="item-description">${item.description}</p>` : ''}
                     ${item.details ? this.renderDetails(item.details) : ''}
                     ${item.tags ? this.renderTags(item.tags) : ''}
-                </div>
-            </a>`;
+                </div>`;
+            // A whole-card link only when the item has a single destination.
+            // Items whose sub-items link individually render as a plain block
+            // so their inner anchors stay valid (no nested <a>).
+            return item.url
+                ? `<a href="${item.url}" class="item-link" ${actionAttr}>${inner}</a>`
+                : `<div class="item-link" ${actionAttr}>${inner}</div>`;
         }).join('');
 
         const titleContent = section.link

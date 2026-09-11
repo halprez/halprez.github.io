@@ -2176,6 +2176,17 @@ body[data-theme="autarqui"] .item-details li::before {
     font-weight: 700;
     left: 0.1rem;
 }
+body[data-theme="autarqui"] .item-details a,
+body[data-theme="autarqui"] .item-subtitle a {
+    color: var(--color-heading);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-rule);
+    transition: border-color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+body[data-theme="autarqui"] .item-details a:hover,
+body[data-theme="autarqui"] .item-subtitle a:hover {
+    border-color: var(--color-heading);
+}
 
 /* Publications */
 body[data-theme="autarqui"] .publication .item-subtitle em { color: var(--color-muted); }

@@ -31,7 +31,7 @@
     "name": "Alejandro P\u00e9rez",
     "title": "Ingeniero de Software",
     "bio": "Soy Ingeniero de Software Senior con m\u00e1s de 20 a\u00f1os de experiencia, especializado actualmente en sistemas distribuidos y tecnolog\u00edas de inteligencia artificial. Combino experiencia t\u00e9cnica con curiosidad anal\u00edtica, fundamentado en s\u00f3lidos principios de ingenier\u00eda de software. Llevo desarrollando software desde los 8 a\u00f1os, as\u00ed que me siento afortunado de haber convertido una pasi\u00f3n de infancia en una carrera profesional. Para m\u00ed, programar no es solo un trabajo; es un oficio que persigo continuamente. Cuando no estoy desarrollando, encuentro claridad a trav\u00e9s del yoga, la meditaci\u00f3n, el ajedrez y las aventuras al aire libre\u2014pr\u00e1cticas que potencian mi d\u00eda a d\u00eda laboral.",
-    "email": "jalpre@gmail.com",
+    "email": "contact@alexperez.dev",
     "image": "/images/me.jpg",
     "interests": [
       "Sistemas Distribuidos",
@@ -42,7 +42,7 @@
     "contact": [
       {
         "label": "Email",
-        "url": "mailto:jalpre@gmail.com",
+        "url": "mailto:contact@alexperez.dev",
         "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/%3E%3C/svg%3E"
       },
       {
@@ -60,16 +60,15 @@
   "experience": [
     {
       "title": "Fundador",
-      "subtitle": "autarqui.co",
-      "url": "https://autarqui.co",
+      "subtitle": "<a href='https://autarqui.co' target='_blank' rel='noopener'>autarqui.co</a>",
       "location": "Santa Cruz de Tenerife, Espa\u00f1a",
       "duration": "10/2025 - Actualidad",
       "description": "Construyendo software ag\u00e9ntico para empresas:",
       "tags": ["IA Ag\u00e9ntica", "Integraciones", "Automatizaci\u00f3n", "LLMs", "APIs"],
       "details": [
-        "Reservit.co \u2014 sistema de gesti\u00f3n de clientes ag\u00e9ntico.",
-        "Delta \u2014 BI conversacional.",
-        "Sigma \u2014 Asesor fiscal y laboral asistido por IA."
+        "<a href='https://reservit.co' target='_blank' rel='noopener'>Reservit.co</a> \u2014 sistema de gesti\u00f3n de clientes ag\u00e9ntico.",
+        "<a href='https://autarqui.co/delta' target='_blank' rel='noopener'>Delta</a> \u2014 BI conversacional.",
+        "<a href='https://autarqui.co/sigma' target='_blank' rel='noopener'>Sigma</a> \u2014 Asesor fiscal y laboral asistido por IA."
       ]
     },
     {
