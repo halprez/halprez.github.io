@@ -58,8 +58,14 @@ const pass = {
     altText: 'alexperez.dev/card',
   }],
 };
-writeFileSync(resolve(passDir, 'pass.json'), JSON.stringify(pass, null, 2) + '\n', 'utf8');
-console.log(`✓ wallet/pass/pass.json (teamIdentifier: ${teamId})`);
+// Write ASCII-only JSON: NFC-normalise, then \uXXXX-escape all non-ASCII. This is
+// valid JSON that PassKit decodes to the same accented text, but is immune to any
+// downstream tool that mishandles raw UTF-8 bytes (a common cause of broken accents).
+const passJson = JSON.stringify(pass, null, 2)
+  .normalize('NFC')
+  .replace(/[^\x00-\x7F]/g, (c) => '\\u' + c.charCodeAt(0).toString(16).padStart(4, '0'));
+writeFileSync(resolve(passDir, 'pass.json'), passJson + '\n', 'utf8');
+console.log(`✓ wallet/pass/pass.json (teamIdentifier: ${teamId}, ASCII-escaped)`);
 
 // 3. manifest.json = SHA-1 of every payload file (all except manifest/signature).
 const payload = readdirSync(passDir).filter((f) => f !== 'manifest.json' && f !== 'signature');
