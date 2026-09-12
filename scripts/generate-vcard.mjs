@@ -20,8 +20,10 @@ const lines = [
   'END:VCARD',
 ];
 
-// RFC 6350 mandates CRLF; trailing CRLF included.
-const vcf = lines.join('\r\n') + '\r\n';
+// RFC 6350 mandates CRLF; trailing CRLF included. Prepend a UTF-8 BOM so importers
+// that ignore the (uncontrollable, charset-less) HTTP Content-Type still detect UTF-8
+// and render accents correctly (Pérez, Ingeniería) instead of Latin-1 mojibake.
+const vcf = '\uFEFF' + lines.join('\r\n') + '\r\n';
 
 mkdirSync(resolve(root, 'contact'), { recursive: true });
 const out = resolve(root, 'contact/alex-perez.vcf');
