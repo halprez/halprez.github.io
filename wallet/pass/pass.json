@@ -1,0 +1,43 @@
+{
+  "formatVersion": 1,
+  "passTypeIdentifier": "pass.dev.alexperez.businesscard",
+  "serialNumber": "alejandro-perez-business-card-v1",
+  "teamIdentifier": "APPLE_TEAM_ID",
+  "organizationName": "Alejandro Pérez",
+  "description": "Tarjeta de negocios de Alejandro Pérez",
+  "logoText": "",
+  "foregroundColor": "rgb(20, 20, 20)",
+  "backgroundColor": "rgb(255, 255, 255)",
+  "labelColor": "rgb(110, 110, 110)",
+  "generic": {
+    "primaryFields": [
+      {
+        "key": "name",
+        "label": "",
+        "value": "Alejandro Pérez"
+      }
+    ],
+    "secondaryFields": [
+      {
+        "key": "role",
+        "label": "",
+        "value": "Ingeniería de software"
+      }
+    ],
+    "auxiliaryFields": [
+      {
+        "key": "phone",
+        "label": "",
+        "value": "+34 663 822 594"
+      }
+    ]
+  },
+  "barcodes": [
+    {
+      "format": "PKBarcodeFormatQR",
+      "message": "https://alexperez.dev/card",
+      "messageEncoding": "iso-8859-1",
+      "altText": "alexperez.dev/card"
+    }
+  ]
+}

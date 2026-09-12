@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alejandro Pérez — Contacto</title>
+  <meta name="description" content="Contacto de Alejandro Pérez, Ingeniero de software">
+  <meta name="robots" content="index,follow">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff; --text: #1a1a1a; --heading: #000000;
+      --muted: #6e6e6e; --rule: #d4d4d4; --surface: #fafafa;
+      --display: 'Lora', Georgia, 'Times New Roman', serif;
+      --body: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+      --track: 0.18em;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      background: var(--surface); color: var(--text); font-family: var(--body);
+      font-weight: 400; line-height: 1.55; -webkit-font-smoothing: antialiased;
+      min-height: 100svh; display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem;
+    }
+    /* Bordered, rounded card with a subtle shadow */
+    .card {
+      width: 100%; max-width: 360px; text-align: center;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 20px;
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.07);
+      padding: 2.75rem 2rem;
+    }
+    .logo { width: 240px; max-width: 82%; height: auto; margin: 0 auto 1.75rem; display: block; }
+    .name { font-family: var(--display); font-weight: 600; font-size: 2rem; line-height: 1.1;
+            letter-spacing: -0.02em; color: var(--heading); }
+    .role { font-family: var(--body); font-weight: 500; font-size: 0.78rem;
+            letter-spacing: var(--track); text-transform: uppercase; color: var(--muted);
+            margin-top: 0.6rem; }
+    .links { margin: 1.75rem 0 2rem; display: flex; justify-content: center; align-items: baseline; gap: 0.55rem; }
+    .links a { color: var(--text); text-decoration: none; font-size: 0.95rem;
+               border-bottom: 1px solid transparent; padding-bottom: 1px;
+               transition: border-color 150ms cubic-bezier(0.2,0,0,1); }
+    .links a:hover { border-color: var(--heading); }
+    .links .sep { color: var(--muted); font-size: 0.7rem; line-height: 1; }
+    .btn {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 52px; padding: 0 1.5rem; border-radius: 8px;
+      font-family: var(--body); font-weight: 500; font-size: 1rem; text-decoration: none;
+      background: var(--heading); color: #fff; border: 1px solid var(--heading);
+      transition: opacity 150ms cubic-bezier(0.2,0,0,1);
+    }
+    .btn:hover { opacity: 0.88; }
+
+    /* Mobile landscape (short viewport): two-column so it fits without scrolling */
+    @media (orientation: landscape) and (max-height: 600px) {
+      body { padding: 1rem; }
+      .card {
+        max-width: 640px; display: flex; align-items: center; gap: 2.25rem;
+        text-align: left; padding: 1.75rem 2.25rem;
+      }
+      .logo { width: 180px; max-width: 40%; margin: 0; flex: 0 0 auto; }
+      .content { flex: 1; min-width: 0; }
+      .name { font-size: 1.7rem; }
+      .links { justify-content: flex-start; margin: 1.25rem 0 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img class="logo" src="/assets/autarqui-vertical.svg" alt="Autarqui" width="240">
+    <div class="content">
+      <h1 class="name">Alejandro Pérez</h1>
+      <p class="role">Ingeniería de software</p>
+      <nav class="links">
+        <a href="https://autarqui.co">autarqui.co</a>
+        <span class="sep">·</span>
+        <a href="https://alexperez.dev">alexperez.dev</a>
+      </nav>
+      <a class="btn" href="/contact/alex-perez.vcf" download="alejandro-perez.vcf">Guardar contacto</a>
+    </div>
+  </main>
+</body>
+</html>

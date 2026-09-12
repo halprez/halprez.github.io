@@ -36,6 +36,14 @@ Thumbs.db
 *.temp
 *.log
 
+# Apple Wallet signing material — NEVER commit private certs/keys
+*.p12
+*.pem
+*.key
+*.cer
+*.certSigningRequest
+wallet/certs/
+
 # Environment variables
 .env
 .env.local

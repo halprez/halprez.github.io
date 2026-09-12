@@ -11,7 +11,12 @@
     "test:functionality": "playwright test tests/functionality.spec.js",
     "test:lighthouse": "lhci autorun",
     "serve": "python3 -m http.server 8080",
-    "serve:node": "npx http-server -p 8080"
+    "serve:node": "npx http-server -p 8080",
+    "generate": "npm run generate:vcard && npm run generate:qr && npm run generate:card",
+    "generate:vcard": "node scripts/generate-vcard.mjs",
+    "generate:qr": "node scripts/generate-qr.mjs",
+    "generate:card": "node scripts/generate-card-art.mjs",
+    "generate:wallet": "node scripts/generate-wallet-pass.mjs"
   },
   "repository": {
     "type": "git",
@@ -30,6 +35,8 @@
     "@lhci/cli": "^0.12.0",
     "@playwright/test": "^1.40.0",
     "html-validate": "^8.7.4",
+    "opentype.js": "^2.0.0",
+    "qrcode": "^1.5.4",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0"
   },
