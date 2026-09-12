@@ -557,6 +557,16 @@ class PersonalSite {
             y += 5;
         };
 
+        // Some content fields carry HTML (links/bold) for the web; the PDF is plain
+        // text, so strip tags — and turn a leading/only <a> into a clickable link.
+        const stripHtml = (s) => (s || '').replace(/<[^>]+>/g, '')
+            .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+            .replace(/&#39;/g, "'").replace(/&quot;/g, '"');
+        const anchorOf = (s) => {
+            const m = (s || '').match(/href=['"]([^'"]+)['"][^>]*>([\s\S]*?)<\/a>/i);
+            return m ? { url: m[1], text: stripHtml(m[2]) } : null;
+        };
+
         // --- Header ---
         font('bold', 22); color(17, 17, 17);
         doc.text(data.personal.name, M, y);
@@ -617,21 +627,22 @@ class PersonalSite {
                 }
                 y += 4;
 
-                // Company as link + location
-                if (item.url) {
-                    link(item.subtitle, item.url, M, 8.5);
-                    const sw = doc.getTextWidth(item.subtitle);
+                // Company as link + location (subtitle may be plain or an <a> link)
+                const subLink = item.url ? { url: item.url, text: stripHtml(item.subtitle) } : anchorOf(item.subtitle);
+                if (subLink) {
+                    link(subLink.text, subLink.url, M, 8.5);
+                    const sw = doc.getTextWidth(subLink.text);
                     font('normal', 8.5); color(80, 80, 80);
                     doc.text(`  •  ${item.location}`, M + sw, y);
                 } else {
                     font('normal', 8.5); color(80, 80, 80);
-                    doc.text(`${item.subtitle}  •  ${item.location}`, M, y);
+                    doc.text(`${stripHtml(item.subtitle)}  •  ${item.location}`, M, y);
                 }
                 y += 5;
 
                 // Description
                 if (item.description) {
-                    wrapped(item.description, M, CW, 8.5, 'normal', [60, 60, 60]);
+                    wrapped(stripHtml(item.description), M, CW, 8.5, 'normal', [60, 60, 60]);
                     y += 1;
                 }
 
@@ -642,7 +653,7 @@ class PersonalSite {
                         font('normal', 8); color(120, 120, 120);
                         doc.text('•', M + 3, y);
                         font('normal', 8); color(70, 70, 70);
-                        const lines = doc.splitTextToSize(d, CW - 10);
+                        const lines = doc.splitTextToSize(stripHtml(d), CW - 10);
                         doc.text(lines, M + 7, y);
                         y += lines.length * LH + 0.5;
                     });
@@ -673,17 +684,18 @@ class PersonalSite {
                     doc.text(item.duration, M + CW - doc.getTextWidth(item.duration), y);
                 }
                 y += 4;
-                if (item.url) {
-                    link(item.subtitle, item.url, M, 8.5);
-                    const sw = doc.getTextWidth(item.subtitle);
+                const eduLink = item.url ? { url: item.url, text: stripHtml(item.subtitle) } : anchorOf(item.subtitle);
+                if (eduLink) {
+                    link(eduLink.text, eduLink.url, M, 8.5);
+                    const sw = doc.getTextWidth(eduLink.text);
                     font('normal', 8.5); color(80, 80, 80);
                     doc.text(`  •  ${item.location}`, M + sw, y);
                 } else {
                     font('normal', 8.5); color(80, 80, 80);
-                    doc.text(`${item.subtitle}  •  ${item.location}`, M, y);
+                    doc.text(`${stripHtml(item.subtitle)}  •  ${item.location}`, M, y);
                 }
                 y += 4;
-                if (item.description) { wrapped(item.description, M, CW, 8.5, 'normal', [60, 60, 60]); }
+                if (item.description) { wrapped(stripHtml(item.description), M, CW, 8.5, 'normal', [60, 60, 60]); }
                 y += 4;
             });
         }
@@ -752,10 +764,10 @@ class PersonalSite {
                 y += 4;
                 if (item.subtitle) {
                     font('normal', 8); color(100, 100, 100);
-                    doc.text(item.subtitle, M, y);
+                    doc.text(stripHtml(item.subtitle), M, y);
                     y += 3.5;
                 }
-                if (item.description) { wrapped(item.description, M, CW, 8, 'normal', [70, 70, 70]); }
+                if (item.description) { wrapped(stripHtml(item.description), M, CW, 8, 'normal', [70, 70, 70]); }
                 y += 4;
             });
         }
