@@ -1,5 +1,6 @@
-// Generates contact/alex-perez.vcf — vCard 4.0 (RFC 6350), UTF-8, CRLF line endings.
-// No private data beyond what is intentionally public (spec §2/§14).
+// Generates contact/alex-perez.vcf.
+// vCard 3.0 (iOS/macOS/Android's most compatible format), UTF-8, CRLF, NO BOM
+// (a BOM makes iOS Contacts reject the file as "unable to open"). Only public data.
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
@@ -9,23 +10,21 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
 const lines = [
   'BEGIN:VCARD',
-  'VERSION:4.0',
-  `FN:${C.fullName}`,
+  'VERSION:3.0',
   `N:${C.lastName};${C.firstName};;;`,
+  `FN:${C.fullName}`,
   `TITLE:${C.title}`,
-  `TEL;TYPE=cell;VALUE=uri:tel:${C.phone}`,
-  `EMAIL:${C.email}`,
+  `TEL;TYPE=CELL:${C.phone}`,
+  `EMAIL;TYPE=INTERNET:${C.email}`,
   ...C.urls.map((u) => `URL:${u}`),
   `NOTE:${C.org}`,
   'END:VCARD',
 ];
 
-// RFC 6350 mandates CRLF; trailing CRLF included. Prepend a UTF-8 BOM so importers
-// that ignore the (uncontrollable, charset-less) HTTP Content-Type still detect UTF-8
-// and render accents correctly (Pérez, Ingeniería) instead of Latin-1 mojibake.
-const vcf = '\uFEFF' + lines.join('\r\n') + '\r\n';
+// UTF-8, CRLF, no BOM. The bytes are UTF-8; vCard 3.0 is read as UTF-8 by iOS/macOS.
+const vcf = lines.join('\r\n') + '\r\n';
 
 mkdirSync(resolve(root, 'contact'), { recursive: true });
 const out = resolve(root, 'contact/alex-perez.vcf');
 writeFileSync(out, vcf, 'utf8');
-console.log(`✓ contact/alex-perez.vcf (${Buffer.byteLength(vcf)} bytes, vCard 4.0, CRLF)`);
+console.log(`✓ contact/alex-perez.vcf (${Buffer.byteLength(vcf)} bytes, vCard 3.0, CRLF, no BOM)`);

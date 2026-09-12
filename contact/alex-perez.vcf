@@ -1,10 +1,10 @@
-﻿BEGIN:VCARD
-VERSION:4.0
-FN:Alejandro Pérez
+BEGIN:VCARD
+VERSION:3.0
 N:Pérez;Alejandro;;;
+FN:Alejandro Pérez
 TITLE:Ingeniería de software
-TEL;TYPE=cell;VALUE=uri:tel:+34663822594
-EMAIL:contact@alexperez.dev
+TEL;TYPE=CELL:+34663822594
+EMAIL;TYPE=INTERNET:contact@alexperez.dev
 URL:https://alexperez.dev
 URL:https://autarqui.co
 NOTE:autarqui.co
